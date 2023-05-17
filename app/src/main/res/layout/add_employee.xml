@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF0CB"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvPersonel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="62dp"
+        android:text="Add new employee"
+        android:textSize="25dp"
+        android:fontFamily="@font/librefranklinblack"
+        android:textColor="#430000"
+        />
+    <TextView
+        android:id="@+id/tvFirstName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="101dp"
+        android:layout_marginLeft="22dp"
+        android:text="First Name"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxFirstName1"
+        android:layout_width="316dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="126dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvNameinboxFirstName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/boxFirstName1"
+        app:layout_constraintLeft_toLeftOf="@+id/boxFirstName1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="13dp"
+        android:text="The Liem"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvLastName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="171dp"
+        android:layout_marginLeft="22dp"
+        android:text="Last Name"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxLastName1"
+        android:layout_width="316dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="196dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvNameinboxLastName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/boxLastName1"
+        app:layout_constraintLeft_toLeftOf="@+id/boxLastName1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="13dp"
+        android:text="Bui"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvDateofBirth1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="247dp"
+        android:layout_marginLeft="22dp"
+        android:text="Date of Birth"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxDateofBirth1"
+        android:layout_width="169dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="272dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvGender1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="247dp"
+        android:layout_marginLeft="210dp"
+        android:text="Gender"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxGender1"
+        android:layout_width="128dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="272dp"
+        android:layout_marginLeft="210dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvPhoneNo.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="317dp"
+        android:layout_marginLeft="22dp"
+        android:text="Phone No."
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxFirstPhoneNo.1"
+        android:layout_width="83dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="344dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxLastPhoneNo.1"
+        android:layout_width="223dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="344dp"
+        android:layout_marginLeft="115dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvAddress1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="389dp"
+        android:layout_marginLeft="22dp"
+        android:text="Address"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxAddress1"
+        android:layout_width="316dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="414dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvEmail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="459dp"
+        android:layout_marginLeft="22dp"
+        android:text="Email"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxEmail1"
+        android:layout_width="316dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="484dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvPosition1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="529dp"
+        android:layout_marginLeft="22dp"
+        android:text="Position"
+        android:textSize="14dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="#430000"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/boxPosition1"
+        android:layout_width="316dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="558dp"
+        android:layout_marginLeft="22dp"
+        tools:ignore="MissingConstraints" />
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

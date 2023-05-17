@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/plastic"
+        android:layout_width="289dp"
+        android:layout_height="347dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/plastic_bg"
+        android:layout_marginTop="169dp"
+        tools:ignore="MissingConstraints"
+        />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="95dp"
+        android:layout_height="53dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="70dp"
+
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="262dp"
+        android:layout_height="38dp"
+        app:layout_constraintLeft_toLeftOf="@+id/plastic"
+        app:layout_constraintTop_toTopOf="@+id/plastic"
+        app:layout_constraintRight_toRightOf="@+id/plastic"
+        android:layout_marginTop="51dp"
+        android:text="Welcome Back"
+        android:textSize="30dp"
+        android:fontFamily="@font/canelaboldtrial"
+        android:textColor="#430000"
+        />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="248dp"
+        android:layout_height="20dp"
+        app:layout_constraintLeft_toLeftOf="@+id/plastic"
+        app:layout_constraintTop_toTopOf="@+id/plastic"
+        app:layout_constraintRight_toRightOf="@+id/plastic"
+        android:layout_marginTop="89dp"
+        android:text="Login to your account,"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#FCFCFC"
+        />
+
+    <EditText
+        android:layout_width="254dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="139dp"
+        android:background="@drawable/customeredit"
+        android:drawableLeft="@drawable/round_lock_open_24"
+        android:hint="ID number" android:textColorHint="#99430000"
+        android:ems="10"
+        android:padding="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/plastic"
+        app:layout_constraintRight_toRightOf="@+id/plastic"
+        app:layout_constraintTop_toTopOf="@+id/plastic"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_width="254dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="189dp"
+        android:background="@drawable/customeredit"
+        android:drawableLeft="@drawable/round_lock_open_24"
+
+        android:ems="10"
+        android:padding="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/plastic"
+        app:layout_constraintRight_toRightOf="@+id/plastic"
+        app:layout_constraintTop_toTopOf="@+id/plastic"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="254dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="251dp"
+        android:background="@drawable/btnlogin"
+        android:text="Login"
+        android:textColor="#430000"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/librefranklinbold"
+        app:layout_constraintLeft_toLeftOf="@+id/plastic"
+        app:layout_constraintRight_toRightOf="@+id/plastic"
+
+        app:layout_constraintTop_toTopOf="@+id/plastic"
+
+        tools:ignore="MissingConstraints" />
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
