@@ -16,13 +16,20 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="62dp"
         android:layout_marginRight="146dp"
-        android:text="Personel"
+        android:text="Personnel"
         android:textSize="30dp"
         android:fontFamily="@font/canelablacktrial"
         android:textColor="#430000"
         />
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/personnel_item_view"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="102dp"/>
+
+    <!--<RelativeLayout
         android:id="@+id/boxPersonel1"
         android:layout_width="337dp"
         android:layout_height="146dp"
@@ -403,7 +410,7 @@
         android:textSize="12dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#732D2B"
-        />
+        />-->
 
 
 
