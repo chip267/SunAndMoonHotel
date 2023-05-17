@@ -92,7 +92,15 @@
         android:fontFamily="@font/librefranklinmedium"
         tools:ignore="MissingConstraints"
         />
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="217dp"
+        tools:listitem="@layout/room_item_view"
+        />
+    <!--<TextView
         android:id="@+id/tvRoom110"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -335,7 +343,7 @@
         android:textSize="18dp"
         android:textAllCaps="false"
         android:fontFamily="@font/librefranklinregular"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />-->
 
 
 
