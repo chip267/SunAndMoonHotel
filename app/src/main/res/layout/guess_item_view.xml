@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/tvName1"
+        android:layout_width="39dp"
+        android:layout_height="23dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/tvNameGuest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="191dp"
+        android:text="Nguyen Thi Luu"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000" />
+    <TextView
+        android:id="@+id/tvDateofBirth1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvName1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="22dp"
+        android:text="Date of Birth"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000"
+       />
+    <TextView
+        android:id="@+id/tvDateofBirthGuest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvName1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="191dp"
+        android:text="20/10/1997"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000" />
+    <TextView
+        android:id="@+id/tvIDno1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateofBirth1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="22dp"
+        android:text="Identification No."
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000" />
+    <TextView
+        android:id="@+id/tvIDGuest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateofBirth1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="191dp"
+        android:text="88888888888"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000" />
+    <TextView
+        android:id="@+id/tvPhoneno1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvIDno1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="22dp"
+        android:text="Phone No."
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000" />
+    <TextView
+        android:id="@+id/tvPhoneGuest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvIDno1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="191dp"
+        android:text="879856"
+        android:textSize="15dp"
+        android:fontFamily="@font/librefranklinregular"
+        android:textColor="#000000"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
