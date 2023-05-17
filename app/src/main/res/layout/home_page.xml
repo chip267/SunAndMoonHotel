@@ -86,19 +86,7 @@
         android:textColor="#430000"
         tools:ignore="DuplicateIds" />
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/frame_995"
-        android:layout_width="232dp"
-        android:layout_height="90dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="55dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="122dp"
-        android:clipToOutline="true"
-        android:background="@drawable/frame_995"
-        android:elevation="4dp"
-        tools:ignore="MissingConstraints" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/boxSales"
