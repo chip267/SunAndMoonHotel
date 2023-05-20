@@ -32,9 +32,34 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="100dp"
 
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" >
+
+
+    </RelativeLayout>
+
+    <ImageView
+
+        app:layout_constraintLeft_toLeftOf="@+id/boxsearch"
+        app:layout_constraintTop_toTopOf="@+id/boxsearch"
+        android:layout_marginTop="8.57dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ph_magnifying_glass" />
+
+    <ImageView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="21dp"
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_button" />
 
     <EditText
+        android:id="@+id/boxsearch"
         android:layout_width="355dp"
         android:layout_height="36dp"
         android:background="@drawable/edittext_search"
@@ -229,6 +254,12 @@
         android:textColor="#FFF0CB"
         android:fontFamily="@font/canelablacktrial"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ph_magnifying_glass" />
 
     <TextView
         android:id="@+id/tv_I"

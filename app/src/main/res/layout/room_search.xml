@@ -15,27 +15,85 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="58dp">
 
-    <EditText
-        android:id="@+id/RoomSearch"
-        android:layout_width="332dp"
-        android:layout_height="39dp"
-        android:background="@drawable/edittext_search"
+        <EditText
+            android:id="@+id/RoomSearch"
+            android:layout_width="332dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="15.79dp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/box_search"
-        app:layout_constraintTop_toTopOf="@+id/box_search"
-        android:layout_marginLeft="15.79dp"
-        android:layout_marginTop="7.83dp"
-        tools:ignore="MissingConstraints" />
-    
+            android:layout_marginTop="7.83dp"
+            android:background="@drawable/edittext_search"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="31dp"
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/chevron_left" />
+        <TextView
+            android:id="@+id/tv8rooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="25dp"
+            android:text="8 rooms"
+            android:textSize="15dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:textColor="#FFF0CB"
+            tools:ignore="NotSibling" />
+        <TextView
+            android:id="@+id/tvarefound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_marginRight="240dp"
+            android:layout_alignParentRight="true"
+            android:text="are founded"
+            android:textSize="15dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:textColor="#FFF0CB"
+            tools:ignore="NotSibling" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sortby"
+            android:layout_width="78dp"
+            android:layout_height="33dp"
+           android:layout_marginTop="52dp"
+            android:layout_marginLeft="183.58dp"
+            android:background="@drawable/edittext_search"
+            android:text="Sort by"
+            android:textColor="#FFF0CB"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/librefranklinregular"
+            tools:ignore="NotSibling" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_filter"
+            android:layout_width="78dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginLeft="268.63dp"
+            android:background="@drawable/edittext_search"
+            android:text="Filter"
+            android:textColor="#FFF0CB"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/librefranklinregular"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/box_search"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:listitem="@layout/item_view" />
+        tools:listitem="@layout/item_view" >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
 
 
 
