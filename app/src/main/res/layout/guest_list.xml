@@ -7,6 +7,26 @@
     android:background="#FFF0CB"
     tools:context=".MainActivity">
 
+    <ImageView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="301dp"
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/component_3" />
+
+    <ImageView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="18dp"
+        android:id="@+id/imageView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_button" />
+
     <TextView
         android:id="@+id/tvGuestList"
         android:layout_width="wrap_content"
@@ -29,6 +49,22 @@
         android:layout_marginTop="113dp"
         tools:listitem="@layout/guess_item_view"
         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="51dp"
+        android:background="@drawable/round"
+        android:fontFamily="@font/librefranklinregular"
+        android:text="+"
+        android:textAllCaps="false"
+        android:textColor="#FFF0CB"
+        android:textSize="60dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <!--<TextView
         android:id="@+id/tvName1"
