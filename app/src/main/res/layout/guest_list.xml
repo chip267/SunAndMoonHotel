@@ -59,6 +59,8 @@
         android:background="@drawable/round"
         android:fontFamily="@font/librefranklinregular"
         android:text="+"
+        android:gravity="center_vertical|center_horizontal"
+
         android:textAllCaps="false"
         android:textColor="#FFF0CB"
         android:textSize="60dp"
