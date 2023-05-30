@@ -13,4 +13,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--new style is created here-->
+    <style name="NewFontStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/librefranklinbold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
 </resources>
