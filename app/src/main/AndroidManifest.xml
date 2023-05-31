@@ -12,91 +12,91 @@
         android:theme="@style/Theme.SunMoon"
         tools:targetApi="31">
         <activity
-            android:name=".CheckRoomHandled"
+            android:name=".screen.CheckRoomHandled"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CheckRoomPending"
+            android:name=".screen.CheckRoomPending"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PersonelAdd"
+            android:name=".screen.PersonelAdd"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PersonelDetails"
+            android:name=".screen.PersonelDetails"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Personel"
+            android:name=".screen.Personel"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".GuessList"
+            android:name=".screen.GuessList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SalesReport"
+            android:name=".screen.SalesReport"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SalesOverview"
+            android:name=".screen.SalesOverview"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookingForm"
+            android:name=".screen.BookingForm"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Vacant"
+            android:name=".screen.Vacant"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Booked"
+            android:name=".screen.Booked"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AllRoom"
+            android:name=".screen.AllRoom"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Home"
+            android:name=".screen.Home"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

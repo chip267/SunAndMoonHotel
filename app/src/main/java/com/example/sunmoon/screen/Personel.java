@@ -1,8 +1,10 @@
-package com.example.sunmoon;
+package com.example.sunmoon.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.sunmoon.R;
 
 public class Personel extends AppCompatActivity {
 
@@ -10,5 +12,6 @@ public class Personel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.personel_overview);
     }
 }

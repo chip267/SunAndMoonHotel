@@ -1,10 +1,10 @@
-package com.example.sunmoon;
+package com.example.sunmoon.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SalesReport extends AppCompatActivity {
+public class CheckRoomHandled extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

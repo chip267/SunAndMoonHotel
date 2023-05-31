@@ -1,15 +1,17 @@
-package com.example.sunmoon;
+package com.example.sunmoon.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AllRoom extends AppCompatActivity {
+import com.example.sunmoon.R;
+
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.home_page);
     }
 }

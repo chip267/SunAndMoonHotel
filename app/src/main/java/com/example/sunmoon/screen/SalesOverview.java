@@ -1,10 +1,10 @@
-package com.example.sunmoon;
+package com.example.sunmoon.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class BookingForm extends AppCompatActivity {
+public class SalesOverview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

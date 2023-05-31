@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "767999717331",
+    "firebase_url": "https://sunmoonhotel-ddb26-default-rtdb.firebaseio.com",
+    "project_id": "sunmoonhotel-ddb26",
+    "storage_bucket": "sunmoonhotel-ddb26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767999717331:android:8cbb5761a59c73199f8926",
+        "android_client_info": {
+          "package_name": "com.example.sunmoon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA54hia6ei9h-2-uhdIwaPiXBSTZhIhm-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
