@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF0CB"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="500dp"
+>
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            app:srcCompat="@drawable/revenue_frame" />
+
+        <TextView
+            android:id="@+id/tv_revenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="Revenue"
+            android:textColor="@color/darkbrown"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/tv_numrevenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="45.050.000 VND"
+            android:textColor="@color/darkbrown"
+            android:textSize="22dp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="211dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="265dp"
+            android:layout_marginTop="28dp"
+            app:srcCompat="@drawable/menutimebutton" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_Sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="62dp"
+        android:fontFamily="@font/canelablacktrial"
+        android:textColor="@color/darkbrown"
+        android:textSize="30dp"
+        android:text="Sales"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Overview"
+        android:layout_width="104dp"
+        android:layout_height="24dp"
+
+        android:background="@drawable/rectangle_search"
+        android:fontFamily="@font/librefranklinmedium"
+        android:text="Overview"
+        android:textAllCaps="false"
+        android:textColor="@color/lightpink"
+        android:textSize="15dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Report"
+        android:layout_width="104dp"
+        android:layout_height="24dp"
+        android:background="@drawable/frame_979"
+        android:fontFamily="@font/librefranklinmedium"
+        android:text="Sales Report"
+        android:textAllCaps="false"
+        android:textColor="@color/darkbrown"
+        android:textSize="15dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="48dp"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="48dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="139dp"
+        android:background="@color/darkbrown">
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="1dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="229dp"
+            app:srcCompat="@drawable/splitline" />
+
+        <ImageView
+            android:id="@+id/imageView19_1"
+            android:layout_width="21dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/triangle" />
+        <ImageView
+            android:id="@+id/imageView19_2"
+            android:layout_width="21dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="43dp"
+            app:srcCompat="@drawable/triangle" />
+        <TextView
+            android:id="@+id/tv_TodaySales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="Today Sale"
+            android:textColor="@color/lightpink"
+            android:textSize="13dp" />
+        <TextView
+            android:id="@+id/tv_IncreaseMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="275dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="+50%"
+            android:textColor="@color/lightpink"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_Monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="315dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="Monthly"
+            android:textColor="@color/lightpink"
+            android:textSize="13dp" />
+        <TextView
+            android:id="@+id/tv_IncreaseYearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="275dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="+18%"
+            android:textColor="@color/lightpink"
+            android:textSize="13dp" />
+        <TextView
+            android:id="@+id/tv_Yearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="315dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="Yearly"
+            android:textColor="@color/lightpink"
+            android:textSize="13dp" />
+        <TextView
+            android:id="@+id/tv_NumberSale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="34dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="10.800.000 VND"
+            android:textColor="@color/lightpink"
+            android:textSize="20dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
