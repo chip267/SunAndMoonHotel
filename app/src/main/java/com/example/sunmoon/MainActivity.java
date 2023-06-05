@@ -2,19 +2,22 @@ package com.example.sunmoon;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sunmoon.screen.Home;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.Console;
 
 /*import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;*/
@@ -34,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        inputUsrName = findViewById(R.id.et_input_usrname);
+        inputPassword = findViewById(R.id.et_input_password);
+
+
+
+        /*String username1 = "hien";
+        String passCode = "1234";
+        String password = "12345";
+
+        Account helperClass = new Account(username1, password, passCode);
+
+        accountData.child(username1).setValue(helperClass);*/
     /* code nay de test do du lieu len firebase, muon test thi uncomment roi sua vai
     xong chay app la dc, test xong thi len Firebase xoa thu cong nhe!!!
         Floor floor = new Floor("2",true);
@@ -52,6 +67,46 @@ public class MainActivity extends AppCompatActivity {
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                String username, password;
+                username = inputUsrName.getText().toString().trim();
+                password = inputPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username)){
+                    Toast.makeText(MainActivity.this, "Enter username",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)){
+                    Toast.makeText(MainActivity.this, "Enter password",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Query checkUserDatabase = accountData.orderByChild("aUsername").equalTo(username);
+
+                checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String getPassword = snapshot.child(username).child("aPassword").getValue(String.class);
+                            if (getPassword.equals(password)){
+                                Toast.makeText(MainActivity.this, "Login successfully",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(MainActivity.this, "Wrong password.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
 
                 String username, password;
