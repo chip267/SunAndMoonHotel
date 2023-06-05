@@ -31,6 +31,7 @@
 
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/tv1"
         android:layout_width="262dp"
@@ -60,12 +61,17 @@
         />
 
     <EditText
+        android:id="@+id/et_input_usrname"
         android:layout_width="254dp"
         android:layout_height="34dp"
         android:layout_marginTop="139dp"
         android:background="@drawable/customeredit"
-        android:drawableLeft="@drawable/round_lock_open_24"
-        android:hint="ID number" android:textColorHint="#99430000"
+        android:drawableLeft="@drawable/vector__3_"
+        android:drawablePadding="8dp"
+        android:hint="ID number"
+        android:textColorHint="#99430000"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
         android:ems="10"
         android:padding="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/plastic"
@@ -74,6 +80,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+        android:id="@+id/et_input_password"
         android:layout_width="254dp"
         android:layout_height="34dp"
         android:layout_marginTop="189dp"
