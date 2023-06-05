@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sunmoon.screen.Home;
+import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -85,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
                 Query checkUserDatabase = accountData.orderByChild("aUsername").equalTo(username);
 
+                String finalUsername = username;
+                String finalPassword = password;
                 checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
-                            String getPassword = snapshot.child(username).child("aPassword").getValue(String.class);
-                            if (getPassword.equals(password)){
+                            String getPassword = snapshot.child(finalUsername).child("aPassword").getValue(String.class);
+                            if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), Home.class);
@@ -108,10 +111,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                String username, password;
-                username = inputUsrName.getText().toString().trim();
-                password = inputPassword.getText().toString().trim();
+                    }
+
+
+                });
 
                 if (TextUtils.isEmpty(username)){
                     Toast.makeText(MainActivity.this, "Enter username",Toast.LENGTH_SHORT).show();
@@ -123,38 +129,13 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                Query checkUserDatabase = accountData.orderByChild("aUsername").equalTo(username);
 
-                checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            String getPassword = snapshot.child(username).child("aPassword").getValue(String.class);
-                            if (getPassword.equals(password)){
-                                Toast.makeText(MainActivity.this, "Login successfully",
-                                        Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Home.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Toast.makeText(MainActivity.this, "Wrong password.",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
+
                 Intent intent = new Intent(MainActivity.this, SalesOverview.class);
                 startActivity(intent);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+
             }
         });
     }
