@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Sun&amp;Moon</string>
+    <string name="app_name" translatable="false">Sun&amp;Moon</string>
+
+    <string-array name="numbers">
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+    </string-array>
 </resources>

@@ -16,6 +16,7 @@ import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Employee;
 import com.example.sunmoon.models.Room;
 
+import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Home.class);
+                Intent intent = new Intent(MainActivity.this, SalesOverview.class);
                 startActivity(intent);
 
             }
