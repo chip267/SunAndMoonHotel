@@ -112,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                             }
                             else{
-                                Toast.makeText(MainActivity.this, "Wrong password.",
-                                        Toast.LENGTH_SHORT).show();
+                                inputPassword.requestFocus();
+                                inputPassword.setError("Password is invalid!");
                             }
                         }
                         else{
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            inputUsrName.requestFocus();
+                            inputUsrName.setError("ID number is invalid!");
                         }
                     }
 
@@ -129,5 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void checkCredentials(){
+
     }
 }

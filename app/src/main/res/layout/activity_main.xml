@@ -15,9 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/plastic_bg"
-        android:layout_marginTop="169dp"
-        tools:ignore="MissingConstraints"
-        />
+        android:layout_marginTop="169dp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -27,10 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/logo"
-        android:layout_marginTop="70dp"
-
-        tools:ignore="MissingConstraints" />
-
+        android:layout_marginTop="70dp" />
 
     <TextView
         android:id="@+id/tv1"
@@ -57,8 +52,7 @@
         android:text="Login to your account,"
         android:textSize="15dp"
         android:fontFamily="@font/librefranklinregular"
-        android:textColor="#FCFCFC"
-        />
+        android:textColor="#FCFCFC" />
 
     <EditText
         android:id="@+id/et_input_usrname"
@@ -71,13 +65,15 @@
         android:hint="ID number"
         android:textColorHint="#99430000"
         android:ellipsize="start"
+        android:textColor="#99430000"
         android:gravity="center_vertical"
         android:ems="10"
+        android:textSize="16dp"
+        android:fontFamily="@font/librefranklinmedium"
         android:padding="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/plastic"
         app:layout_constraintRight_toRightOf="@+id/plastic"
-        app:layout_constraintTop_toTopOf="@+id/plastic"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/plastic" />
 
     <EditText
         android:id="@+id/et_input_password"
@@ -92,10 +88,12 @@
         android:textColorHint="#99430000"
         android:ems="10"
         android:padding="8dp"
+        android:textColor="#99430000"
+        android:textSize="16dp"
+        android:fontFamily="@font/librefranklinmedium"
         app:layout_constraintLeft_toLeftOf="@+id/plastic"
         app:layout_constraintRight_toRightOf="@+id/plastic"
-        app:layout_constraintTop_toTopOf="@+id/plastic"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/plastic" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonlogin"
@@ -110,17 +108,6 @@
         android:fontFamily="@font/librefranklinbold"
         app:layout_constraintLeft_toLeftOf="@+id/plastic"
         app:layout_constraintRight_toRightOf="@+id/plastic"
-
-        app:layout_constraintTop_toTopOf="@+id/plastic"
-
-        tools:ignore="MissingConstraints" />
-
-
-
-
-
-
-
-
+        app:layout_constraintTop_toTopOf="@+id/plastic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
