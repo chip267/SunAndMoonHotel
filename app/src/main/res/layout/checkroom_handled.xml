@@ -51,11 +51,11 @@
                     android:id="@+id/btn_Pending"
                     android:layout_width="104dp"
                     android:layout_height="24dp"
-                    android:background="@drawable/rectangle_search"
+                    android:background="@drawable/frame_979"
                     android:fontFamily="@font/librefranklinmedium"
                     android:text="Pending"
                     android:textAllCaps="false"
-                    android:textColor="@color/lightpink"
+                    android:textColor="@color/darkbrown"
                     android:textSize="15dp"
                     tools:ignore="MissingConstraints" />
 
@@ -68,11 +68,11 @@
                     android:id="@+id/btn_Handled"
                     android:layout_width="104dp"
                     android:layout_height="24dp"
-                    android:background="@drawable/frame_979"
+                    android:background="@drawable/rectangle_search"
                     android:fontFamily="@font/librefranklinmedium"
                     android:text="Handled"
                     android:textAllCaps="false"
-                    android:textColor="@color/darkbrown"
+                    android:textColor="@color/lightpink"
                     android:textSize="15dp"
                     tools:ignore="MissingConstraints" />
             </LinearLayout>
@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteY="160dp"
-            tools:listitem="@layout/checkroom_item_view" />
+            tools:listitem="@layout/checkroom_item_handled_view" />
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add"
