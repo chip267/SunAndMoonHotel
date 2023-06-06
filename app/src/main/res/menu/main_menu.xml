@@ -10,9 +10,6 @@
         android:id="@+id/nav_checkroom"
         android:title="Check Room" />
     <item
-        android:id="@+id/nav_warehouse"
-        android:title="Warehouse" />
-    <item
         android:id="@+id/nav_personnel"
         android:title="Personnel" />
     <item
