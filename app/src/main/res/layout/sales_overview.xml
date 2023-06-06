@@ -240,7 +240,10 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="260dp">
-
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </FrameLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

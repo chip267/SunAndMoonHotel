@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                Intent intent = new Intent(getApplicationContext(), SalesOverview.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -131,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                Intent intent = new Intent(MainActivity.this, SalesOverview.class);
-                startActivity(intent);
 
 
 
