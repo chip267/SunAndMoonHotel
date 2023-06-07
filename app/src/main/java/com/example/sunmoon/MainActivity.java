@@ -1,8 +1,5 @@
 package com.example.sunmoon;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,27 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.sunmoon.screen.Home;
-import com.example.sunmoon.models.Floor;
-import com.example.sunmoon.models.Account;
-import com.example.sunmoon.models.Booking;
-import com.example.sunmoon.models.Conditions;
-import com.example.sunmoon.models.Guest;
-import com.example.sunmoon.models.Employee;
-import com.example.sunmoon.models.Room;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.Console;
 
 /*import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;*/
@@ -77,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         roomData.setValue(room);*/
 
 
-        btnLogin = findViewById(R.id.buttonlogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        Button buttonLogIn = findViewById(R.id.buttonlogin);
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -99,26 +86,28 @@ public class MainActivity extends AppCompatActivity {
 
                 Query checkUserDatabase = accountData.orderByChild("aUsername").equalTo(username);
 
+                String finalUsername = username;
+                String finalPassword = password;
                 checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
-                            String getPassword = snapshot.child(username).child("aPassword").getValue(String.class);
-                            if (getPassword.equals(password)){
+                            String getPassword = snapshot.child(finalUsername).child("aPassword").getValue(String.class);
+                            if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                Intent intent = new Intent(getApplicationContext(), SalesOverview.class);
                                 startActivity(intent);
                                 finish();
                             }
                             else{
-                                Toast.makeText(MainActivity.this, "Wrong password.",
-                                        Toast.LENGTH_SHORT).show();
+                                inputPassword.requestFocus();
+                                inputPassword.setError("Password is invalid!");
                             }
                         }
                         else{
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            inputUsrName.requestFocus();
+                            inputUsrName.setError("ID number is invalid!");
                         }
                     }
 
@@ -126,8 +115,30 @@ public class MainActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
+
+
                 });
+
+                if (TextUtils.isEmpty(username)){
+                    Toast.makeText(MainActivity.this, "Enter username",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)){
+                    Toast.makeText(MainActivity.this, "Enter password",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+
+
+
             }
         });
+    }
+
+    private void checkCredentials(){
+
     }
 }
