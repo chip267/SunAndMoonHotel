@@ -87,21 +87,14 @@
                 android:textColor="@color/darkbrown"
                 android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/tv_time_hour"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/librefranklinmedium"
-                android:text="8:15"
-                android:textColor="@color/darkbrown"
-                android:textSize="18dp" />
+
 
             <TextView
                 android:id="@+id/tv_time_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/librefranklinmedium"
-                android:text="03/06/2023"
+                android:text="8:00    03/06/2023"
                 android:textColor="@color/darkbrown"
                 android:textSize="18dp" />
         </LinearLayout>
