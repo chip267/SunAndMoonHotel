@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sunmoon.models.Conditions;
+import com.example.sunmoon.screen.CheckRoomPending;
 import com.example.sunmoon.screen.Home;
 import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
@@ -63,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 100000,300000,true);
         roomData.setValue(room);*/
 
-
         Button buttonLogIn = findViewById(R.id.buttonlogin);
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), SalesOverview.class);
+                                Intent intent = new Intent(getApplicationContext(), CheckRoomPending.class);
                                 startActivity(intent);
                                 finish();
                             }
