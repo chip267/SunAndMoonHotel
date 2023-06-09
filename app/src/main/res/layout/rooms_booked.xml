@@ -17,6 +17,16 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/back_button" />
 
+    <ImageView
+        android:id="@+id/imageView25"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/group_31" />
+
     <TextView
         android:id="@+id/tvAllRooms"
         android:layout_width="wrap_content"
@@ -40,7 +50,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="141dp"
 
         tools:ignore="MissingConstraints" >
 
@@ -60,7 +70,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="109.43dp"
+        android:layout_marginTop="150dp"
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -71,7 +81,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="101dp"
         android:text="Booked"
         android:textAllCaps="false"
         android:textSize="15dp"
@@ -86,9 +96,9 @@
         android:background="@drawable/frame_979"
         app:layout_constraintLeft_toRightOf="@+id/btn_Booked"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="101dp"
         android:layout_marginLeft="10dp"
-        android:text="Occupied"
+        android:text="Vacant"
         android:textAllCaps="false"
         android:textSize="15dp"
         android:textColor="#430000"
@@ -102,7 +112,7 @@
         android:background="@drawable/frame_979"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_Booked"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="101dp"
         android:layout_marginRight="10dp"
         android:text="All Rooms"
         android:textAllCaps="false"
