@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;*/
 public class MainActivity extends AppCompatActivity {
     DatabaseReference accountData = FirebaseDatabase.getInstance().getReference("Account");
     DatabaseReference bookingData = FirebaseDatabase.getInstance().getReference("Booking");
-    DatabaseReference conditionData = FirebaseDatabase.getInstance().getReference("Condition");
+    DatabaseReference conditionData = FirebaseDatabase.getInstance().getReference("Conditions");
     DatabaseReference employeeData = FirebaseDatabase.getInstance().getReference("Employee");
     DatabaseReference floorData = FirebaseDatabase.getInstance().getReference("Floor");
     DatabaseReference guestData = FirebaseDatabase.getInstance().getReference("Guest");
