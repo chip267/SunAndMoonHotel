@@ -32,7 +32,9 @@ public class HouseKeepingAdapter extends RecyclerView.Adapter<HouseKeepingAdapte
     public void onBindViewHolder(@NonNull HouseKeepingAdapter.ViewHolder holder, int position) {
         Conditions condition = conditions.get(position);
         holder.tvStatus.setText(condition.getState());
-        holder.tvTimeDate.setText(condition.getDate());
+        String dateTime = condition.getDate();
+        String time = dateTime.substring(0, 5);
+        holder.tvTimeDate.setText(time);
         holder.tvRoomNum.setText(condition.getRoomNo());
     }
 
