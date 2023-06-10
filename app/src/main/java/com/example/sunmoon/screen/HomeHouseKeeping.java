@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -32,13 +31,12 @@ public class HomeHouseKeeping extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page2);
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerviewHouse);
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new HouseKeepingAdapter();
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference conditionsRef = database.getReference("Conditions");
         conditionsRef.addValueEventListener(new ValueEventListener() {
@@ -49,9 +47,9 @@ public class HomeHouseKeeping extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Conditions condition = snapshot.getValue(Conditions.class);
                         if (condition != null) {
-                            if (isDateToday(condition.getDate())) {
+                            //if (isDateToday(condition.getDate())) {
                                 filteredConditions.add(condition);
-                            }
+                            //}
                         }
                     }
                         adapter.setData(filteredConditions);
