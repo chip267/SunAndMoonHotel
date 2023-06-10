@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.sunmoon.R;
 import com.example.sunmoon.adapter.RecyclerViewAdapter;
 import com.example.sunmoon.models.Conditions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class CheckRoomPending extends AppCompatActivity {
+public class CheckRoomPending extends AppCompatActivity implements RecyclerViewAdapter.OnButtonClickListener{
     private Button addButton;
     private Dialog dialog;
     private EditText roomEditText, statusEditText, byEditText;
@@ -96,6 +98,7 @@ public class CheckRoomPending extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
+        adapter.setOnButtonClickListener(this);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference conditionsRef = database.getReference("Conditions");
         conditionsRef.addValueEventListener(new ValueEventListener() {
@@ -124,6 +127,38 @@ public class CheckRoomPending extends AppCompatActivity {
                 Toast.makeText(CheckRoomPending.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void onDeleteButtonClick(String reportId) {
+        DatabaseReference conditionsRef = FirebaseDatabase.getInstance().getReference("Conditions");
+        conditionsRef.child(reportId).child("avail").setValue(0)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(CheckRoomPending.this, "Avail value set to 0", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CheckRoomPending.this, "Failed to set avail value: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    public void onDoneButtonClick(String reportId) {
+        DatabaseReference conditionsRef = FirebaseDatabase.getInstance().getReference("Conditions");
+        conditionsRef.child(reportId).child("avail").setValue(2)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(CheckRoomPending.this, "Avail value updated successfully", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CheckRoomPending.this, "Failed to update avail value: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
     private String generateReportId() {
         //
