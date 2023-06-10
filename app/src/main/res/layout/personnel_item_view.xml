@@ -12,7 +12,7 @@
         android:id="@+id/imagePersonel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/image_7__2_"
+        app:srcCompat="@drawable/ava_personel_over"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="14dp"
