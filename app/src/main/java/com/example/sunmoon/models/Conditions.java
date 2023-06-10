@@ -1,67 +1,75 @@
 package com.example.sunmoon.models;
 
 public class Conditions {
-    public String cReportID;
-    public String cRoomNo;
-    public String cState;
-    public String cName;
-    public String cDate;
-    public String cAvail;
-
-    public Conditions(String cReportID, String cRoomNo, String cState, String cName,
-                      String cDate, String cAvail) {
-        this.cReportID = cReportID;
-        this.cRoomNo = cRoomNo;
-        this.cState = cState;
-        this.cName = cName;
-        this.cDate = cDate;
-        this.cAvail = cAvail;
-    }
-    public String getCReportID() {
-        return cReportID;
+    public String reportID;
+    public String roomNo;
+    public String state;
+    public String name;
+    public String date;
+    public int avail;
+    public Conditions() {
+        /*this.reportID = "c000";
+        this.roomNo = "900";
+        this.state = "Dirty";
+        this.name = "Tui";
+        this.date = "11:11 26/08/2003";
+        this.avail = 1;*/
     }
 
-    public void setCReportID(String cReportID) {
-        this.cReportID = cReportID;
+    public Conditions(String reportID, String roomNo, String state, String name,
+                      String date, int avail) {
+        this.reportID = reportID;
+        this.roomNo = roomNo;
+        this.state = state;
+        this.name = name;
+        this.date = date;
+        this.avail = avail;
+    }
+    public String getReportID() {
+        return reportID;
     }
 
-    public String getCRoomNo() {
-        return cRoomNo;
+    public void setReportID(String reportID) {
+        this.reportID = reportID;
     }
 
-    public void setCRoomNo(String cRoomNo) {
-        this.cRoomNo = cRoomNo;
+    public String getRoomNo() {
+        return roomNo;
     }
 
-    public String getCState() {
-        return cState;
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
     }
 
-    public void setCState(String cState) {
-        this.cState = cState;
+    public String getState() {
+        return state;
     }
 
-    public String getCName() {
-        return cName;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public void setCName(String cName) {
-        this.cName = cName;
+    public String getName() {
+        return name;
     }
 
-    public String getCDate() {
-        return cDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCDate(String cDate) {
-        this.cDate = cDate;
+    public String getDate() {
+        return date;
     }
 
-    public String getCAvail() {
-        return cAvail;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setCAvail(String cAvail) {
-        this.cAvail = cAvail;
+    public int getAvail() {
+        return avail;
+    }
+
+    public void setAvail(int avail) {
+        this.avail = avail;
     }
 }
