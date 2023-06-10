@@ -167,11 +167,11 @@
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
         tools:ignore="MissingConstraints" /-->
-<<<<<<< Updated upstream
 
 
-    <TextView
-=======
+
+
+
 
 
     <!--TextView
