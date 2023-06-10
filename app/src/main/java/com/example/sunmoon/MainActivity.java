@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sunmoon.screen.BookingForm;
 import com.example.sunmoon.screen.Home;
 import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String username, password;
+                /*String username, password;
                 username = inputUsrName.getText().toString().trim();
                 password = inputPassword.getText().toString().trim();
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), SalesOverview.class);
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -127,10 +128,12 @@ public class MainActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(MainActivity.this, "Enter password",Toast.LENGTH_SHORT).show();
                     return;
-                }
+                }*/
 
 
-
+                Intent intent = new Intent(getApplicationContext(), BookingForm.class);
+                startActivity(intent);
+                finish();
 
 
 
