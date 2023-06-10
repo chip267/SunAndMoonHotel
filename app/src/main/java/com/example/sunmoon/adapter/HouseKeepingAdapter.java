@@ -24,7 +24,7 @@ public class HouseKeepingAdapter extends RecyclerView.Adapter<HouseKeepingAdapte
     @NonNull
     @Override
     public HouseKeepingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.checkroom_item_handled_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.housekeeping_item, parent, false);
         return new HouseKeepingAdapter.ViewHolder(view);
     }
 

@@ -46,10 +46,10 @@ public class HomeHouseKeeping extends AppCompatActivity {
                     List<Conditions> filteredConditions = new ArrayList<>();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Conditions condition = snapshot.getValue(Conditions.class);
-                        if (condition != null) {
-                            //if (isDateToday(condition.getDate())) {
+                        if (condition != null && condition.getAvail() == 1) {
+                            if (isDateToday(condition.getDate())) {
                                 filteredConditions.add(condition);
-                            //}
+                            }
                         }
                     }
                         adapter.setData(filteredConditions);
