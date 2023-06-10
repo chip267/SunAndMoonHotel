@@ -17,4 +17,36 @@ public class Guest {
         this.gBirthday = gBirthday;
         this.gAvail = gAvail;
     }
+    public Guest(){
+        this.gIDCard = "";
+        this.gName = "";
+        this.gender = "";
+        this.gPhone = "";
+        this.gBirthday = "";
+        this.gAvail = false;
+    }
+
+    public void setgAvail(boolean gAvail) {
+        this.gAvail = gAvail;
+    }
+
+    public void setgBirthday(String gBirthday) {
+        this.gBirthday = gBirthday;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setgIDCard(String gIDCard) {
+        this.gIDCard = gIDCard;
+    }
+
+    public void setgName(String gName) {
+        this.gName = gName;
+    }
+
+    public void setgPhone(String gPhone) {
+        this.gPhone = gPhone;
+    }
 }

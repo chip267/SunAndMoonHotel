@@ -66,7 +66,7 @@
         android:layout_marginTop="129dp"
         android:layout_marginLeft="17dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!---TextView
         android:id="@+id/tvClockStart1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,8 +78,8 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
-    <TextView
+        tools:ignore="MissingConstraints" /-->
+    <!---TextView
         android:id="@+id/tvDateStart1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />-->
     <EditText
         android:id="@+id/boxEnd1"
         android:layout_width="152dp"
@@ -102,7 +102,7 @@
         android:layout_marginTop="129dp"
         android:layout_marginLeft="178dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!---TextView
         android:id="@+id/tvClockEnd1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
 
     <TextView
         android:id="@+id/tvTypeRent1"
@@ -142,19 +142,7 @@
         android:fontFamily="@font/librefranklinmedium"
         android:textColor="#430000"
         tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvTypeBook1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="175dp"
-        android:layout_marginLeft="178dp"
-        android:text="Type of Booking"
-        android:textSize="14dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+
     <EditText
         android:id="@+id/boxRent1"
         android:layout_width="152dp"
@@ -165,7 +153,8 @@
         android:layout_marginTop="200dp"
         android:layout_marginLeft="17dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+
+    <!---TextView
         android:id="@+id/tvRent1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,19 +166,16 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
 
-    <EditText
-        android:id="@+id/boxBook1"
-        android:layout_width="152dp"
-        android:layout_height="35dp"
-        android:background="@drawable/edittext_checkinout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="178dp"
-        tools:ignore="MissingConstraints" />
-    <TextView
+
+
+
+
+
+
+    <!--TextView
+>>>>>>> Stashed changes
         android:id="@+id/tvBook1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,7 +187,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
 
 
     <TextView
@@ -227,7 +213,7 @@
         android:layout_marginTop="266dp"
         android:layout_marginLeft="17dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!---TextView
         android:id="@+id/tvR1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -239,7 +225,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
     <EditText
         android:id="@+id/boxNo1"
         android:layout_width="152dp"
@@ -287,7 +273,7 @@
         android:layout_marginTop="393dp"
         android:layout_marginLeft="17dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!---TextView
         android:id="@+id/tvNameinBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -299,7 +285,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
     <TextView
         android:id="@+id/tvDateCus1"
         android:layout_width="wrap_content"
@@ -323,7 +309,7 @@
         android:layout_marginTop="470dp"
         android:layout_marginLeft="17dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!--TextView
         android:id="@+id/tvDateinBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -335,7 +321,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
     <TextView
         android:id="@+id/tvGenderCus1"
         android:layout_width="wrap_content"
@@ -359,7 +345,7 @@
         android:layout_marginTop="470dp"
         android:layout_marginLeft="96dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!--TextView
         android:id="@+id/tvGenderinBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -371,7 +357,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
 
     <TextView
         android:id="@+id/tvPhoneCus1"
@@ -419,7 +405,7 @@
         android:layout_marginTop="538dp"
         android:layout_marginLeft="10dp"
         tools:ignore="MissingConstraints" />
-    <TextView
+    <!--TextView
         android:id="@+id/tvEndNuminBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -431,7 +417,7 @@
         android:textSize="14dp"
         android:fontFamily="@font/librefranklinregular"
         android:textColor="#430000"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /-->
 
 
 
