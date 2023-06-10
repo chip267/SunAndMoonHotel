@@ -2,12 +2,15 @@ package com.example.sunmoon.screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +52,8 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
     private TextView textviewToday;
     private TextView textviewMonthly;
     private TextView textviewWeekly;
+    ImageView imageViewBack;
+    private AppCompatButton saleReportButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,24 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
         showRevenueToday();
         showCompareWeek();
         showCompareMonth();
+        imageViewBack = findViewById(R.id.imageViewBackhome);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SalesOverview.this, Home.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+        saleReportButton = findViewById(R.id.btn_Report);
+        saleReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SalesOverview.this, SalesReport.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
     }
 
     private void showCompareMonth() {
