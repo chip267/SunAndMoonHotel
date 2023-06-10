@@ -11,8 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sunmoon.models.Conditions;
-import com.example.sunmoon.screen.CheckRoomPending;
+import com.example.sunmoon.screen.BookingForm;
 import com.example.sunmoon.screen.Home;
 import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;*/
 public class MainActivity extends AppCompatActivity {
     DatabaseReference accountData = FirebaseDatabase.getInstance().getReference("Account");
     DatabaseReference bookingData = FirebaseDatabase.getInstance().getReference("Booking");
-    DatabaseReference conditionData = FirebaseDatabase.getInstance().getReference("Conditions");
+    DatabaseReference conditionData = FirebaseDatabase.getInstance().getReference("Condition");
     DatabaseReference employeeData = FirebaseDatabase.getInstance().getReference("Employee");
     DatabaseReference floorData = FirebaseDatabase.getInstance().getReference("Floor");
     DatabaseReference guestData = FirebaseDatabase.getInstance().getReference("Guest");
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 100000,300000,true);
         roomData.setValue(room);*/
 
+
         Button buttonLogIn = findViewById(R.id.buttonlogin);
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), CheckRoomPending.class);
+                                Intent intent = new Intent(getApplicationContext(), SalesOverview.class);
                                 startActivity(intent);
                                 finish();
                             }
