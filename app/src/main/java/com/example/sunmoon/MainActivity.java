@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.sunmoon.screen.BookingForm;
 import com.example.sunmoon.screen.CheckRoomPending;
 import com.example.sunmoon.screen.Home;
+import com.example.sunmoon.screen.HomeHouseKeeping;
 import com.example.sunmoon.screen.SalesOverview;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                Intent intent = new Intent(getApplicationContext(), HomeHouseKeeping.class);
                                 startActivity(intent);
                                 finish();
                             }

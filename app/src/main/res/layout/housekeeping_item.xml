@@ -22,7 +22,7 @@
             android:fontFamily="@font/librefranklinmedium"
             android:text="303" />
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewState"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -33,7 +33,7 @@
             android:text="Vacant and Dirty" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/darkbrown"
