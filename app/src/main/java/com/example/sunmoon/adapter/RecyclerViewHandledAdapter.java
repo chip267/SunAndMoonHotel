@@ -15,7 +15,7 @@ import com.example.sunmoon.models.Conditions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewHandledAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewHandledAdapter extends RecyclerView.Adapter<RecyclerViewHandledAdapter.ViewHolder> {
     private List<Conditions> conditions = new ArrayList<>();
     public interface OnButtonClickListener {
         void onDeleteButtonClick(String reportId);
@@ -32,13 +32,13 @@ public class RecyclerViewHandledAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewHandledAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.checkroom_item_handled_view, parent, false);
-        return new RecyclerViewAdapter.ViewHolder(view);
+        return new RecyclerViewHandledAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHandledAdapter.ViewHolder holder, int position) {
         Conditions condition = conditions.get(position);
         holder.tvStatus.setText(condition.getState());
         holder.tvBy.setText(condition.getName());
