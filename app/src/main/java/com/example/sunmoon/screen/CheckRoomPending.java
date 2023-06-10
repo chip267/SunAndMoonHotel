@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sunmoon.R;
@@ -26,8 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -41,6 +44,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
     private RecyclerView recyclerView;
     private RecyclerViewAdapter adapter;
     private AppCompatButton handledButton;
+    ImageView imageViewBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -73,12 +77,21 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                         String status = statusEditText.getText().toString();
                         String by = byEditText.getText().toString();
                         String date = new SimpleDateFormat("HH:mm    dd/MM/yyyy", Locale.getDefault()).format(new Date());
-                        String reportId = generateReportId();
-                        int avail = 1;
-                        Conditions conditions = new Conditions(reportId, roomNo, status, by, date, avail);
-                        databaseRef = FirebaseDatabase.getInstance().getReference("Conditions");
-                        databaseRef.child(reportId).setValue(conditions);
-                        dialog.dismiss();
+                        generateReportId(new ReportIdCallback() {
+                            @Override
+                            public void onReportIdGenerated(String reportId) {
+                                int avail = 1;
+                                Conditions conditions = new Conditions(reportId, roomNo, status, by, date, avail);
+                                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Conditions");
+                                databaseRef.child(reportId).setValue(conditions);
+                                dialog.dismiss();
+                            }
+                            @Override
+                            public void onReportIdGenerationFailed(String errorMessage) {
+                                // Handle the report ID generation failure
+                                // You can display an error message or perform error handling logic here
+                            }
+                        });
                     }
                 });
             }
@@ -88,6 +101,15 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CheckRoomPending.this, CheckRoomHandled.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+        imageViewBack = findViewById(R.id.imageViewBack);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckRoomPending.this, Home.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
@@ -104,7 +126,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
         conditionsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
+                /*try {
                     List<Conditions> filteredConditions = new ArrayList<>();
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -112,6 +134,23 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
 
                         if (condition != null && condition.getAvail() == 1) {
                             filteredConditions.add(condition);
+                        }
+                    }
+                    adapter.setData(filteredConditions);
+                    adapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(CheckRoomPending.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }*/
+                try {
+                    List<Conditions> filteredConditions = new ArrayList<>();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Conditions condition = snapshot.getValue(Conditions.class);
+                        if (condition != null && condition.getAvail() == 1) {
+                            // Check if the condition's date falls within the current week
+                            if (isDateInCurrentWeekday(condition.getDate())) {
+                                filteredConditions.add(condition);
+                            }
                         }
                     }
                     adapter.setData(filteredConditions);
@@ -134,7 +173,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(CheckRoomPending.this, "Avail value set to 0", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckRoomPending.this, "Đã xóa thành công", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -150,7 +189,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(CheckRoomPending.this, "Avail value updated successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckRoomPending.this, "Đã cập nhập thành công", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -160,11 +199,77 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                     }
                 });
     }
-    private String generateReportId() {
-        //
-        int currentReportId = 2;
-        currentReportId++;
-        String formattedReportId = String.format(Locale.getDefault(), "c%03d", currentReportId);
-        return formattedReportId;
+    private void generateReportId(final ReportIdCallback callback) {
+        final DatabaseReference conditionsRef = FirebaseDatabase.getInstance().getReference().child("Conditions");
+        conditionsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int highestNumber = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String reportId = snapshot.getKey();
+                    if (reportId.startsWith("c")) {
+                        try {
+                            int number = Integer.parseInt(reportId.substring(1));
+                            if (number > highestNumber) {
+                                highestNumber = number;
+                            }
+                        } catch (NumberFormatException e) {
+                            // Ignore invalid report IDs
+                        }
+                    }
+                }
+                String newReportId = String.format("c%03d", highestNumber + 1);
+                callback.onReportIdGenerated(newReportId);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle database error
+                callback.onReportIdGenerationFailed(databaseError.getMessage());
+            }
+        });
     }
+    interface ReportIdCallback {
+        void onReportIdGenerated(String reportId);
+        void onReportIdGenerationFailed(String errorMessage);
+    }
+    private boolean isDateInCurrentWeekday(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat sdfDateOnly = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date currentDate = new Date();
+
+        try {
+            // Parse the condition's date
+            Date conditionDate = sdf.parse(date);
+
+            // Get the start and end dates of the current week
+            Calendar calendar = Calendar.getInstance();
+            calendar.setFirstDayOfWeek(Calendar.MONDAY);
+            calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            Date startOfWeek = calendar.getTime();
+            calendar.add(Calendar.DAY_OF_WEEK, 6);
+            Date endOfWeek = calendar.getTime();
+
+            // Truncate time portion for comparison
+            String conditionDateOnly = sdfDateOnly.format(conditionDate);
+            String currentDateTimeOnly = sdfDateOnly.format(currentDate);
+            startOfWeek = sdfDateOnly.parse(sdfDateOnly.format(startOfWeek));
+            endOfWeek = sdfDateOnly.parse(sdfDateOnly.format(endOfWeek));
+
+            // Check if the condition's date falls within the current week and not in the future
+            return conditionDateOnly != null &&
+                    conditionDateOnly.equals(sdfDateOnly.format(startOfWeek)) ||
+                    conditionDateOnly.equals(sdfDateOnly.format(endOfWeek)) ||
+                    (conditionDateOnly.compareTo(sdfDateOnly.format(startOfWeek)) > 0 &&
+                            conditionDateOnly.compareTo(sdfDateOnly.format(endOfWeek)) < 0) &&
+                            currentDateTimeOnly.compareTo(conditionDateOnly) >= 0;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+
+
 }

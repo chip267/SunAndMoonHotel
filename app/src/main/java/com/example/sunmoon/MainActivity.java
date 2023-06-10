@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), CheckRoomPending.class);
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
                                 startActivity(intent);
                                 finish();
                             }
