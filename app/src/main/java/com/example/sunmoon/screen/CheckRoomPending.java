@@ -1,10 +1,5 @@
 package com.example.sunmoon.screen;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.example.sunmoon.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.sunmoon.R;
 import com.example.sunmoon.adapter.ConditionAdapter;
 import com.example.sunmoon.models.Conditions;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.locks.Condition;
+
 
 public class CheckRoomPending extends AppCompatActivity {
     private Button addButton;
