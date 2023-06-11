@@ -82,9 +82,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@+id/boxBookandForecast"
             app:layout_constraintTop_toTopOf="@+id/boxBookandForecast"
-            android:layout_marginTop="55dp"
-            android:layout_marginLeft="17dp"
-            android:text="BOOKINGS"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="22dp"
+            android:text="CHECKIN"
             android:textSize="15dp"
             android:gravity="top"
             android:fontFamily="@font/librefranklinmedium"
@@ -126,9 +126,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@+id/boxBookandForecast"
             app:layout_constraintTop_toTopOf="@+id/boxBookandForecast"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="60dp"
             android:layout_marginLeft="132dp"
-            android:text="FORECAST"
+            android:text="CHECKOUT"
             android:textSize="15dp"
             android:gravity="top"
             android:fontFamily="@font/librefranklinmedium"
@@ -215,8 +215,8 @@
             android:id="@+id/ButtonSliderManage"
             android:layout_width="151dp"
             android:layout_height="34dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="156dp"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginLeft="153dp"
             android:background="@drawable/buttonslider"
             app:layout_constraintLeft_toLeftOf="@+id/Slider"
             app:layout_constraintTop_toTopOf="@+id/Slider"
@@ -227,6 +227,24 @@
             android:fontFamily="@font/librefranklinmedium"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="430dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerviewHouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/housekeeping_item" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

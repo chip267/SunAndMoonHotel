@@ -16,7 +16,7 @@
             android:layout_height="160dp">
 
             <ImageView
-                android:id="@+id/imageView15"
+                android:id="@+id/imageViewBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -88,6 +88,7 @@
                 android:id="@+id/recyclerview"                                       
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:layout_editor_absoluteY="160dp"
                 tools:listitem="@layout/checkroom_item_view" />
         </LinearLayout>
