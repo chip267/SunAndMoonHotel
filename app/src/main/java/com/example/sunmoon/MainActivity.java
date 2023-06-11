@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), GuessList.class);
+                                Intent intent = new Intent(getApplicationContext(), HomeHouseKeeping.class);
                                 startActivity(intent);
                                 finish();
                             }
