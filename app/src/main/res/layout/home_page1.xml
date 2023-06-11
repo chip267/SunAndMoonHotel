@@ -204,10 +204,11 @@
             app:layout_constraintBottom_toBottomOf="@+id/Slider"
             android:layout_marginLeft="182dp"
             android:text="Housekeeping"
+            android:onClick="OnClick"
             android:textSize="15dp"
             android:fontFamily="@font/librefranklinmedium"
             android:textColor="#FFFFFF"
-            />
+            tools:ignore="OnClick" />
 
 
 
