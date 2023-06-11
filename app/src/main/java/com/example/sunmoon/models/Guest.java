@@ -26,8 +26,19 @@ public class Guest {
         this.gAvail = false;
     }
 
+    public Guest(String gName, String gBirthday, String gIDCard, String gPhone) {
+        this.gIDCard = gIDCard;
+        this.gName = gName;
+        this.gPhone = gPhone;
+        this.gBirthday = gBirthday;
+    }
+
     public void setgAvail(boolean gAvail) {
         this.gAvail = gAvail;
+    }
+
+    public String getgBirthday() {
+        return gBirthday;
     }
 
     public void setgBirthday(String gBirthday) {
@@ -38,12 +49,24 @@ public class Guest {
         this.gender = gender;
     }
 
+    public String getgName() {
+        return gName;
+    }
+
+    public String getgIDCard() {
+        return gIDCard;
+    }
+
     public void setgIDCard(String gIDCard) {
         this.gIDCard = gIDCard;
     }
 
     public void setgName(String gName) {
         this.gName = gName;
+    }
+
+    public String getgPhone() {
+        return gPhone;
     }
 
     public void setgPhone(String gPhone) {
