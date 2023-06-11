@@ -1,10 +1,17 @@
 package com.example.sunmoon.screen;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +35,10 @@ import java.util.Locale;
 public class HomeHouseKeeping extends AppCompatActivity {
     private RecyclerView recyclerView;
     private HouseKeepingAdapter adapter;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
+    private boolean mSlideState=false;
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +72,69 @@ public class HomeHouseKeeping extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle any errors
                 Toast.makeText(HomeHouseKeeping.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        TextView manage = findViewById(R.id.tvHousekeeping);
+        manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Home.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Calendar c = Calendar.getInstance();
+
+        int minutes = c.get(Calendar.MINUTE);
+        int hour = c.get(Calendar.HOUR);
+        String AMPM;
+        if (c.get(Calendar.AM_PM) == 0) {
+            AMPM = "AM";
+        } else {
+            AMPM = "PM";
+        }
+        String time = hour + ":" + minutes +"    "+AMPM;
+
+        TextView tv_time = findViewById(R.id.tv2);
+        tv_time.setText(time);
+
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+        String setday = "";
+        String setmonth = "";
+        switch (day){
+            case 1: setday = "st";break;
+            case 2: setday = "nd";break;
+            case 3: setday = "rd";break;
+            default: setday = "th";break;
+        }
+
+        switch (month){
+            case 1: setmonth = "January";break;
+            case 2: setmonth = "Frebuary";break;
+            case 3: setmonth = "March";break;
+            case 4: setmonth = "April";break;
+            case 5: setmonth = "May";break;
+            case 6: setmonth = "June";break;
+            case 7: setmonth = "July";break;
+            case 8: setmonth = "August";break;
+            case 9: setmonth = "September";break;
+            case 10: setmonth = "October";break;
+            case 11: setmonth = "November";break;
+            case 12: setmonth = "December";break;
+        }
+
+        String date = day + setday + " " + setmonth;
+        TextView tv_date = findViewById(R.id.tv3);
+        tv_date.setText(date);
 
     }
     private boolean isDateToday(String date) {

@@ -203,6 +203,8 @@
             app:layout_constraintTop_toTopOf="@+id/Slider"
             app:layout_constraintBottom_toBottomOf="@+id/Slider"
             android:layout_marginLeft="50dp"
+            tools:ignore="OnClick"
+            android:onClick="OnClick"
             android:text="Manage"
             android:textSize="15dp"
             android:fontFamily="@font/librefranklinmedium"
