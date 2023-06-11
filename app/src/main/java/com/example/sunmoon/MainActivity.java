@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String username, password;
+                /*String username, password;
                 username = inputUsrName.getText().toString().trim();
                 password = inputPassword.getText().toString().trim();
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), HomeHouseKeeping.class);
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -131,15 +131,17 @@ public class MainActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(MainActivity.this, "Enter password",Toast.LENGTH_SHORT).show();
                     return;
-                }
-
-
+                }*/
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                finish();
 
 
 
 
             }
         });
+
     }
 
     private void checkCredentials(){
