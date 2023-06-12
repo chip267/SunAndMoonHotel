@@ -7,10 +7,10 @@ public class Booking {
     public String checkoutDate;
     public String checkoutHour;
     public String bookingType;
-    public String roomID;
-    public double total;
+    public String rid;
+    public int total;
     public String status;
-    public String gIDCard;
+    public String gid;
     public Booking(){
         this.bookingID = "";
         this.checkinDate = "";
@@ -18,16 +18,16 @@ public class Booking {
         this.checkinHour = "";
         this.checkoutHour = "";
         this.bookingType = "";
-        this.roomID = "";
+        this.rid = "";
         this.total = 0;
         this.status = "";
-        this.gIDCard="";
+        this.gid="";
     }
     public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
-                    String bookingType, String roomID, double total, String status, String gIDCard){
+                    String bookingType, String rid, int total, String status, String gid){
         this.bookingID = bookingID;
-        this.roomID = roomID;
-        this.gIDCard = gIDCard;
+        this.rid = rid;
+        this.gid = gid;
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;
         this.checkinHour = checkinHour;
@@ -52,12 +52,22 @@ public class Booking {
         return checkoutHour;
     }
 
-    public String getRoomID() {
-        return roomID;
+    public String getRid() {
+        return rid;
     }
 
-    public String getGIDCard() {
-        return gIDCard;
+    public String getGid() {
+        return gid;
+    }
+    public int getTotal() { return total; }
+    public String getBookingID() {
+        return bookingID;
+    }
+    public String getBookingType() {
+        return bookingType;
+    }
+    public String getStatus() {
+        return status;
     }
 
     public void setBookingID(String bookingID) {
@@ -83,19 +93,19 @@ public class Booking {
         this.checkoutHour = checkoutHour;
     }
 
-    public void setRoomID(String roomID) {
-        this.roomID = roomID;
+    public void setRid(String rid) {
+        this.rid = rid;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.total = total;
     }
-    public void setGIDCard(String gIDCard) {
-        this.gIDCard = gIDCard;
+    public void setGid(String gid) {
+        this.gid = gid;
     }
 }
 
