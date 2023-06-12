@@ -8,7 +8,7 @@ public class Booking {
     public String checkoutHour;
     public String bookingType;
     public String rid;
-    public double total;
+    public int total;
     public String status;
     public String gid;
     public Booking(){
@@ -24,7 +24,7 @@ public class Booking {
         this.gid="";
     }
     public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
-                    String bookingType, String rid, double total, String status, String gid){
+                    String bookingType, String rid, int total, String status, String gid){
         this.bookingID = bookingID;
         this.rid = rid;
         this.gid = gid;
@@ -59,7 +59,7 @@ public class Booking {
     public String getGid() {
         return gid;
     }
-    public double getTotal() { return total; }
+    public int getTotal() { return total; }
     public String getBookingID() {
         return bookingID;
     }
@@ -101,7 +101,7 @@ public class Booking {
         this.status = status;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.total = total;
     }
     public void setGid(String gid) {
