@@ -52,6 +52,22 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@drawable/edittext_checkinout" />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_idCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/librefranklinmedium"
+        android:textColor="@color/darkbrown"
+        android:textSize="14dp"
+        android:text="ID Card" />
+
+    <EditText
+        android:id="@+id/box_IdCard"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/edittext_checkinout" />
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -132,23 +148,12 @@
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
         >
-        <EditText
-            android:id="@+id/box_startphone"
-            android:layout_width="83dp"
-            android:layout_height="35dp"
-            android:text="+84"
-            android:alpha="0.5"
-            android:fontFamily="@font/librefranklinmedium"
-            android:textSize="14dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_checkinout" />
+
         <EditText
             android:id="@+id/box_endphone"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:text="123 456 789"
-            android:alpha="0.5"
             android:fontFamily="@font/librefranklinmedium"
             android:textSize="14dp"
             android:paddingLeft="10dp"

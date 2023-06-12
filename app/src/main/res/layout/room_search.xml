@@ -32,13 +32,6 @@
             android:layout_marginTop="7.83dp"
             android:background="@drawable/edittext_search"
             tools:ignore="MissingConstraints" />-->
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="31dp"
-            android:layout_marginTop="18dp"
-            app:srcCompat="@drawable/chevron_left" />
 
         <TextView
             android:id="@+id/tvarefound"
@@ -52,6 +45,14 @@
             android:fontFamily="@font/librefranklinregular"
             android:textColor="#FFF0CB"
             tools:ignore="NotSibling" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="18dp"
+            app:srcCompat="@drawable/chevron_left" />
 
         <TextView
             android:id="@+id/tv8rooms"
