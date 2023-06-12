@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.sunmoon.R;
+
 public class GuessList extends AppCompatActivity {
     List<Guest> guests;
     RecyclerView guestRecyclerView;
