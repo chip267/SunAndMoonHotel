@@ -27,7 +27,7 @@ public class BookingForm extends AppCompatActivity {
     Guest guest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.booking_sheet);
+        setContentView(R.layout.booking_form);
         super.onCreate(savedInstanceState);
 
         CheckIn = findViewById(R.id.boxStart1);
@@ -65,6 +65,7 @@ public class BookingForm extends AppCompatActivity {
             }
         });
     }
+    //add data
     private void addDatatoFireBase(String checkin, String checkout, String room, String typeofrenting, String name, String dob, String gender, String phone)
     {
         booking.setCheckinDate(checkin);
