@@ -44,7 +44,7 @@ public class SalesReport extends AppCompatActivity {
                     List<Booking> filteredBooking = new ArrayList<>();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Booking booking = snapshot.getValue(Booking.class);
-                        if (booking != null){//&& ("checkout".equals(booking.getStatus()))) {
+                        if (booking != null && ("checkout".equals(booking.getStatus()))) {
                             //if (isDateToday(condition.getDate())) {
                                 filteredBooking.add(booking);
                            // }
