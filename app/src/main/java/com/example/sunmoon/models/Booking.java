@@ -10,6 +10,43 @@ public class Booking {
     public double total;
     public String status;
 
+    private  String guestID;
+    private String guestName;
+    private String guestPhone;
+
+    public Booking (String bookingID, String checkinDate, String checkoutDate, String roomID, String guestName, String guestPhone){
+        this.bookingID = bookingID;
+        this.roomID = roomID;
+        this.guestName = guestName;
+        this.guestPhone = guestPhone;
+        this.checkinDate = checkinDate;
+        this.checkoutDate = checkoutDate;
+    }
+
+    public String getCheckinDate() {
+        return checkinDate;
+    }
+
+    public String getCheckoutDate() {
+        return checkoutDate;
+    }
+
+    public String getRoomID() {
+        return roomID;
+    }
+
+    public String getGuestID() {
+        return guestID;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public String getGuestPhone() {
+        return guestPhone;
+    }
+
     public Booking(String bookingID, String checkinDate, String checkoutDate,
                    String bookingType, String roomID, double total, String status) {
         this.bookingID = bookingID;
