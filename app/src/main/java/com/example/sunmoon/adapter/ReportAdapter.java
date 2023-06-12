@@ -22,7 +22,6 @@ import java.util.List;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder> {
     private List<Booking> bookings = new ArrayList<>();
-
     public void setData(List<Booking> bookings) {
         this.bookings = bookings;
     }
