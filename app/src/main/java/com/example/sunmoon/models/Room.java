@@ -6,7 +6,7 @@ public class Room {
     public String roomType;
     public double pricebyHour;
     public double pricebyDay;
-    public boolean rAvail;
+    public int rAvail;
 
     public String getRoomID() {
         return roomID;
@@ -48,16 +48,16 @@ public class Room {
         this.pricebyDay = pricebyDay;
     }
 
-    public boolean isrAvail() {
+    public int isrAvail() {
         return rAvail;
     }
 
-    public void setrAvail(boolean rAvail) {
+    public void setrAvail(int rAvail) {
         this.rAvail = rAvail;
     }
 
     public Room(String roomID, String roomStatus, String roomType, double pricebyHour,
-                double pricebyDay, boolean rAvail) {
+                double pricebyDay, int rAvail) {
         this.roomID = roomID;
         this.roomStatus = roomStatus;
         this.roomType = roomType;
