@@ -1,385 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0CB"
-    tools:context=".MainActivity">
+    android:background="@color/lightpink">
 
-    <ImageView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="48dp"
-        android:layout_marginLeft="18dp"
-        android:id="@+id/imageView15"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/back_button" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvAllRooms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="62dp"
-        android:layout_marginRight="83dp"
-        android:text="Sales"
-        android:textSize="30dp"
-        android:fontFamily="@font/canelablacktrial"
-        android:textColor="#430000"
-        />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_Overview"
-        android:layout_width="104dp"
-        android:layout_height="24dp"
-        android:background="@drawable/frame_979"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="102dp"
-        android:layout_marginLeft="75dp"
-        android:text="Overview"
-        android:textAllCaps="false"
-        android:textSize="15dp"
-        android:textColor="#430000"
-        android:fontFamily="@font/librefranklinmedium"
-        tools:ignore="MissingConstraints"
-        />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_Report"
-        android:layout_width="104dp"
-        android:layout_height="24dp"
-        android:background="@drawable/rectangle_search"
-        app:layout_constraintLeft_toRightOf="@+id/btn_Overview"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="102dp"
-        android:layout_marginLeft="21dp"
-        android:text="Sales Report"
-        android:textAllCaps="false"
-        android:textSize="15dp"
-        android:textColor="#FFF0CB"
-        android:fontFamily="@font/librefranklinmedium"
-        tools:ignore="MissingConstraints"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
 
-    <TextView
-        android:id="@+id/tvHT1359"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="145dp"
-        android:layout_marginLeft="31dp"
-        android:text="HT1359"
-        android:textSize="18dp"
-        android:fontFamily="@font/librefranklinbold"
-        android:textColor="#732D2B"
-        tools:ignore="MissingConstraints" />
+            <ImageView
+                android:id="@+id/imageViewBackhome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back_button" />
 
-    <TextView
-        android:id="@+id/tvClockHT1359"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="145dp"
-        android:layout_marginLeft="125dp"
-        android:text="07:39    13/05/2023"
-        android:textSize="18dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="#732D2B"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvCustomer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="173dp"
-        android:layout_marginLeft="32dp"
-        android:text="Customer"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvName1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="173dp"
-        android:layout_marginLeft="162dp"
-        android:text="Nguyen Thien"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvRoom1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="193dp"
-        android:layout_marginLeft="32dp"
-        android:text="Room"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvNumberRoom1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="193dp"
-        android:layout_marginLeft="162dp"
-        android:text="205"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvProduct1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="213dp"
-        android:layout_marginLeft="32dp"
-        android:text="Product"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceProduct1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="213dp"
-        android:layout_marginLeft="162dp"
-        android:text="130.000"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvRoomCharge1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="233dp"
-        android:layout_marginLeft="32dp"
-        android:text="Room charge"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceRoomCharge1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="233dp"
-        android:layout_marginLeft="162dp"
-        android:text="650.000"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvTotal1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="253dp"
-        android:layout_marginLeft="32dp"
-        android:text="Total"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceTotal1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="253dp"
-        android:layout_marginLeft="162dp"
-        android:text="780.000"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="81dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="80dp"
+                android:fontFamily="@font/canelaboldtrial"
+                android:text="Sales "
+                android:textColor="@color/darkbrown"
+                android:textSize="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvHT1360"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="294dp"
-        android:layout_marginLeft="31dp"
-        android:text="HT1360"
-        android:textSize="18dp"
-        android:fontFamily="@font/librefranklinbold"
-        android:textColor="#732D2B"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvClockHT1360"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="294dp"
-        android:layout_marginLeft="125dp"
-        android:text="13:20    13/05/2023"
-        android:textSize="18dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="#732D2B"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvCustomer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="322dp"
-        android:layout_marginLeft="32dp"
-        android:text="Customer"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="322dp"
-        android:layout_marginLeft="162dp"
-        android:text="Tran Thi Thuong"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvRoom2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="342dp"
-        android:layout_marginLeft="32dp"
-        android:text="Room"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvNumberRoom2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="342dp"
-        android:layout_marginLeft="162dp"
-        android:text="303"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvProduct2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="362dp"
-        android:layout_marginLeft="32dp"
-        android:text="Product"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceProduct2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="362dp"
-        android:layout_marginLeft="162dp"
-        android:text="0"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvRoomCharge2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="382dp"
-        android:layout_marginLeft="32dp"
-        android:text="Room charge"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceRoomCharge2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="382dp"
-        android:layout_marginLeft="162dp"
-        android:text="300.000"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvTotal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="402dp"
-        android:layout_marginLeft="32dp"
-        android:text="Total"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/tvPriceTotal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="402dp"
-        android:layout_marginLeft="162dp"
-        android:text="300.000"
-        android:textSize="15dp"
-        android:fontFamily="@font/librefranklinregular"
-        android:textColor="#000000"
-        tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_Overview"
+                    tools:ignore="MissingConstraints"
+                    android:layout_width="104dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/frame_979"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Overview"
+                    android:textAllCaps="false"
+                    android:textColor="@color/darkbrown"
+                    android:textSize="15dp" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_Report"
+                    tools:ignore="MissingConstraints"
+                    android:layout_width="104dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/rectangle_search"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Sales Report"
+                    android:textAllCaps="false"
+                    android:textColor="@color/lightpink"
+                    android:textSize="15dp" />
 
 
+            </LinearLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/sales_report_item_view"/>
+
+</LinearLayout>
