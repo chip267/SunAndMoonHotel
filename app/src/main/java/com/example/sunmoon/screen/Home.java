@@ -43,6 +43,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
+        navigationView = findViewById(R.id.nav_view);
+//        closeDrawer = findViewById(R.id.imageView18);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +53,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        /*closeDrawer = findViewById(R.id.imageView18);
-        imageView.setOnClickListener(new View.OnClickListener() {
+
+        View headerView = navigationView.getHeaderView(0);
+
+        closeDrawer = headerView.findViewById(R.id.imageView18);
+
+        closeDrawer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
             }
-        });*/
+        });
 
         NavigationView mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
