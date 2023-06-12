@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightpink"
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="132dp">
+
+        <ImageView
+            android:id="@+id/imageViewBackhome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_button" />
+
+        <TextView
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/canelaboldtrial"
+            android:text="All Rooms "
+            android:textColor="@color/darkbrown"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView25"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="48dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/group_31" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="105dp"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_AllRooms"
+                tools:ignore="MissingConstraints"
+                android:layout_width="104dp"
+                android:layout_height="24dp"
+                android:background="@drawable/rectangle_search"
+                android:fontFamily="@font/librefranklinmedium"
+                android:text="All Rooms"
+                android:textAllCaps="false"
+                android:textColor="@color/lightpink"
+                android:textSize="15dp" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Booked"
+                android:layout_width="104dp"
+                android:layout_height="24dp"
+                android:background="@drawable/frame_979"
+                android:fontFamily="@font/librefranklinmedium"
+                android:text="Booked"
+                android:textAllCaps="false"
+                android:textColor="@color/darkbrown"
+                android:textSize="15dp" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Vacant"
+                android:layout_width="104dp"
+                android:layout_height="24dp"
+                android:background="@drawable/frame_979"
+                android:fontFamily="@font/librefranklinmedium"
+                android:text="Vacant"
+                android:textAllCaps="false"
+                android:textColor="@color/darkbrown"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rectangle_search">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_search"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find room"
+            android:textColor="@color/lightpink"
+            android:fontFamily="@font/librefranklinmedium"
+            android:textSize="15dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="8dp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_room"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/allrooms_vacant_item"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

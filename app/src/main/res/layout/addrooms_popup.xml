@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="315dp"
+    android:layout_height="370dp"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="@drawable/bg_vacant_room">
+
+    <TextView
+        android:id="@+id/tv_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/librefranklinbold"
+        android:textSize="25dp"
+        android:textColor="@color/darkbrown"
+        android:text="Room 102"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Type:"
+            android:textColor="@color/darkbrown"
+            android:textSize="23dp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Day"
+                    android:textSize="23dp"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:textColor="@color/darkbrown"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Hour"
+                    android:textSize="23dp"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:textColor="@color/darkbrown"/>
+            </LinearLayout>
+        </RadioGroup>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_rental"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/librefranklinbold"
+        android:textSize="23dp"
+        android:textColor="@color/darkbrown"
+        android:text="Rental Price"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_hour"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Hour:"
+            android:textSize="20dp"
+            android:textColor="@color/darkbrown"/>
+
+        <EditText
+            android:id="@+id/box_hour"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/edittext_checkinout" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Day:"
+            android:textSize="20dp"
+            android:textColor="@color/darkbrown"/>
+
+        <EditText
+            android:id="@+id/box_room"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+
+            android:background="@drawable/edittext_checkinout" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_done"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:background="@drawable/rectangle_search"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textColor="@color/lightpink"
+            android:textSize="15dp" />
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rectangle_search"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/lightpink"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</LinearLayout>
