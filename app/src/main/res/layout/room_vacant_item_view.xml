@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="340dp"
+    android:layout_height="177dp"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/frame_979">
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="143dp"
+        android:layout_height="123dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/deluxe_ava" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/librefranklinbold"
+            android:textSize="20dp"
+            android:textColor="@color/darkbrown"
+            android:text="Room 201" />
+        <TextView
+            android:id="@+id/tv_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:textSize="15dp"
+            android:textColor="@color/darkbrown"
+            android:text="Deluxe" />
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:textSize="17dp"
+            android:textColor="@color/darkbrown"
+            android:text="200.000 per night" />
+        <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/librefranklinregular"
+            android:textSize="12dp"
+            android:textColor="@color/darkbrown"
+            android:text="Includes taxes and charges" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="end"
+            android:background="@drawable/rectangle_search"
+            android:text="Book Now"
+            android:textColor="@color/lightpink"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/librefranklinregular"
+            android:layout_marginBottom="100dp"/>
+    </LinearLayout>
+</LinearLayout>
