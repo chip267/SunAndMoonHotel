@@ -1,7 +1,9 @@
 package com.example.sunmoon.screen;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,9 +17,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sunmoon.MainActivity;
 import com.example.sunmoon.R;
 import com.example.sunmoon.adapter.HouseKeepingAdapter;
 import com.example.sunmoon.models.Conditions;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,13 +36,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class HomeHouseKeeping extends AppCompatActivity {
+public class HomeHouseKeeping extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private HouseKeepingAdapter adapter;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private boolean mSlideState=false;
     private ImageView imageView;
+    private ImageView closeDrawer;
+    private NavigationView navigationView;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +96,39 @@ public class HomeHouseKeeping extends AppCompatActivity {
                 finish();
             }
         });
+
+        imageView = findViewById(R.id.imageView3);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        navigationView = findViewById(R.id.nav_view);
+//        closeDrawer = findViewById(R.id.imageView18);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!mDrawerLayout.isDrawerOpen(GravityCompat.START)) mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+
+        View headerView = navigationView.getHeaderView(0);
+
+        closeDrawer = headerView.findViewById(R.id.imageView18);
+
+        closeDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
 
         Calendar c = Calendar.getInstance();
 
@@ -151,5 +191,37 @@ public class HomeHouseKeeping extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            Intent intent = new Intent(getApplicationContext(),Home.class);
+            startActivity(intent);
+            finish();
+        };
+        if (id == R.id.nav_listroom) {
+            Intent intent = new Intent(getApplicationContext(),AllRoom.class);
+            startActivity(intent);
+            finish();
+        };
+        if (id == R.id.nav_checkroom) {
+            Intent intent = new Intent(getApplicationContext(),CheckRoomPending.class);
+            startActivity(intent);
+            finish();
+        };
+        if (id == R.id.nav_personnel) {
+            Intent intent = new Intent(getApplicationContext(),Personel.class);
+            startActivity(intent);
+            finish();
+        };
+        if (id == R.id.nav_Logout) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        };
+        return true;
     }
 }

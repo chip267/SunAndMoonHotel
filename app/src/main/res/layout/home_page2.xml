@@ -4,14 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:id="@+id/drawer"
     tools:context=".MainActivity">
 
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#430000"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/header"
+            app:itemTextAppearance="@style/NewFontStyle"
+            app:itemTextColor="#FFF0CB"
+            app:itemVerticalPadding="25dp"
+            app:menu="@menu/main_menu">
+
+        </com.google.android.material.navigation.NavigationView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFF0CB">
-        <RelativeLayout
+
+    <RelativeLayout
             app:layout_constraintTop_toTopOf="parent"
 
             android:layout_width="match_parent"
