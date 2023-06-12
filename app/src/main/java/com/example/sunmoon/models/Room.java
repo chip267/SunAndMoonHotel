@@ -2,7 +2,6 @@ package com.example.sunmoon.models;
 
 public class Room {
     public String roomID;
-    public String roomStatus;
     public String roomType;
     public double pricebyHour;
     public double pricebyDay;
@@ -16,13 +15,6 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public String getRoomStatus() {
-        return roomStatus;
-    }
-
-    public void setRoomStatus(String roomStatus) {
-        this.roomStatus = roomStatus;
-    }
 
     public String getRoomType() {
         return roomType;
@@ -56,10 +48,8 @@ public class Room {
         this.rAvail = rAvail;
     }
 
-    public Room(String roomID, String roomStatus, String roomType, double pricebyHour,
-                double pricebyDay, int rAvail) {
+    public Room(String roomID, String roomType, double pricebyHour, double pricebyDay, int rAvail) {
         this.roomID = roomID;
-        this.roomStatus = roomStatus;
         this.roomType = roomType;
         this.pricebyHour = pricebyHour;
         this.pricebyDay = pricebyDay;

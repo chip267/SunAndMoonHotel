@@ -3,24 +3,38 @@ package com.example.sunmoon.models;
 public class Booking {
     public String bookingID;
     public String checkinDate;
+    public String checkinHour;
     public String checkoutDate;
-    //public String bookingTime;
-    public String bookingType; //Day or Hour
+    public String checkoutHour;
+    public String bookingType;
     public String roomID;
     public double total;
     public String status;
-
-    private  String guestID;
-    private String guestName;
-    private String guestPhone;
-
-    public Booking (String bookingID, String checkinDate, String checkoutDate, String roomID, String guestName, String guestPhone){
+    public String gIDCard;
+    public Booking(){
+        this.bookingID = "";
+        this.checkinDate = "";
+        this.checkoutDate = "";
+        this.checkinHour = "";
+        this.checkoutHour = "";
+        this.bookingType = "";
+        this.roomID = "";
+        this.total = 0;
+        this.status = "";
+        this.gIDCard="";
+    }
+    public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
+                    String bookingType, String roomID, double total, String status, String gIDCard){
         this.bookingID = bookingID;
         this.roomID = roomID;
-        this.guestName = guestName;
-        this.guestPhone = guestPhone;
+        this.gIDCard = gIDCard;
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;
+        this.checkinHour = checkinHour;
+        this.checkoutHour = checkoutHour;
+        this.bookingType=bookingType;
+        this.total=total;
+        this.status=status;
     }
 
     public String getCheckinDate() {
@@ -30,41 +44,20 @@ public class Booking {
     public String getCheckoutDate() {
         return checkoutDate;
     }
+    public String getCheckinHour() {
+        return checkinHour;
+    }
+
+    public String getCheckoutHour() {
+        return checkoutHour;
+    }
 
     public String getRoomID() {
         return roomID;
     }
 
-    public String getGuestID() {
-        return guestID;
-    }
-
-    public String getGuestName() {
-        return guestName;
-    }
-
-    public String getGuestPhone() {
-        return guestPhone;
-    }
-
-    public Booking(String bookingID, String checkinDate, String checkoutDate,
-                   String bookingType, String roomID, double total, String status) {
-        this.bookingID = bookingID;
-        this.checkinDate = checkinDate;
-        this.checkoutDate = checkoutDate;
-        this.bookingType = bookingType;
-        this.roomID = roomID;
-        this.total = total;
-        this.status = status;
-    }
-    public Booking(){
-        this.bookingID = "";
-        this.checkinDate = "";
-        this.checkoutDate = "";
-        this.bookingType = "";
-        this.roomID = "";
-        this.total = 0;
-        this.status = "";
+    public String getGIDCard() {
+        return gIDCard;
     }
 
     public void setBookingID(String bookingID) {
@@ -82,6 +75,13 @@ public class Booking {
     public void setCheckoutDate(String checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
+    public void setCheckinHour(String checkinHour) {
+        this.checkinHour = checkinHour;
+    }
+
+    public void setCheckoutHour(String checkoutHour) {
+        this.checkoutHour = checkoutHour;
+    }
 
     public void setRoomID(String roomID) {
         this.roomID = roomID;
@@ -93,6 +93,9 @@ public class Booking {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+    public void setGIDCard(String gIDCard) {
+        this.gIDCard = gIDCard;
     }
 }
 
