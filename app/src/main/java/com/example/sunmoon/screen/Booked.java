@@ -2,10 +2,14 @@ package com.example.sunmoon.screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sunmoon.R;
@@ -25,13 +29,10 @@ import java.util.List;
 
 public class Booked extends AppCompatActivity {
     List<Booking> bookedRooms;
-    List<Guest> guests;
-    List<Room> rooms;
     RecyclerView bookedRoomRecyclerView;
     BookedRoomAdapter roomAdapter;
+    ImageView btnBack;
 
-    Guest guestInfor;
-    Room roomInfor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +40,6 @@ public class Booked extends AppCompatActivity {
 
         bookedRoomRecyclerView = findViewById(R.id.booked_room);
         bookedRooms = new ArrayList<Booking>();
-        /*for (int i = 1; i <= 50; i++) {
-            bookedRooms.add(new Booking("12/5/2020", "14/5/2020", "10"+i , "Nguyen" + i, "090836335" + i));
-        }*/
 
         roomAdapter = new BookedRoomAdapter(bookedRooms, this);
 
@@ -89,6 +87,15 @@ public class Booked extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
