@@ -17,11 +17,14 @@ import com.example.sunmoon.R;
 import com.example.sunmoon.adapter.BookedRoomAdapter;
 import com.example.sunmoon.adapter.GuestAdapter;
 import com.example.sunmoon.adapter.RecyclerViewAdapter;
+import com.example.sunmoon.adapter.RecyclerViewHandledAdapter;
 import com.example.sunmoon.adapter.VacantAdapter;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Conditions;
 import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,11 +34,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vacant extends AppCompatActivity {
+public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonClickListener {
 
     List<Room> listroom = new ArrayList<>();
-    RecyclerView vacantRecyclerView;
-    VacantAdapter Adapter;
+    RecyclerView recyclerView;
+    VacantAdapter adapter;
     ImageView btn_back;
 
     Button allroom, booked;
@@ -74,43 +77,47 @@ public class Vacant extends AppCompatActivity {
             }
         });
 
-        vacantRecyclerView = findViewById(R.id.list_vacant_room);//recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.list_vacant_room);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        vacantRecyclerView.setLayoutManager(layoutManager);
-        Adapter = new VacantAdapter();
-        vacantRecyclerView.setAdapter(Adapter);
-        Adapter.setOnButtonClickListener((VacantAdapter.OnButtonClickListener) this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new VacantAdapter();
+        recyclerView.setAdapter(adapter);
+        adapter.setOnButtonClickListener(Vacant.this);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference conditionsRef = database.getReference("Conditions");
-        conditionsRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference roomRef = database.getReference("Room");
+        roomRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
-                    List<Room> filteredConditions = new ArrayList<>();
-                    for (DataSnapshot Snapshot : snapshot.getChildren()) {
-                        Room room = Snapshot.getValue(Room.class);
+                    List<Room> filteredRoom = new ArrayList<>();
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Room room = snapshot.getValue(Room.class);
+
                         if (room != null && room.isrAvail() == 0) {
-                            // Check if the condition's date falls within the current week
-
-                                filteredConditions.add(room);
-
+                            filteredRoom.add(room);
                         }
                     }
-                    Adapter.setData(filteredConditions);
-                    Adapter.notifyDataSetChanged();
+                    adapter.setData(filteredRoom);
+                    adapter.notifyDataSetChanged();
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(Vacant.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle any errors
+                Toast.makeText(Vacant.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
-
+    public void onButtonClick(String roomID) {
+        Intent intent = new Intent(getApplicationContext(), BookingForm.class);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }

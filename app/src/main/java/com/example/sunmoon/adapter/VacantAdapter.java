@@ -1,12 +1,8 @@
 package com.example.sunmoon.adapter;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,21 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Conditions;
-import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder> {
     private List<Room> rooms = new ArrayList<>();
     public interface OnButtonClickListener {
-        void onBookNowButtonClick(String roomId);
+        void onButtonClick(String roomID);
     }
 
     private OnButtonClickListener onButtonClickListener;
@@ -44,57 +37,49 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VacantAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_vacant_item_view, parent, false);
         return new VacantAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VacantAdapter.ViewHolder holder, int position) {
         Room room = rooms.get(position);
-
-        holder.rid.setText("Room "+room.getRoomID());
-        holder.rType.setText(room.getRoomType());
-        holder.priceofDay.setText((int) room.getPricebyDay());
-
-        holder.btnBookNow.setOnClickListener(new View.OnClickListener() {
+        holder.tvKind.setText(room.getRoomType());
+        double money = room.getPricebyDay();
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+        symbols.setGroupingSeparator('.');
+        DecimalFormat decimalFormat = new DecimalFormat("#,###", symbols);
+        String moneyString = decimalFormat.format(money) + " VND";
+        holder.tvMoney.setText(moneyString);
+        holder.tvRoomNum.setText("Room "+room.getRoomID());
+        holder.btnBooknow.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 if (onButtonClickListener != null) {
-                    String roomId = room.getRoomID();
-                    onButtonClickListener.onBookNowButtonClick(roomId);
+                    String roomID = room.getRoomID();
+                    onButtonClickListener.onButtonClick(roomID);
                 }
             }
         });
-
-        // Set the click listener for the "Delete" button
-
     }
-
     @Override
     public int getItemCount() {
         return rooms.size();
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private View itemview;
-        public TextView rid;
-        public TextView rType;
-        public TextView priceofDay;
-        public TextView note;
-
-        AppCompatButton btnBookNow;
+        TextView tvKind;
+        TextView tvMoney;
+        TextView tvRoomNum;
+        AppCompatButton btnBooknow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemview = itemView;
-            rid = itemView.findViewById(R.id.tv_room);
-            rType = itemView.findViewById(R.id.tv_kind);
-            priceofDay = itemView.findViewById(R.id.tv_money);
-            note = itemView.findViewById(R.id.tv_note);
+            tvMoney = itemView.findViewById(R.id.tv_moneyVacant);
+            tvKind = itemView.findViewById(R.id.tv_kind);
+            tvRoomNum = itemView.findViewById(R.id.tv_roomVacant);
+            btnBooknow = itemView.findViewById(R.id.btn_booknow);
         }
     }
 }
-
-
