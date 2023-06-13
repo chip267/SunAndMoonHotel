@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView25"
+            android:id="@+id/imageViewAddRoom"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="48dp"

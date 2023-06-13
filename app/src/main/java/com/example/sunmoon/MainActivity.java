@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sunmoon.screen.Booked;
 import com.example.sunmoon.screen.BookingForm;
 import com.example.sunmoon.screen.CheckRoomHandled;
 import com.example.sunmoon.screen.CheckRoomPending;
@@ -134,13 +135,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Enter password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(getApplicationContext(), Home.class);
-                startActivity(intent);
-                finish();
-
-
-
-
             }
         });
 

@@ -9,7 +9,7 @@
     android:background="@drawable/bg_vacant_room">
 
     <TextView
-        android:id="@+id/tv_room"
+        android:id="@+id/tv_roomAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/librefranklinbold"
@@ -21,47 +21,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:id="@+id/tv_type"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/librefranklinbold"
-            android:text="Type:"
-            android:textColor="@color/darkbrown"
-            android:textSize="23dp" />
-
-        <RadioGroup
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
-
-            <LinearLayout
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_typeofbooking"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/librefranklinbold"
+                android:text="Type of Room:"
+                android:textSize="20dp"
+                android:textColor="@color/darkbrown" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:text="Day"
-                    android:textSize="23dp"
-                    android:fontFamily="@font/librefranklinmedium"
-                    android:textColor="@color/darkbrown"/>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                >
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:text="Hour"
-                    android:textSize="23dp"
-                    android:fontFamily="@font/librefranklinmedium"
-                    android:textColor="@color/darkbrown"/>
-            </LinearLayout>
-        </RadioGroup>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:id="@+id/radiogroupType">
+                        <RadioButton
+                            android:id="@+id/radioButtonStandard"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/lightbrown"
+                            android:text="Standard" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonDeluxe"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/lightbrown"
+                            android:text="Deluxe" />
+                    </RadioGroup>
+                </LinearLayout>
+
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
     <TextView
         android:id="@+id/tv_rental"
@@ -112,7 +120,7 @@
             android:textColor="@color/darkbrown"/>
 
         <EditText
-            android:id="@+id/box_room"
+            android:id="@+id/box_day"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
@@ -128,7 +136,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_done"
+            android:id="@+id/btn_doneroomadd"
             android:layout_width="100dp"
             android:layout_height="38dp"
             android:background="@drawable/rectangle_search"
@@ -141,7 +149,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_cancelroomadd"
             android:layout_width="100dp"
             android:layout_height="38dp"
             android:layout_marginLeft="30dp"

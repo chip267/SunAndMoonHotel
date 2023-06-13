@@ -19,6 +19,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".screen.AllRoomAdd"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".screen.CheckRoomPending"
             android:exported="false">
             <meta-data
