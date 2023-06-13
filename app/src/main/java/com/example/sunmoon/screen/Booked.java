@@ -16,7 +16,12 @@ import com.example.sunmoon.R;
 import com.example.sunmoon.adapter.BookedRoomAdapter;
 import com.example.sunmoon.adapter.GuestAdapter;
 
+import com.example.sunmoon.adapter.RecyclerViewAdapter;
 import com.example.sunmoon.models.Booking;
+import com.example.sunmoon.models.Guest;
+import com.example.sunmoon.models.Room;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +48,6 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         bookedRoomRecyclerView = findViewById(R.id.booked_room);
         bookedRooms = new ArrayList<Booking>();
 
-        //roomAdapter = new BookedRoomAdapter(bookedRooms, this);
         roomAdapter = new BookedRoomAdapter();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -117,6 +121,14 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
                 if (roomDataSnapshot.exists()) {
                     FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(0);
+                    for (int i = 0; i < bookedRooms.size(); i++){
+                        if(bookedRooms.get(i).getBookingID() == bookedId){
+                            bookedRooms.remove(i);
+                            roomAdapter.setData(bookedRooms);
+                            roomAdapter.notifyItemRemoved(i);
+                            break;
+                        }
+                    }
                 }
             }
             @Override
@@ -124,9 +136,5 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                 // Handle any errors that occur during the query
             }
         });
-
-        Intent intent = new Intent(getApplicationContext(), SalesReport.class);
-        startActivity(intent);
-        finish();
     }
 }
