@@ -26,8 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class BookingForm extends AppCompatActivity {
@@ -91,29 +93,15 @@ public class BookingForm extends AppCompatActivity {
                     @Override
                     public void onbookingIdGenerated(String bookingId) {
                         int avail = 1;
-                        String checkoutDate = "";
-                        Calendar c = Calendar.getInstance();
-                        int day = c.get(Calendar.DAY_OF_MONTH);
-                        int month = c.get(Calendar.MONTH) + 1;
-                        int year = c.get(Calendar.YEAR);
-                        String checkinDate = day+"/"+month+"/"+year;
-                        int minutes = c.get(Calendar.MINUTE);
-                        int hour = c.get(Calendar.HOUR);
-                        String AMPM;
-                        if (c.get(Calendar.AM_PM) == 0) {
-                            AMPM = "AM";
-                        } else {
-                            AMPM = "PM";
-                        }
-                        String checkinHour = hour+":"+minutes+" "+AMPM;
+                        String checkoutDate = "00/00/0000";
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+                        String checkinHour = timeFormat.format(new Date());
+                        String checkinDate = dateFormat.format(new Date());
                         String checkoutHour = "";
-
                         String rid = Room.getText().toString();
                         int total = 0;
                         String status = "Check in";
-
-
-
                         Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid);
                         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                         databaseRef.child(bookingId).setValue(booking);
@@ -164,7 +152,7 @@ public class BookingForm extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String bookingId = snapshot.getKey();
                     String gid = Idcard.getText().toString();
-                    if (bookingId.startsWith("c")) {
+                    if (bookingId.startsWith("b")) {
                         try {
                             int number = Integer.parseInt(bookingId.substring(1));
                             if (number > highestNumber) {
