@@ -135,8 +135,9 @@ public class BookingForm extends AppCompatActivity {
                 });
 
                 addDatatoFireBase(rid, typeofbooking, name, dob, gender, phone, gid);
-                Intent intent = new Intent(getApplicationContext(),BookingForm.class);
+                Intent intent = new Intent(getApplicationContext(),Booked.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
 
             }
@@ -163,7 +164,7 @@ public class BookingForm extends AppCompatActivity {
                         }
                     }
                 }
-                String newReportId = String.format("c%03d", highestNumber + 1);
+                String newReportId = String.format("b%03d", highestNumber + 1);
                 callback.onbookingIdGenerated(newReportId);
             }
             @Override
