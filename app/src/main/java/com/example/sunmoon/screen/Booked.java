@@ -14,6 +14,7 @@ import com.example.sunmoon.adapter.GuestAdapter;
 
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Guest;
+import com.example.sunmoon.models.Room;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,8 +25,13 @@ import java.util.List;
 
 public class Booked extends AppCompatActivity {
     List<Booking> bookedRooms;
+    List<Guest> guests;
+    List<Room> rooms;
     RecyclerView bookedRoomRecyclerView;
     BookedRoomAdapter roomAdapter;
+
+    Guest guestInfor;
+    Room roomInfor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +49,37 @@ public class Booked extends AppCompatActivity {
 
         bookedRoomRecyclerView.setAdapter(roomAdapter);
         bookedRoomRecyclerView.setLayoutManager(linearLayoutManager);
+
         FirebaseDatabase.getInstance().getReference("Booking").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot bookingSnapshot:snapshot.getChildren()){
-                        Booking room = bookingSnapshot.getValue(Booking.class);
-                        room.setBookingID(bookingSnapshot.getKey());
-                        bookedRooms.add(room);
+            public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
+                if (bookingDataSnapshot.exists()){
+                    for (DataSnapshot bookingSnapshot:bookingDataSnapshot.getChildren()){
+                        Booking booking = bookingSnapshot.getValue(Booking.class);
+                        booking.setBookingID(bookingSnapshot.getKey());
+
+
+                        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(booking.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                                if (roomDataSnapshot.exists()){
+                                    for (DataSnapshot roomSnapshot : roomDataSnapshot.getChildren()){
+                                        int isAvail = roomSnapshot.child("rAvail").getValue(Integer.class);
+                                        if (isAvail == 1){
+                                            bookedRooms.add(booking);
+                                            roomAdapter.notifyDataSetChanged();
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     }
-                    roomAdapter.notifyDataSetChanged();
                 }
                 else {
                     Toast.makeText(Booked.this, "Not exist!!",Toast.LENGTH_SHORT).show();
