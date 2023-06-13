@@ -164,6 +164,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         String date = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(date);
+
+        String add = "add Home";
     }
 
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@color/lightpink"
-    >
+    android:background="@color/lightpink">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,6 +20,8 @@
             android:layout_marginTop="48dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:onClick="OnClick"
+            tools:ignore="OnClick"
             app:srcCompat="@drawable/back_button" />
 
         <TextView
@@ -68,6 +70,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:paddingLeft="10dp"
+                    android:inputType="number"
                     android:background="@drawable/edittext_checkinout" />
                      />
 
@@ -98,12 +101,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
-
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
                         <RadioButton
                             android:id="@+id/radioButton2"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_weight="1"
+                            android:onClick="RadioButtonTypeClicked"
+                            android:buttonTint="@color/lightbrown"
                             android:text="Day" />
 
                         <RadioButton
@@ -111,7 +119,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_weight="1"
+                            android:buttonTint="@color/lightbrown"
+                            android:onClick="RadioButtonTypeClicked"
                             android:text="Hour" />
+                        </RadioGroup>
                     </LinearLayout>
 
                 </RadioGroup>
@@ -154,6 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
+            android:inputType="text"
             android:background="@drawable/edittext_checkinout" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -181,7 +193,8 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:alpha="0.5"
-                    android:text="dd/mm/yyyy"
+                    android:hint="dd/mm/yyyy"
+                    android:inputType="date"
                     android:background="@drawable/edittext_checkinout"
                     android:fontFamily="@font/librefranklinmedium"
                     android:paddingLeft="10dp"
@@ -215,12 +228,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/radioButtonFemale"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_weight="1"
+                            android:buttonTint="@color/lightbrown"
+                            android:onClick="RadioButtonGenderClicked"
                             android:text="Female" />
 
                         <RadioButton
@@ -228,7 +247,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_weight="1"
+                            android:buttonTint="@color/lightbrown"
+                            android:onClick="RadioButtonGenderClicked"
                             android:text="Male" />
+                        </RadioGroup>
                     </LinearLayout>
 
                 </RadioGroup>
@@ -251,6 +273,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
+            android:inputType="text"
             android:background="@drawable/edittext_checkinout" />
         <TextView
             android:id="@+id/tv_idcard"
@@ -264,10 +287,12 @@
 
         <EditText
             android:id="@+id/box_idcard"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_checkinout" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm"
             android:layout_width="135dp"
