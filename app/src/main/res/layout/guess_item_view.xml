@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tvName1"
-        android:layout_width="39dp"
+        android:layout_width="wrap_content"
         android:layout_height="23dp"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="10dp"

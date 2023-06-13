@@ -36,7 +36,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.ViewHolder holder, int position) {
         Booking booking = bookings.get(position);
-        holder.tvID.setText(booking.getRid());
+        holder.tvID.setText(booking.getBookingID());
         String gidCard = booking.getGid();
         holder.tvtime.setText(booking.getCheckoutHour()+"   "+booking.getCheckoutDate());
         DatabaseReference guestRef = FirebaseDatabase.getInstance().getReference("Guest");

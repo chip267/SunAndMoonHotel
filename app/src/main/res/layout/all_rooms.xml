@@ -133,12 +133,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_room"
-            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/allrooms_vacant_item"
-            />
+            android:layout_height="316dp"
+            android:layout_gravity="center"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
     </LinearLayout>
 
 
