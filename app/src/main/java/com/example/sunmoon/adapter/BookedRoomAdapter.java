@@ -22,6 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.ViewHolder>{
@@ -73,7 +77,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         holder.checkOutDate.setText(booked_room.getCheckoutDate());
         holder.roomID.setText("Room " + booked_room.getRid());
         holder.room = booked_room;
-        
+
     }
 
     @Override
@@ -105,6 +109,13 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                 @Override
                 public void onClick(View view) {
                     FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("status").setValue("checkout");
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
+                    String time = timeFormat.format(new Date());
+                    String date = dateFormat.format(new Date());
+                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("checkoutDate").setValue(date);
+                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("checkoutHour").setValue(time);
+
                     FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(room.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
@@ -117,6 +128,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                             // Handle any errors that occur during the query
                         }
                     });
+
                     //FirebaseDatabase.getInstance().getReference("Room").child(checkRoomID).child("rAvail").setValue(0);
                 }
             });
