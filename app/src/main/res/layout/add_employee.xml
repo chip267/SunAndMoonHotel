@@ -5,254 +5,273 @@
     android:layout_height="match_parent"
     android:background="#FFF0CB"
     android:orientation="vertical"
-    android:paddingStart="22dp"
-    android:paddingEnd="22dp"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tvPersonel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="62dp"
-        android:layout_gravity="center"
-        android:fontFamily="@font/librefranklinblack"
-        android:text="Add new employee"
-        android:textColor="@color/darkbrown"
-        android:textSize="25dp" />
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_firstname"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="First Name" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/box_firstname"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_lastname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="Last Name" />
-
-    <EditText
-        android:id="@+id/box_lastname"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_idCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="ID Card" />
-
-    <EditText
-        android:id="@+id/box_IdCard"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/edittext_checkinout" />
-
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="170dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp">
+            <TextView
+                android:id="@+id/tvPersonel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="62dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/librefranklinblack"
+                android:text="Add new employee"
+                android:textColor="@color/darkbrown"
+                android:textSize="25dp" />
 
             <TextView
                 android:layout_marginTop="10dp"
-                android:id="@+id/tv_dateofbirth"
+                android:id="@+id/tv_firstname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/librefranklinmedium"
                 android:textColor="@color/darkbrown"
                 android:textSize="14dp"
-                android:text="Date Of Birth" />
+                android:text="First Name" />
 
             <EditText
-                android:id="@+id/box_dateofbirth"
+                android:id="@+id/box_firstname"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:paddingLeft="10dp"
                 android:layout_height="35dp"
-                android:text="dd/mm/yyyy"
-                android:alpha="0.5"
-                android:textSize="14dp"
-                android:fontFamily="@font/librefranklinmedium"
-
+                android:paddingLeft="10dp"
                 android:background="@drawable/edittext_checkinout" />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-
             <TextView
                 android:layout_marginTop="10dp"
-                android:id="@+id/tv_gender"
+                android:id="@+id/tv_lastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/librefranklinmedium"
                 android:textColor="@color/darkbrown"
                 android:textSize="14dp"
-                android:text="Gender" />
+                android:text="Last Name" />
 
             <EditText
-                android:id="@+id/box_gender"
+                android:id="@+id/box_lastname"
                 android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:paddingLeft="10dp"
+
+                android:background="@drawable/edittext_checkinout" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_idCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="14dp"
+                android:text="ID Card" />
+
+            <EditText
+                android:id="@+id/box_IdCard"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingLeft="10dp"
+
+                android:background="@drawable/edittext_checkinout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/tv_dateofbirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/librefranklinmedium"
+                        android:textColor="@color/darkbrown"
+                        android:textSize="14dp"
+                        android:text="Date Of Birth" />
+
+                    <EditText
+                        android:id="@+id/box_dateofbirth"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:paddingLeft="10dp"
+
+                        android:hint="dd/mm/yyyy"
+                        android:alpha="0.5"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/librefranklinmedium"
+
+                        android:background="@drawable/edittext_checkinout" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/tv_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/librefranklinmedium"
+                        android:textColor="@color/darkbrown"
+                        android:textSize="14dp"
+                        android:text="Gender" />
+
+                    <EditText
+                        android:id="@+id/box_gender"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:paddingLeft="10dp"
+
+                        android:alpha="0.5"
+                        android:hint="Female or Male"
+                        android:fontFamily="@font/librefranklinmedium"
+                        android:textSize="14dp"
+                        android:background="@drawable/edittext_checkinout" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_phoneno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="14dp"
+                android:text="Phone No." />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/box_endphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="123 456 789"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/edittext_checkinout" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="14dp"
+                android:text="Address" />
+
+            <EditText
+                android:id="@+id/box_address"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingLeft="10dp"
+
+                android:background="@drawable/edittext_checkinout" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="14dp"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/box_email"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="abc@xyz.com"
                 android:alpha="0.5"
-                android:text="Female or Male"
                 android:fontFamily="@font/librefranklinmedium"
                 android:textSize="14dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/edittext_checkinout" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="14dp"
+                android:text="Position" />
+
+            <EditText
+                android:id="@+id/box_position"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="Manager"
+                android:alpha="0.5"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textSize="14dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/edittext_checkinout" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="135dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/rectangle_search"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Confirm Details"
+                    android:textAllCaps="false"
+                    android:textColor="@color/lightpink"
+                    android:textSize="15dp" />
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="138dp"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/frame_979"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/darkbrown"
+                    android:textSize="15dp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_phoneno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="Phone No." />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-
-        <EditText
-            android:id="@+id/box_endphone"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="123 456 789"
-            android:fontFamily="@font/librefranklinmedium"
-            android:textSize="14dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_checkinout" />
-
-    </LinearLayout>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="Address" />
-
-    <EditText
-        android:id="@+id/box_address"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="Email" />
-
-    <EditText
-        android:id="@+id/box_email"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:text="abc@xyz.com"
-        android:alpha="0.5"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textSize="14dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_position"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="14dp"
-        android:text="Position" />
-
-    <EditText
-        android:id="@+id/box_position"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:text="Manager"
-        android:alpha="0.5"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textSize="14dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/edittext_checkinout" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_confirm"
-            android:layout_width="135dp"
-            android:layout_height="38dp"
-            android:background="@drawable/rectangle_search"
-            android:fontFamily="@font/librefranklinmedium"
-            android:text="Confirm Details"
-            android:textAllCaps="false"
-            android:textColor="@color/lightpink"
-            android:textSize="15dp" />
-
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancel"
-            android:layout_width="138dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/frame_979"
-            android:fontFamily="@font/librefranklinmedium"
-            android:text="Cancel"
-            android:textAllCaps="false"
-            android:textColor="@color/darkbrown"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-
+    </ScrollView>
 </LinearLayout>
 
 

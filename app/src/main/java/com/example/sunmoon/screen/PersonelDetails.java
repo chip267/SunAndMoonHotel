@@ -57,7 +57,7 @@ public class PersonelDetails extends AppCompatActivity implements Serializable {
         String empAddress = i.getStringExtra("empAddress");
         String empID = i.getStringExtra("empID");
 
-        tvId1.setText(employeeId);
+        tvId1.setText(empID);
         tv_id1.setText(employeeId);
         tvName1.setText(empName);
         tv_name1.setText(empName);

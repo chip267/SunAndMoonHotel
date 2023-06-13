@@ -187,7 +187,7 @@
             tools:ignore="DuplicateIds" />
 
         <TextView
-            android:id="@+id/tv3"
+            android:id="@+id/tv_showday"
             android:layout_width="129dp"
             android:layout_height="30dp"
             app:layout_constraintLeft_toLeftOf="@+id/tv2"
