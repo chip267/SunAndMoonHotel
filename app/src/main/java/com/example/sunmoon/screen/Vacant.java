@@ -45,6 +45,7 @@ public class Vacant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_vacant);
 
+        btn_back = findViewById(R.id.imageViewBackhome);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +55,7 @@ public class Vacant extends AppCompatActivity {
             }
         });
 
+        allroom = findViewById(R.id.btn_AllRooms);
         allroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +64,7 @@ public class Vacant extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+        booked = findViewById(R.id.btn_Booked);
         booked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
