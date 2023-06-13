@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sunmoon.MainActivity;
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Guest;
+import com.example.sunmoon.screen.Booked;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,6 +72,8 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         holder.checkInDate.setText(booked_room.getCheckinDate());
         holder.checkOutDate.setText(booked_room.getCheckoutDate());
         holder.roomID.setText("Room " + booked_room.getRid());
+        //holder.rID = booked_room.getBookingID();
+        holder.room = booked_room;
         /*holder.guestName.setText(guest.getgName());
         holder.guestPhone.setText(guest.getgPhone());*/
     }
@@ -85,6 +90,9 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         public TextView roomID;
         public TextView guestName;
         public TextView guestPhone;
+        //public String rID;
+
+        public Booking room;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -94,6 +102,26 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
             roomID = itemView.findViewById(R.id.tvRoom110);
             guestName = itemView.findViewById(R.id.tvName1);
             guestPhone = itemView.findViewById(R.id.tvPhone1);
+
+            itemView.findViewById(R.id.btn_Checkout).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("status").setValue("checkout");
+                    FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(room.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                            if (roomDataSnapshot.exists()) {
+                                FirebaseDatabase.getInstance().getReference("Room").child(room.getRid()).child("rAvail").setValue(0);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // Handle any errors that occur during the query
+                        }
+                    });
+                    //FirebaseDatabase.getInstance().getReference("Room").child(checkRoomID).child("rAvail").setValue(0);
+                }
+            });
         }
     }
 }
