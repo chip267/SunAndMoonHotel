@@ -69,8 +69,8 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         holder.checkInDate.setText(booked_room.getCheckinDate());
         holder.checkOutDate.setText(booked_room.getCheckoutDate());
         holder.roomID.setText("Room " + booked_room.getRid());
-        /*holder.guestName.setText(guest.getgName());
-        holder.guestPhone.setText(guest.getgPhone());*/
+        //holder.guestName.setText(booked_room.getGuestName());
+        //holder.guestPhone.setText(booked_room.getGuestPhone());
     }
 
     @Override
