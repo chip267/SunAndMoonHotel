@@ -16,16 +16,6 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/back_button" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="48dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/group_31" />
-
     <TextView
         android:id="@+id/tvAllRooms"
         android:layout_width="wrap_content"
@@ -79,7 +69,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="105dp"
         android:text="Booked"
         android:textAllCaps="false"
         android:textSize="15dp"
@@ -94,8 +84,8 @@
         android:background="@drawable/frame_979"
         app:layout_constraintLeft_toRightOf="@+id/btn_Booked"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="101dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="20dp"
         android:text="Vacant"
         android:textAllCaps="false"
         android:textSize="15dp"
@@ -110,8 +100,8 @@
         android:background="@drawable/frame_979"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_Booked"
-        android:layout_marginTop="101dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginRight="20dp"
         android:text="All Rooms"
         android:textAllCaps="false"
         android:textSize="15dp"

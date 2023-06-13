@@ -130,26 +130,17 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
             mNavigationView.setNavigationItemSelectedListener(this);
         }
 
-        Calendar c = Calendar.getInstance();
-
-        int minutes = c.get(Calendar.MINUTE);
-        int hour = c.get(Calendar.HOUR);
-        String AMPM;
-        if (c.get(Calendar.AM_PM) == 0) {
-            AMPM = "AM";
-        } else {
-            AMPM = "PM";
-        }
-        String time = hour + ":" + minutes +"    "+AMPM;
-
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+        String time = timeFormat.format(new Date());
+        String date = dateFormat.format(new Date());
         TextView tv_time = findViewById(R.id.tv2);
         tv_time.setText(time);
-
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH);
-        int year = c.get(Calendar.YEAR);
         String setday = "";
         String setmonth = "";
+        String[] dateComponents = date.split("/");
+        int day = Integer.parseInt(dateComponents[0]);
+        int month = Integer.parseInt(dateComponents[1]);
         switch (day){
             case 1: setday = "st";break;
             case 2: setday = "nd";break;
@@ -172,7 +163,7 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
             case 12: setmonth = "December";break;
         }
 
-        String date = day + setday + " " + setmonth;
+        String dateA = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(date);
 
