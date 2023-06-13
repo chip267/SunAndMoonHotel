@@ -12,6 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
+import com.example.sunmoon.models.Guest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -38,8 +44,27 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookedRoomAdapter.ViewHolder holder, int position) {
         Booking booked_room = (Booking) bookedRoom.get(position);
+        String gidCard = booked_room.getGid();
+        DatabaseReference guestRef = FirebaseDatabase.getInstance().getReference("Guest");
+        guestRef.orderByChild("gIDCard").equalTo(gidCard).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot guestDataSnapshot) {
+                if (guestDataSnapshot.exists()) {
+                    for (DataSnapshot guestSnapshot : guestDataSnapshot.getChildren()) {
+                        String gName = guestSnapshot.child("gName").getValue(String.class);
+                        String gPhone = guestSnapshot.child("gPhone").getValue(String.class);
+                        holder.guestName.setText(gName);
+                        holder.guestPhone.setText(gPhone);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle any errors that occur during the query
+            }
+        });
 
         holder.checkInDate.setText(booked_room.getCheckinDate());
         holder.checkOutDate.setText(booked_room.getCheckoutDate());
