@@ -102,9 +102,11 @@ public class BookingForm extends AppCompatActivity {
                         String rid = Room.getText().toString();
                         int total = 0;
                         String status = "Check in";
+
                         Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid);
                         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                         databaseRef.child(bookingId).setValue(booking);
+                        FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);
                     }
                     @Override
                     public void onbookingIdGenerationFailed(String errorMessage) {
@@ -124,7 +126,7 @@ public class BookingForm extends AppCompatActivity {
                         String gPhone = Phone.getText().toString();
                         String gId = Idcard.getText().toString();
 
-                        Guest guest = new Guest(gId, gName, gPhone,gDOB,gGender,gAvail);
+                        Guest guest = new Guest(gId, gName,gGender, gPhone,gDOB,gAvail);
                         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Guest");
                         databaseRef.child(guestId).setValue(guest);
                     }
@@ -135,7 +137,7 @@ public class BookingForm extends AppCompatActivity {
                 });
 
                 addDatatoFireBase(rid, typeofbooking, name, dob, gender, phone, gid);
-                Intent intent = new Intent(getApplicationContext(),Booked.class);
+                Intent intent = new Intent(getApplicationContext(),AllRoom.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
