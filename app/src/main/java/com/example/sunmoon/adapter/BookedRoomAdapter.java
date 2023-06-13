@@ -91,7 +91,6 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         });
 
         holder.checkInDate.setText(booked_room.getCheckinDate());
-        holder.checkOutDate.setText(booked_room.getCheckoutDate());
         holder.roomID.setText("Room " + booked_room.getRid());
         holder.room = booked_room;
 
@@ -116,11 +115,9 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         private View itemview;
         public TextView checkInDate;
-        public TextView checkOutDate;
         public TextView roomID;
         public TextView guestName;
         public TextView guestPhone;
-        //public String rID;
 
         public Booking room;
 
@@ -130,39 +127,10 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
             super(itemView);
             itemview = itemView;
             checkInDate = itemView.findViewById(R.id.tvStart1);
-            checkOutDate = itemView.findViewById(R.id.tvEnd1);
             roomID = itemView.findViewById(R.id.tvRoom110);
             guestName = itemView.findViewById(R.id.tvName1);
             guestPhone = itemView.findViewById(R.id.tvPhone1);
             btnCheckOut = itemView.findViewById(R.id.btn_Checkout);
-
-            /*itemView.findViewById(R.id.btn_Checkout).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("status").setValue("checkout");
-                    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
-                    String time = timeFormat.format(new Date());
-                    String date = dateFormat.format(new Date());
-                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("checkoutDate").setValue(date);
-                    FirebaseDatabase.getInstance().getReference("Booking").child(room.getBookingID()).child("checkoutHour").setValue(time);
-
-                    FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(room.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
-                            if (roomDataSnapshot.exists()) {
-                                FirebaseDatabase.getInstance().getReference("Room").child(room.getRid()).child("rAvail").setValue(0);
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle any errors that occur during the query
-                        }
-                    });
-
-                    //FirebaseDatabase.getInstance().getReference("Room").child(checkRoomID).child("rAvail").setValue(0);
-                }
-            });*/
         }
     }
 }

@@ -28,10 +28,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnButtonClickListener{
     List<Booking> bookedRooms;
@@ -137,7 +139,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("checkoutHour").setValue(time);
 
         FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+                @Override
             public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
                 if (roomDataSnapshot.exists()) {
                     FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(0);
@@ -156,5 +158,73 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                 // Handle any errors that occur during the query
             }
         });
+        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
+                        if (bookingDataSnapshot.exists()) {
+                            String checkinDate = bookingDataSnapshot.child("checkinDate").getValue(String.class);
+                            String checkinHour = bookingDataSnapshot.child("checkinHour").getValue(String.class);
+                                if (checkinDate.equals(date)) {
+                                    try {
+                                        Date checkin = timeFormat.parse(checkinHour);
+                                        Date checkout = timeFormat.parse(time);
+                                        long differenceMillis = checkout.getTime() - checkin.getTime();
+                                        float differenceHoursFloat = (float) differenceMillis / (60 * 60 * 1000);
+                                        int differenceHours = (int) Math.ceil(differenceHoursFloat);
+                                        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                                                        if (roomDataSnapshot.exists()) {
+                                                            for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
+                                                                int pricePerHour = snapshot.child("pricebyHour").getValue(Integer.class);
+                                                                int total = differenceHours * pricePerHour;
+                                                                FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                                            }
+                                                        }
+                                                    }
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                        // Handle any errors that occur during the query
+                                                    }
+                                                });
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    try {
+                                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                        Date checkin = dateFormat.parse(checkinDate);
+                                        Date checkout = dateFormat.parse(date);
+                                        long differenceMillis = checkout.getTime() - checkin.getTime();
+                                        long differenceDays = TimeUnit.MILLISECONDS.toDays(differenceMillis);
+                                        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                                                if (roomDataSnapshot.exists()) {
+                                                    for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
+                                                        int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
+                                                        int total = (int) (differenceDays * pricePerDay);
+                                                        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                // Handle any errors that occur during the query
+                                            }
+                                        });
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle any errors that occur during the query
+                    }
+                });
     }
 }
