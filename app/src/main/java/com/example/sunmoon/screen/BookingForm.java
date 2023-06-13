@@ -2,6 +2,7 @@ package com.example.sunmoon.screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
+import com.example.sunmoon.models.Conditions;
 import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +27,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class BookingForm extends AppCompatActivity {
@@ -34,6 +37,8 @@ public class BookingForm extends AppCompatActivity {
     public String Gender ="";
     public FirebaseDatabase firebaseDatabase;
     public DatabaseReference databaseReference;
+    private List<Booking> bookinglist = new ArrayList<>();
+    private RecyclerView recyclerView;
     public Booking booking;
     public Room groom;
     public Guest guest;
@@ -71,22 +76,147 @@ public class BookingForm extends AppCompatActivity {
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String room = Room.getText().toString();
+                String rid = Room.getText().toString();
                 String typeofbooking = TypeOfBooking;
 
                 String name = Name.getText().toString();
                 String dob = DOB.getText().toString();
                 String gender = Gender;
                 String phone = Phone.getText().toString();
-                String idcard = Idcard.getText().toString();
+                String gid = Idcard.getText().toString();
 
-                addDatatoFireBase(room, typeofbooking, name, dob, gender, phone, idcard);
-                Intent intent = new Intent(getApplicationContext(),Home.class);
+
+                generatebookingId(new bookingIdCallback() {
+
+                    @Override
+                    public void onbookingIdGenerated(String bookingId) {
+                        int avail = 1;
+                        String checkoutDate = "";
+                        Calendar c = Calendar.getInstance();
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        int month = c.get(Calendar.MONTH) + 1;
+                        int year = c.get(Calendar.YEAR);
+                        String checkinDate = day+"/"+month+"/"+year;
+                        int minutes = c.get(Calendar.MINUTE);
+                        int hour = c.get(Calendar.HOUR);
+                        String AMPM;
+                        if (c.get(Calendar.AM_PM) == 0) {
+                            AMPM = "AM";
+                        } else {
+                            AMPM = "PM";
+                        }
+                        String checkinHour = hour+":"+minutes+" "+AMPM;
+                        String checkoutHour = "";
+
+                        String rid = Room.getText().toString();
+                        int total = 0;
+                        String status = "Check in";
+
+
+
+                        Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid);
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
+                        databaseRef.child(bookingId).setValue(booking);
+                    }
+                    @Override
+                    public void onbookingIdGenerationFailed(String errorMessage) {
+                        // Handle the report ID generation failure
+                        // You can display an error message or perform error handling logic here
+                    }
+                });
+
+                generateguestId(new guestIdCallback(){
+
+                    @Override
+                    public void onguestIdGenerated(String guestId) {
+                        boolean gAvail = true;
+                        String gName = Name.getText().toString();
+                        String gDOB = DOB.getText().toString();
+                        String gGender = Gender;
+                        String gPhone = Phone.getText().toString();
+                        String gId = Idcard.getText().toString();
+
+                        Guest guest = new Guest(gId, gName, gPhone,gDOB,gGender,gAvail);
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Guest");
+                        databaseRef.child(guestId).setValue(guest);
+                    }
+                    @Override
+                    public void onguestIdGenerationFailed(String errorMessage) {
+
+                    }
+                });
+
+                addDatatoFireBase(rid, typeofbooking, name, dob, gender, phone, gid);
+                Intent intent = new Intent(getApplicationContext(),BookingForm.class);
                 startActivity(intent);
                 finish();
+
+            }
+        });
+
+    }
+    private void generatebookingId(final BookingForm.bookingIdCallback callback) {
+        final DatabaseReference conditionsRef = FirebaseDatabase.getInstance().getReference().child("Booking");
+        conditionsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int highestNumber = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String bookingId = snapshot.getKey();
+                    String gid = Idcard.getText().toString();
+                    if (bookingId.startsWith("c")) {
+                        try {
+                            int number = Integer.parseInt(bookingId.substring(1));
+                            if (number > highestNumber) {
+                                highestNumber = number;
+                            }
+                        } catch (NumberFormatException e) {
+                            // Ignore invalid report IDs
+                        }
+                    }
+                }
+                String newReportId = String.format("c%03d", highestNumber + 1);
+                callback.onbookingIdGenerated(newReportId);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle database error
+                callback.onbookingIdGenerationFailed(databaseError.getMessage());
             }
         });
     }
+
+
+    interface bookingIdCallback {
+        void onbookingIdGenerated(String bookingId);
+        void onbookingIdGenerationFailed(String errorMessage);
+    }
+
+    private void generateguestId(final BookingForm.guestIdCallback callback) {
+        final DatabaseReference conditionsRef = FirebaseDatabase.getInstance().getReference().child("Guest");
+        conditionsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String guestId = Idcard.getText().toString();
+                callback.onguestIdGenerated(guestId);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle database error
+                callback.onguestIdGenerationFailed(databaseError.getMessage());
+            }
+        });
+    }
+
+
+    interface guestIdCallback {
+        void onguestIdGenerated(String guessId);
+        void onguestIdGenerationFailed(String errorMessage);
+    }
+
+
+
     public void RadioButtonTypeClicked(View view)
     {
         boolean checked = ((RadioButton) view).isChecked();
@@ -164,6 +294,7 @@ public class BookingForm extends AppCompatActivity {
 
             }
         };
+
 
     }
 }

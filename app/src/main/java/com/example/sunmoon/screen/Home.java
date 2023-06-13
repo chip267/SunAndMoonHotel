@@ -19,10 +19,19 @@ import android.widget.Toast;
 
 import com.example.sunmoon.MainActivity;
 import com.example.sunmoon.R;
+import com.example.sunmoon.models.Booking;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout mDrawerLayout;
@@ -31,6 +40,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ImageView imageView;
     private ImageView closeDrawer;
     private NavigationView navigationView;
+    private  Booking booking;
+    private TextView tv_checkin;
+    private TextView tv_checkout;
+    public int checkinNo;
+    public int checkoutNo;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +56,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
+
         mToggle.syncState();
         navigationView = findViewById(R.id.nav_view);
 //        closeDrawer = findViewById(R.id.imageView18);
@@ -135,7 +150,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         tv_time.setText(time);
 
         int day = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH);
+        int month = c.get(Calendar.MONTH) + 1;
         int year = c.get(Calendar.YEAR);
         String setday = "";
         String setmonth = "";
@@ -164,8 +179,60 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         String date = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(date);
+        /*
+        FirebaseDatabase.getInstance().getReference("Booking").orderByChild("BookingID").equalTo(booking.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
+                if (bookingDataSnapshot.exists()){
+                    for (DataSnapshot bookingSnapshot : bookingDataSnapshot.getChildren()){
+                        String status = bookingSnapshot.child("status").getValue(String.class);
+                        Calendar c = Calendar.getInstance();
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        int month = c.get(Calendar.MONTH) + 1;
+                        int year = c.get(Calendar.YEAR);
+                        String date = day+"/"+month+"/"+year;
+                        String checkindate = bookingDataSnapshot.child(date).getValue(String.class);
+                        if ((booking.status == "Check in")&&(booking.checkinDate == date)){
+                            checkinNo = checkinNo + 1;
+                        }
+                    }
+                }
+            }
 
-        String add = "add Home";
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        FirebaseDatabase.getInstance().getReference("Booking").orderByChild("BookingID").equalTo(booking.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
+
+                if (bookingDataSnapshot.exists()){
+                    for (DataSnapshot bookingSnapshot : bookingDataSnapshot.getChildren()){
+                        String status = bookingSnapshot.child("status").getValue(String.class);
+                        Calendar c = Calendar.getInstance();
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        int month = c.get(Calendar.MONTH) + 1;
+                        int year = c.get(Calendar.YEAR);
+                        String date = day+"/"+month+"/"+year;
+                        String checkindate = bookingDataSnapshot.child(date).getValue(String.class);
+                        if ((booking.status == "Check out")&&(booking.checkoutDate == date)){
+                            checkoutNo = checkoutNo +1;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+        tv_checkin = findViewById(R.id.tvTextAppearBooking);
+        tv_checkin.setText(checkinNo);
+        tv_checkout = findViewById(R.id.tvTextAppearForecast);
+        tv_checkout.setText(checkoutNo);
     }
 
 

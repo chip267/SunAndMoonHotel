@@ -273,7 +273,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
-            android:inputType="text"
+            android:inputType="number"
             android:background="@drawable/edittext_checkinout" />
         <TextView
             android:id="@+id/tv_idcard"
