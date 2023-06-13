@@ -84,28 +84,13 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     for (DataSnapshot bookingSnapshot:bookingDataSnapshot.getChildren()){
                         Booking booking = bookingSnapshot.getValue(Booking.class);
                         booking.setBookingID(bookingSnapshot.getKey());
-
-
-                        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(booking.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
-                                if (roomDataSnapshot.exists()){
-                                    for (DataSnapshot roomSnapshot : roomDataSnapshot.getChildren()){
-                                        int isAvail = roomSnapshot.child("rAvail").getValue(Integer.class);
-                                        if (isAvail == 1){
-                                            bookedRooms.add(booking);
-                                        }
-                                    }
-                                    roomAdapter.setData(bookedRooms);
-                                    roomAdapter.notifyDataSetChanged();
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                        String status = bookingSnapshot.child("status").getValue(String.class);
+                        String checkin="Check in";
+                        if (status.equals(checkin)){
+                            bookedRooms.add(booking);
+                        }
+                        roomAdapter.setData(bookedRooms);
+                        roomAdapter.notifyDataSetChanged();
 
                     }
                 }
