@@ -164,8 +164,8 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
         }
 
         String dateA = day + setday + " " + setmonth;
-        TextView tv_date = findViewById(R.id.tv3);
-        tv_date.setText(date);
+        TextView tv_date = findViewById(R.id.tv_showday);
+        tv_date.setText(dateA);
 
     }
     private boolean isDateToday(String date) {
