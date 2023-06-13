@@ -30,7 +30,7 @@ public class BookingForm extends AppCompatActivity {
         setContentView(R.layout.booking_form);
         super.onCreate(savedInstanceState);
 
-        /*CheckIn = findViewById(R.id.boxStart1);
+        CheckIn = findViewById(R.id.boxStart1);
         Checkout = findViewById(R.id.boxEnd1);
         Room = findViewById(R.id.boxRoom);
         TypeOfRenting = findViewById(R.id.boxRent1);
@@ -90,6 +90,6 @@ public class BookingForm extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(BookingForm.this, "Fail to add data " + error, Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 }
