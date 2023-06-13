@@ -41,10 +41,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ImageView closeDrawer;
     private NavigationView navigationView;
     private  Booking booking;
-    private TextView tv_checkin;
-    private TextView tv_checkout;
-    public int checkinNo;
-    public int checkoutNo;
+    public int checkinNo = 0;
+    public int checkoutNo = 0;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,11 +227,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
-        tv_checkin = findViewById(R.id.tvTextAppearBooking);
-        tv_checkin.setText(checkinNo);
-        tv_checkout = findViewById(R.id.tvTextAppearForecast);
-        tv_checkout.setText(checkoutNo);
+        });
+        */
+        String stringCI = String.valueOf(checkinNo);
+        String stringCO = String.valueOf(checkoutNo);
+        TextView tv_checkin = findViewById(R.id.tvTextAppearBooking);
+        tv_checkin.setText(stringCI);
+        TextView tv_checkout = findViewById(R.id.tvTextAppearForecast);
+        tv_checkout.setText(stringCO);
     }
 
 
