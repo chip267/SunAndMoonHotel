@@ -17,17 +17,18 @@ import com.example.sunmoon.adapter.BookedRoomAdapter;
 import com.example.sunmoon.adapter.GuestAdapter;
 
 import com.example.sunmoon.models.Booking;
-import com.example.sunmoon.models.Guest;
-import com.example.sunmoon.models.Room;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Booked extends AppCompatActivity {
+public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnButtonClickListener{
     List<Booking> bookedRooms;
     RecyclerView bookedRoomRecyclerView;
     BookedRoomAdapter roomAdapter;
@@ -42,13 +43,14 @@ public class Booked extends AppCompatActivity {
         bookedRoomRecyclerView = findViewById(R.id.booked_room);
         bookedRooms = new ArrayList<Booking>();
 
-        roomAdapter = new BookedRoomAdapter(bookedRooms, this);
+        //roomAdapter = new BookedRoomAdapter(bookedRooms, this);
+        roomAdapter = new BookedRoomAdapter();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
         bookedRoomRecyclerView.setAdapter(roomAdapter);
         bookedRoomRecyclerView.setLayoutManager(linearLayoutManager);
-
+        roomAdapter.setOnButtonClickListener(this);
         FirebaseDatabase.getInstance().getReference("Booking").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
@@ -66,9 +68,10 @@ public class Booked extends AppCompatActivity {
                                         int isAvail = roomSnapshot.child("rAvail").getValue(Integer.class);
                                         if (isAvail == 1){
                                             bookedRooms.add(booking);
-                                            roomAdapter.notifyDataSetChanged();
                                         }
                                     }
+                                    roomAdapter.setData(bookedRooms);
+                                    roomAdapter.notifyDataSetChanged();
                                 }
                             }
 
@@ -99,5 +102,31 @@ public class Booked extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void onCheckOutButtonClick(String bookedId, String roomID) {
+        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("status").setValue("checkout");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+        String time = timeFormat.format(new Date());
+        String date = dateFormat.format(new Date());
+        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("checkoutDate").setValue(date);
+        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("checkoutHour").setValue(time);
+
+        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                if (roomDataSnapshot.exists()) {
+                    FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(0);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle any errors that occur during the query
+            }
+        });
+
+        Intent intent = new Intent(getApplicationContext(), SalesReport.class);
+        startActivity(intent);
+        finish();
     }
 }
