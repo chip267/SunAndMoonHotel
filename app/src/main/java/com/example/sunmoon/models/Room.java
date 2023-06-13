@@ -47,6 +47,10 @@ public class Room {
     public void setrAvail(int rAvail) {
         this.rAvail = rAvail;
     }
+    public Room()
+    {
+
+    }
 
     public Room(String roomID, String roomType, double pricebyHour, double pricebyDay, int rAvail) {
         this.roomID = roomID;

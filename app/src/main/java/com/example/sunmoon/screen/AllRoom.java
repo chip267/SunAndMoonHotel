@@ -2,6 +2,8 @@ package com.example.sunmoon.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +11,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.sunmoon.R;
+import com.example.sunmoon.adapter.CustomAdapter;
+import com.example.sunmoon.adapter.ReportAdapter;
+import com.example.sunmoon.models.Room;
 
 public class AllRoom extends AppCompatActivity {
     private ImageView imageViewBack;
     private ImageView imageViewAddRoom;
     private AppCompatButton bookedButton;
     private AppCompatButton vacantButton;
+    private RecyclerView recyclerView;
+    private CustomAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +62,24 @@ public class AllRoom extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
-
-
+        recyclerView = findViewById(R.id.list_room);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        adapter = new CustomAdapter(this);
+        recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
+            @Override
+            public void onVacantItemClick(Room room) {
+                Intent intent = new Intent(AllRoom.this, BookingForm.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+            @Override
+            public void onBookedItemClick(Room room) {
+                Intent intent = new Intent(AllRoom.this, Booked.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+        adapter.fetchData();
     }
 }
