@@ -3,6 +3,7 @@ package com.example.sunmoon.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public interface OnButtonClickListener {
         void onDoneButtonClick(String reportId);
         void onDeleteButtonClick(String reportId);
+
     }
 
     private OnButtonClickListener onButtonClickListener;
@@ -79,6 +81,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView tvRoomNum;
         AppCompatButton btnDone;
         AppCompatButton btnDelete;
+
+        ImageView btnCheckOut;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
