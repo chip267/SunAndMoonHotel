@@ -38,12 +38,12 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookedRoomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Booking booked_room = (Booking) bookedRoom.get(position);
 
         holder.checkInDate.setText(booked_room.getCheckinDate());
         holder.checkOutDate.setText(booked_room.getCheckoutDate());
-        holder.roomID.setText("Room " + booked_room.getRoomID());
+        holder.roomID.setText("Room " + booked_room.getRid());
         //holder.guestName.setText(booked_room.getGuestName());
         //holder.guestPhone.setText(booked_room.getGuestPhone());
     }
