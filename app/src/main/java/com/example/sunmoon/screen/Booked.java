@@ -39,11 +39,31 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     BookedRoomAdapter roomAdapter;
     ImageView btnBack;
 
-
+    AppCompatButton btnNavAllRoom, btnNavVacant;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rooms_booked);
+
+        btnNavAllRoom = findViewById(R.id.btn_AllRooms);
+        btnNavAllRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Booked.this, AllRoom.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+        btnNavVacant = findViewById(R.id.btn_Occupied);
+        btnNavVacant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Booked.this, Vacant.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
 
         bookedRoomRecyclerView = findViewById(R.id.booked_room);
         bookedRooms = new ArrayList<Booking>();
