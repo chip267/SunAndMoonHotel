@@ -9,11 +9,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sunmoon.R;
+import com.example.sunmoon.adapter.CustomAdapter;
 import com.example.sunmoon.models.Conditions;
 import com.example.sunmoon.models.Room;
 import com.google.firebase.database.DataSnapshot;
@@ -32,9 +36,16 @@ public class AllRoomAdd extends AppCompatActivity {
     private EditText hourEditText, dayEditText;
     public String roomType ="";
     private Dialog dialog;
+    private RecyclerView recyclerView;
+    private CustomAdapter adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_rooms_2);
+        recyclerView = findViewById(R.id.list_room);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        adapter = new CustomAdapter(this);
+        recyclerView.setAdapter(adapter);
+        adapter.fetchData();
         doneButton = findViewById(R.id.btn_doneRoom);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +71,33 @@ public class AllRoomAdd extends AppCompatActivity {
                 });
                 hourEditText = dialog.findViewById(R.id.box_hour);
                 dayEditText = dialog.findViewById(R.id.box_day);
+                TextView roomAddTextView = dialog.findViewById(R.id.tv_roomAdd);
+                DatabaseReference roomRef = FirebaseDatabase.getInstance().getReference("Room");
+                roomRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int highestNumber = 0;
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String roomId = snapshot.getKey();
+                            try {
+                                int number = Integer.parseInt(roomId);
+                                if (number > highestNumber) {
+                                    highestNumber = number;
+                                }
+                            } catch (NumberFormatException e) {
+                                // Ignore invalid room IDs
+                            }
+                        }
+                        int nextRoomNumber = highestNumber + 1;
+                        String nextRoomId = String.format(Locale.US, "%03d", nextRoomNumber);
+                        roomAddTextView.setText("Room " + nextRoomId);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle database error
+                    }
+                });
+
                 AppCompatButton doneButton = dialog.findViewById(R.id.btn_doneroomadd);
                 doneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -78,7 +116,7 @@ public class AllRoomAdd extends AppCompatActivity {
                         generateroomId(new RoomIdCallback() {
                             @Override
                             public void onRoomIdGenerated(String roomId) {
-                                int avail = 1;
+                                int avail = 0;
                                 Room rooms = new Room(roomId, roomType, hour, day, avail);
                                 DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Room");
                                 databaseRef.child(roomId).setValue(rooms);
@@ -95,21 +133,6 @@ public class AllRoomAdd extends AppCompatActivity {
             }
         });
     }
-    /*public void RadioButtonTypeClicked(View view)
-    {
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.radioButtonStandard:
-                if (checked)
-                    roomType = "Standard";
-                break;
-            case R.id.radioButtonDeluxe:
-                if (checked)
-                    roomType = "Deluxe";
-                break;
-        }
-    }*/
     private void generateroomId(final RoomIdCallback callback) {
         final DatabaseReference roomRef = FirebaseDatabase.getInstance().getReference().child("Room");
         roomRef.addListenerForSingleValueEvent(new ValueEventListener() {
