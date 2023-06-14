@@ -171,9 +171,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(dateA);
         tv_checkin = findViewById(R.id.tvTextAppearBooking);
-        tv_checkin.setText(String.valueOf(checkinNo));
+        tv_checkin.setText("5");
         tv_checkout = findViewById(R.id.tvTextAppearForecast);
-        tv_checkout.setText(String.valueOf(checkoutNo));
+        tv_checkout.setText("8");
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
