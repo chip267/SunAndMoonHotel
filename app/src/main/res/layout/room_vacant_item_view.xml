@@ -8,7 +8,7 @@
     android:background="@drawable/frame_979">
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/imageViewPhong"
         android:layout_width="143dp"
         android:layout_height="123dp"
         android:layout_gravity="center"

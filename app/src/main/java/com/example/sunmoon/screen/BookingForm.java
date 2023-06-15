@@ -102,8 +102,9 @@ public class BookingForm extends AppCompatActivity {
                         String rid = Room.getText().toString();
                         int total = 0;
                         String status = "Check in";
-
-                        Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid);
+                        int surcharge=0;
+                        int totalBill=0;
+                        Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill);
                         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                         databaseRef.child(bookingId).setValue(booking);
                         FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);

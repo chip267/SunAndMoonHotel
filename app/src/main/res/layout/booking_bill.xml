@@ -332,7 +332,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_nameCus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/librefranklinmedium"
@@ -373,7 +373,7 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_doneroomadd"
+                android:id="@+id/btn_donebilladd"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:background="@drawable/rectangle_search"
@@ -386,7 +386,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_cancelroomadd"
+                android:id="@+id/btn_cancelbill"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
