@@ -3,6 +3,7 @@ package com.example.sunmoon.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,7 +46,13 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull VacantAdapter.ViewHolder holder, int position) {
         Room room = rooms.get(position);
-        holder.tvKind.setText(room.getRoomType());
+        String roomType = room.getRoomType();
+        if (roomType.equals("Standard")) {
+            holder.imagePhong.setImageResource(R.drawable.standard_ava);
+        } else if (roomType.equals("Deluxe")) {
+            holder.imagePhong.setImageResource(R.drawable.deluxe_ava);
+        }
+        holder.tvKind.setText(room.roomType);
         double money = room.getPricebyDay();
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setGroupingSeparator('.');
@@ -73,6 +80,7 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
         TextView tvMoney;
         TextView tvRoomNum;
         AppCompatButton btnBooknow;
+        ImageView imagePhong;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +88,7 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
             tvKind = itemView.findViewById(R.id.tv_kind);
             tvRoomNum = itemView.findViewById(R.id.tv_roomVacant);
             btnBooknow = itemView.findViewById(R.id.btn_booknow);
+            imagePhong = itemView.findViewById(R.id.imageViewPhong);
         }
     }
 }
