@@ -126,28 +126,11 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
         conditionsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                /*try {
-                    List<Conditions> filteredConditions = new ArrayList<>();
-
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Conditions condition = snapshot.getValue(Conditions.class);
-
-                        if (condition != null && condition.getAvail() == 1) {
-                            filteredConditions.add(condition);
-                        }
-                    }
-                    adapter.setData(filteredConditions);
-                    adapter.notifyDataSetChanged();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(CheckRoomPending.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }*/
                 try {
                     List<Conditions> filteredConditions = new ArrayList<>();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Conditions condition = snapshot.getValue(Conditions.class);
                         if (condition != null && condition.getAvail() == 1) {
-                            // Check if the condition's date falls within the current week
                             if (isDateInCurrentWeekday(condition.getDate())) {
                                 filteredConditions.add(condition);
                             }
