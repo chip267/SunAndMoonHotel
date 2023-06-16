@@ -117,6 +117,7 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
     }
     public void onButtonClick(String roomID) {
         Intent intent = new Intent(getApplicationContext(), BookingForm.class);
+        intent.putExtra("roomID", roomID);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

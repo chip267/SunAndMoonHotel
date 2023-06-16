@@ -69,7 +69,9 @@ public class AllRoom extends AppCompatActivity {
         adapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
             @Override
             public void onVacantItemClick(Room room) {
+                String roomID = room.getRoomID();
                 Intent intent = new Intent(AllRoom.this, BookingForm.class);
+                intent.putExtra("roomID", roomID);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

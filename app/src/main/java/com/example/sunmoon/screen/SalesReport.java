@@ -41,7 +41,6 @@ public class SalesReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sales_report);
         recyclerView = findViewById(R.id.recyclerviewReport);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ReportAdapter();
@@ -56,7 +55,7 @@ public class SalesReport extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Booking booking = snapshot.getValue(Booking.class);
                         if (booking != null && ("checkout".equals(booking.getStatus()))) {
-                            if (isDateInCurrentWeekday(booking.getCheckoutDate())) {
+                            if (isDateInCurrentMonth(booking.getCheckoutDate())) {
                                 filteredBooking.add(booking);
                             }
                         }
@@ -68,8 +67,6 @@ public class SalesReport extends AppCompatActivity {
                     Toast.makeText(SalesReport.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle any errors
@@ -95,35 +92,34 @@ public class SalesReport extends AppCompatActivity {
             }
         });
     }
-    private boolean isDateInCurrentWeekday(String date) {
+    public boolean isDateInCurrentMonth(String date) {
         SimpleDateFormat sdfDateOnly = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         Date currentDate = new Date();
 
         try {
-            // Parse the condition's date
-            Date bookingDate = sdfDateOnly.parse(date);
+            // Parse the input date
+            Date inputDate = sdfDateOnly.parse(date);
 
-            // Get the start and end dates of the current week
+            // Get the start and end dates of the current month
             Calendar calendar = Calendar.getInstance();
-            calendar.setFirstDayOfWeek(Calendar.MONDAY);
-            calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            Date startOfWeek = calendar.getTime();
-            calendar.add(Calendar.DAY_OF_WEEK, 6);
-            Date endOfWeek = calendar.getTime();
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            Date startOfMonth = calendar.getTime();
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            Date endOfMonth = calendar.getTime();
 
             // Truncate time portion for comparison
-            String bookingDateOnly = sdfDateOnly.format(bookingDate);
+            String inputDateOnly = sdfDateOnly.format(inputDate);
             String currentDateTimeOnly = sdfDateOnly.format(currentDate);
-            startOfWeek = sdfDateOnly.parse(sdfDateOnly.format(startOfWeek));
-            endOfWeek = sdfDateOnly.parse(sdfDateOnly.format(endOfWeek));
+            startOfMonth = sdfDateOnly.parse(sdfDateOnly.format(startOfMonth));
+            endOfMonth = sdfDateOnly.parse(sdfDateOnly.format(endOfMonth));
 
-            // Check if the condition's date falls within the current week and not in the future
-            return bookingDateOnly != null &&
-                    bookingDateOnly.equals(sdfDateOnly.format(startOfWeek)) ||
-                    bookingDateOnly.equals(sdfDateOnly.format(endOfWeek)) ||
-                    (bookingDateOnly.compareTo(sdfDateOnly.format(startOfWeek)) > 0 &&
-                            bookingDateOnly.compareTo(sdfDateOnly.format(endOfWeek)) < 0) &&
-                            currentDateTimeOnly.compareTo(bookingDateOnly) >= 0;
+            // Check if the input date falls within the current month and not in the future
+            return inputDateOnly != null &&
+                    inputDateOnly.equals(sdfDateOnly.format(startOfMonth)) ||
+                    inputDateOnly.equals(sdfDateOnly.format(endOfMonth)) ||
+                    (inputDateOnly.compareTo(sdfDateOnly.format(startOfMonth)) >= 0 &&
+                            inputDateOnly.compareTo(sdfDateOnly.format(endOfMonth)) <= 0) &&
+                            currentDateTimeOnly.compareTo(inputDateOnly) >= 0;
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
