@@ -44,7 +44,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     BookedRoomAdapter roomAdapter;
     ImageView btnBack;
     private Dialog dialog;
-    private TextView checkin,checkout,roomnum,type,roomcharge,surcharge,totalX,bookingID,phone,name;
+    private TextView checkin,checkout,roomnum,type,roomcharge,surcharge,totalX,bookingID,phone,name, TIME;
     private String checkinA, checkinB, checkinC, checkoutA, checkoutB, checkoutC, roomnumA,
             gID, typeA, roomchargeA, surchargeA,totalA,bookingIDA,phoneA,nameA;
     private int totalB, totalBill;
@@ -138,6 +138,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         bookingID = dialog.findViewById(R.id.tv_idbill);
         name = dialog.findViewById(R.id.tv_nameCus);
         phone = dialog.findViewById(R.id.tv_phonenocus);
+        TIME = dialog.findViewById(R.id.tv_details);
         DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference("Booking").child(bookedId);
         bookingRef.child("checkoutDate").setValue(dateCO);
         bookingRef.child("checkoutHour").setValue(timeCO);
@@ -151,13 +152,16 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     bookingRef.child("totalBill").setValue(totalBill);
                     String checkinDate = bookingDataSnapshot.child("checkinDate").getValue(String.class);
                     String checkinHour = bookingDataSnapshot.child("checkinHour").getValue(String.class);
-                    if (checkinDate.equals(dateCO)) {
+                    String bookType = bookingDataSnapshot.child("bookingType").getValue(String.class);
+                    if (checkinDate.equals(dateCO) && bookType.equals("Hour")) {
                         try {
                             Date checkin = timeFormat.parse(checkinHour);
                             Date checkout = timeFormat.parse(timeCO);
                             long differenceMillis = checkout.getTime() - checkin.getTime();
                             float differenceHoursFloat = (float) differenceMillis / (60 * 60 * 1000);
                             int differenceHours = (int) Math.ceil(differenceHoursFloat);
+                            String timeBill = String.valueOf(differenceHours);
+                            TIME.setText("("+timeBill+" hour)");
                             FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
@@ -177,13 +181,15 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                    } else {
+                    } else if (!checkinDate.equals(dateCO)) {
                         try {
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                             Date checkin = dateFormat.parse(checkinDate);
                             Date checkout = dateFormat.parse(dateCO);
                             long differenceMillis = checkout.getTime() - checkin.getTime();
                             long differenceDays = TimeUnit.MILLISECONDS.toDays(differenceMillis);
+                            String timeBill = String.valueOf(differenceDays);
+                            TIME.setText("("+timeBill+" day)");
                             FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
@@ -203,6 +209,28 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                    }
+                    else if (checkinDate.equals(dateCO) && bookType.equals("Day"))
+                    {
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            long differenceDays = 1;
+                            TIME.setText("(1 day)");
+                            FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                                    if (roomDataSnapshot.exists()) {
+                                        for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
+                                            int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
+                                            int total = (int) (differenceDays * pricePerDay);
+                                            FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                        }
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    // Handle any errors that occur during the query
+                                }
+                            });
                     }
                     checkinA = bookingDataSnapshot.child("checkinHour").getValue(String.class);
                     checkinB = bookingDataSnapshot.child("checkinDate").getValue(String.class);
