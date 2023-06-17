@@ -3,6 +3,7 @@ package com.example.sunmoon.screen;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
@@ -45,6 +47,11 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
     private ImageView imageView;
     private ImageView closeDrawer;
     private NavigationView navigationView;
+    private TextView tv_checkin;
+    private TextView tv_checkout;
+    private DatabaseReference bookingRef;
+    private int checkinNo = 0;
+    private int checkoutNo = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +173,40 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
         String dateA = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv_showday);
         tv_date.setText(dateA);
-
+        tv_checkin = findViewById(R.id.tvTextAppearBooking);
+        tv_checkout = findViewById(R.id.tvTextAppearForecast);
+        bookingRef = FirebaseDatabase.getInstance().getReference("Booking");
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        String today = convertDateToString(currentDate);
+        Query query = bookingRef.orderByChild("checkinDate").equalTo(today);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot bookingSnapshot : dataSnapshot.getChildren()) {
+                    String status = bookingSnapshot.child("status").getValue(String.class);
+                    if ("Check in".equals(status)) {
+                        checkinNo++;
+                    }
+                    else if("checkout".equals(status)) {
+                        checkoutNo++;
+                    }
+                }
+                String cinNo = String.valueOf(checkinNo);
+                String coutNo = String.valueOf(checkoutNo);
+                tv_checkin.setText(cinNo);
+                tv_checkout.setText(coutNo);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("Firebase", "Error querying bookings: " + databaseError.getMessage());
+            }
+        });
+    }
+    private String convertDateToString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        return format.format(date);
     }
     private boolean isDateToday(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());

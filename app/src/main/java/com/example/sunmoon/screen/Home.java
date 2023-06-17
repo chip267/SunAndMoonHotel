@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout mDrawerLayout;
@@ -44,8 +46,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private  Booking booking;
     private TextView tv_checkin;
     private TextView tv_checkout;
-    public int checkinNo;
-    public int checkoutNo;
+    private DatabaseReference bookingRef;
+    private int checkinNo = 0;
+    private int checkoutNo = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,14 +169,43 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case 11: setmonth = "November";break;
             case 12: setmonth = "December";break;
         }
-
         String dateA = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(dateA);
         tv_checkin = findViewById(R.id.tvTextAppearBooking);
-        tv_checkin.setText("5");
         tv_checkout = findViewById(R.id.tvTextAppearForecast);
-        tv_checkout.setText("8");
+        bookingRef = FirebaseDatabase.getInstance().getReference("Booking");
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        String today = convertDateToString(currentDate);
+        Query query = bookingRef.orderByChild("checkinDate").equalTo(today);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot bookingSnapshot : dataSnapshot.getChildren()) {
+                    String status = bookingSnapshot.child("status").getValue(String.class);
+                    if ("Check in".equals(status)) {
+                        checkinNo++;
+                    }
+                    else if("checkout".equals(status)) {
+                        checkoutNo++;
+                    }
+                }
+                String cinNo = String.valueOf(checkinNo);
+                String coutNo = String.valueOf(checkoutNo);
+                tv_checkin.setText(cinNo);
+                tv_checkout.setText(coutNo);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("Firebase", "Error querying bookings: " + databaseError.getMessage());
+            }
+        });
+    }
+    private String convertDateToString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        return format.format(date);
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
