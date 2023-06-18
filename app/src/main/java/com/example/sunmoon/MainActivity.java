@@ -20,6 +20,7 @@ import com.example.sunmoon.screen.Home;
 import com.example.sunmoon.screen.HomeHouseKeeping;
 import com.example.sunmoon.screen.PersonelAdd;
 import com.example.sunmoon.screen.SalesOverview;
+import com.example.sunmoon.models.UserSingleton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inputUsrName = findViewById(R.id.et_input_usrname);
         inputPassword = findViewById(R.id.et_input_password);
+
+        UserSingleton userSingleton = UserSingleton.getInstance();
 
 
 
@@ -95,10 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
                 String finalUsername = username;
                 String finalPassword = password;
+
                 checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
+                            userSingleton.setUserName(finalUsername);
                             String getPassword = snapshot.child(finalUsername).child("aPassword").getValue(String.class);
                             if (getPassword.equals(finalPassword)){
                                 Toast.makeText(MainActivity.this, "Login successfully",
