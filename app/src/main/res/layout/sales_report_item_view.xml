@@ -82,7 +82,7 @@
             android:textSize="15dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
-            android:text="301" />
+            android:text="302" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
