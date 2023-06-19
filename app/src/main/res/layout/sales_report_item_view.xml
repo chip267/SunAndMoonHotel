@@ -43,7 +43,7 @@
             android:id="@+id/tv_customer"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="Customer" />
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="30dp"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="Nguyen Thi Luu" />
@@ -69,6 +69,7 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:textSize="15dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="Room" />
@@ -91,10 +92,36 @@
         android:paddingLeft="25dp">
 
         <TextView
+            android:id="@+id/tv_checkin"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:textColor="@color/lightbrown"
+            android:text="Check in" />
+        <TextView
+            android:id="@+id/tv_checkin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/librefranklinregular"
+            android:textColor="@color/lightbrown"
+            android:text="8:00 AM   26/05/2023" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+        <TextView
             android:id="@+id/tv_roomcharge"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="Room charge" />
@@ -105,7 +132,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="30dp"
 
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="200.000 " />
@@ -120,10 +147,11 @@
             android:id="@+id/tv_surcharge"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:fontFamily="@font/librefranklinregular"
+            android:text="Surcharge"
             android:textColor="@color/lightbrown"
-            android:text="Surcharge" />
+            android:textSize="17dp" />
+
         <TextView
             android:id="@+id/tv_surcharge1"
             android:layout_width="wrap_content"
@@ -131,7 +159,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="30dp"
 
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:fontFamily="@font/librefranklinregular"
             android:textColor="@color/lightbrown"
             android:text="60.000 " />
@@ -146,8 +174,8 @@
             android:id="@+id/tv_total"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:fontFamily="@font/librefranklinregular"
+            android:textSize="17dp"
+            android:fontFamily="@font/librefranklinbold"
             android:textColor="@color/lightbrown"
             android:text="Total" />
         <TextView
@@ -156,9 +184,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="30dp"
-
-            android:textSize="15dp"
-            android:fontFamily="@font/librefranklinregular"
+            android:textSize="17dp"
+            android:fontFamily="@font/librefranklinbold"
             android:textColor="@color/lightbrown"
             android:text="260.000 " />
     </LinearLayout>
