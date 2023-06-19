@@ -45,15 +45,20 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     public void setOnButtonClickListener(BookedRoomAdapter.OnButtonClickListener listener) {
         this.onButtonClickListener = listener;
     }
-    public void setData(List<Booking> bookedRoom) {
+    /*public void setData(List<Booking> bookedRoom) {
         this.bookedRoom = bookedRoom;
-    }
-    /*private Context room_Context;
+    }*/
+    private Context room_Context;
 
     public BookedRoomAdapter(List _bookedRoom, Context room_Context) {
         this.bookedRoom = _bookedRoom;
         this.room_Context = room_Context;
-    }*/
+    }
+
+    public void setFilteredItem(List item){
+        this.bookedRoom = item;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -104,7 +109,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                     String surchargeValueString = holder.surcharge.getText().toString().trim();
                     int surchargeValue = 0;
                     if (!surchargeValueString.isEmpty()) {
-                            surchargeValue = Integer.parseInt(surchargeValueString);
+                        surchargeValue = Integer.parseInt(surchargeValueString);
                     }
                     int totalBill = booked_room.getTotal() + surchargeValue;
                     onButtonClickListener.onCheckOutButtonClick(bookedID, roomID, surchargeValue);
