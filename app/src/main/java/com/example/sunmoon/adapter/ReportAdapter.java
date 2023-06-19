@@ -60,6 +60,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
         holder.tvrooomcharge.setText(roomcharge);
         holder.tvsurcharge.setText(surcharge);
         holder.tvtotal.setText(total);
+        holder.checkin.setText(booking.getCheckinHour()+"   "+booking.getCheckinDate());
     }
     @Override
     public int getItemCount() {
@@ -67,7 +68,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvID, tvtime, tvcustomer, tvrooom, tvrooomcharge, tvsurcharge, tvtotal;
+        TextView tvID, tvtime, tvcustomer, tvrooom, tvrooomcharge, tvsurcharge, tvtotal, checkin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +79,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             tvrooomcharge = itemView.findViewById(R.id.tv_rooomcharge1);
             tvsurcharge = itemView.findViewById(R.id.tv_surcharge1);
             tvtotal = itemView.findViewById(R.id.tv_total1);
+            checkin = itemView.findViewById(R.id.tv_checkin1);
         }
     }
 }
