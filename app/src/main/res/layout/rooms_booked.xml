@@ -31,9 +31,9 @@
         />
 
     <RelativeLayout
-
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="94dp"
         android:background="@drawable/rectangle_search"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,6 +60,41 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="150dp"
         tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_SortBy"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:background="@drawable/edittext_search"
+        app:layout_constraintTop_toTopOf="@+id/layout"
+        app:layout_constraintRight_toRightOf="@+id/layout"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="120dp"
+        android:text="Sort by"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:textColor="#FFF0CB"
+        android:fontFamily="@font/librefranklinmedium"
+        tools:ignore="MissingConstraints"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Filter"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:background="@drawable/edittext_search"
+        app:layout_constraintTop_toTopOf="@+id/layout"
+        app:layout_constraintRight_toRightOf="@+id/layout"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="30dp"
+        android:text="Filter"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:textColor="#FFF0CB"
+        android:fontFamily="@font/librefranklinmedium"
+        tools:ignore="MissingConstraints"
+        />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Booked"
@@ -118,6 +153,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-143dp"
         tools:listitem="@layout/room_item_view" />
+
+
     <!--<TextView
         android:id="@+id/tvRoom110"
         android:layout_width="wrap_content"
