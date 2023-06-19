@@ -3,6 +3,7 @@ package com.example.sunmoon.screen;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,8 +11,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,7 @@ import com.example.sunmoon.adapter.BookedRoomAdapter;
 import com.example.sunmoon.adapter.GuestAdapter;
 
 import com.example.sunmoon.adapter.RecyclerViewAdapter;
+import com.example.sunmoon.adapter.RoomTypeAdapter;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
@@ -34,11 +39,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnButtonClickListener{
+public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnButtonClickListener, AdapterView.OnItemSelectedListener {
     List<Booking> bookedRooms;
     RecyclerView bookedRoomRecyclerView;
     BookedRoomAdapter roomAdapter;
@@ -49,6 +55,11 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             gID, typeA, roomchargeA, surchargeA,totalA,bookingIDA,phoneA,nameA;
     private int totalB, totalBill;
     AppCompatButton btnNavAllRoom, btnNavVacant;
+    SearchView searchRoom;
+    private String textsrc="", filterOption;
+    Spinner filter;
+    RoomTypeAdapter roomTypeAdapter;
+    ArrayList <String> roomTypeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +85,32 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             }
         });
 
+        searchRoom = findViewById(R.id.search_booked_room);
+        searchRoom.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                textsrc = newText;
+                filterOption = filter.getSelectedItem().toString();
+                filteredList(newText, filterOption);
+                return false;
+            }
+        });
+
+        filter = findViewById(R.id.sp_Filter);
+        roomTypeList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.roomtype)));
+        roomTypeAdapter = new RoomTypeAdapter(this, roomTypeList);
+        filter.setAdapter(roomTypeAdapter);
+        filter.setOnItemSelectedListener(this);
+
         bookedRoomRecyclerView = findViewById(R.id.booked_room);
         bookedRooms = new ArrayList<Booking>();
 
-        roomAdapter = new BookedRoomAdapter();
+        roomAdapter = new BookedRoomAdapter(bookedRooms, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
@@ -96,7 +129,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                         if (status.equals(checkin)){
                             bookedRooms.add(booking);
                         }
-                        roomAdapter.setData(bookedRooms);
+                        //roomAdapter.setData(bookedRooms);
                         roomAdapter.notifyDataSetChanged();
 
                     }
@@ -212,25 +245,25 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     }
                     else if (checkinDate.equals(dateCO) && bookType.equals("Day"))
                     {
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                            long differenceDays = 1;
-                            TIME.setText("(1 day)");
-                            FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
-                                    if (roomDataSnapshot.exists()) {
-                                        for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
-                                            int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
-                                            int total = (int) (differenceDays * pricePerDay);
-                                            FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
-                                        }
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        long differenceDays = 1;
+                        TIME.setText("(1 day)");
+                        FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                                if (roomDataSnapshot.exists()) {
+                                    for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
+                                        int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
+                                        int total = (int) (differenceDays * pricePerDay);
+                                        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
                                     }
                                 }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                    // Handle any errors that occur during the query
-                                }
-                            });
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                // Handle any errors that occur during the query
+                            }
+                        });
                     }
                     checkinA = bookingDataSnapshot.child("checkinHour").getValue(String.class);
                     checkinB = bookingDataSnapshot.child("checkinDate").getValue(String.class);
@@ -299,11 +332,13 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                             for (int i = 0; i < bookedRooms.size(); i++){
                                 if(bookedRooms.get(i).getBookingID() == bookedId){
                                     bookedRooms.remove(i);
-                                    roomAdapter.setData(bookedRooms);
+                                    //roomAdapter.setData(bookedRooms);
                                     roomAdapter.notifyItemRemoved(i);
                                     break;
                                 }
                             }
+                            filterOption = filter.getSelectedItem().toString();
+                            filteredList(textsrc, filterOption);
                         }
                     }
                     @Override
@@ -314,5 +349,60 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                 dialog.dismiss();
             }
         });
+    }
+    private List<Booking> filterList;
+    private void filteredList (String searchText, String option){
+        filterList = new ArrayList<>();
+        List<Booking> roomListFilter = new ArrayList<>(bookedRooms);
+        for (Booking item : bookedRooms){
+            if (item.getRid().toLowerCase().contains(searchText.toLowerCase())){
+
+                /*if (option.equalsIgnoreCase("104")){
+                    filterList.add(item);
+                }*/
+                filterList.add(item);
+
+                /*FirebaseDatabase.getInstance().getReference("Room").child(item.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            String type = snapshot.child("roomType").getValue(String.class);
+                            System.out.println(type);
+
+                            if (option.equalsIgnoreCase(type)){
+                                isFilterd[0] = true;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });*/
+                /*if (isFilterd[0]){
+                    filterList.add(item);
+                }*/
+            }
+        }
+        if (searchText.isEmpty()){
+            filterList = bookedRooms;
+        }
+        else if (filterList.isEmpty() && !searchText.isEmpty()){
+            filterList.clear();
+        }
+
+        roomAdapter.setFilteredItem(filterList);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        filterOption = filter.getSelectedItem().toString();
+        filteredList(textsrc, filterOption);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
