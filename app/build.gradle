@@ -50,9 +50,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.pires:obd-java-api:1.0'
-    implementation('pub.dervel:easypermissons:3.0.0')
-    implementation('com.droidninja:filepicker:2.2.5')
-    implementation('com.github.bumptech.glide:glide:4.13.0')
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3')
+
 }
 apply plugin: 'com.google.gms.google-services'
