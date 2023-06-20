@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:editTextColor">@color/darkbrown</item>
+        <item name="android:editTextColor">#FFF0CB</item>
     </style>
 
     <!--new style is created here-->
@@ -20,4 +20,6 @@
         <item name="android:fontFamily">@font/librefranklinbold</item>
         <item name="android:textSize">20dp</item>
     </style>
+
+
 </resources>
