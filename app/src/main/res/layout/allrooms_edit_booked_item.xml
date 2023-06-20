@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="95dp"
+    android:layout_height="95dp"
+    android:background="@drawable/bg_booked_room"
+    android:paddingTop="30dp"
+    android:layout_margin="5dp"
+    >
+
+    <TextView
+        android:id="@+id/numBooked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/canelablacktrial"
+        android:text="101"
+        android:textColor="@color/lightpink"
+        android:textSize="30dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/banner_edit"
+        android:layout_marginTop="8dp"
+        >
+        <TextView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/librefranklinmedium"
+            android:textSize="15dp"
+            android:textColor="@color/darkbrown"
+            android:layout_centerInParent="true"
+            android:text="Edit" />
+    </RelativeLayout>
+
+</LinearLayout>
