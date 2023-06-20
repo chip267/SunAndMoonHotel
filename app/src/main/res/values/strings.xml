@@ -6,6 +6,19 @@
         <item>Month</item>
         <item>Year</item>
     </string-array>
+
+    <string-array name="roomtype">
+        <item>All</item>
+        <item>Standard</item>
+        <item>Deluxe</item>
+    </string-array>
+
+    <string-array name="roomsort">
+        <item>Default</item>
+        <item>Ascending Price</item>
+        <item>Descending Price</item>
+    </string-array>
+
     <string name="open" translatable="false">Open</string>
     <string name="close" translatable="false">Close</string>
 </resources>

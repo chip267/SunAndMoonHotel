@@ -17,23 +17,22 @@
         app:srcCompat="@drawable/back_button" />
 
     <TextView
-        android:id="@+id/tvAllRooms"
-        android:layout_width="wrap_content"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="82dp"
         android:layout_marginTop="62dp"
-        android:layout_marginRight="220dp"
-        android:text="Booked"
+        android:fontFamily="@font/canelaboldtrial"
+        android:text="Booked "
+        android:textColor="@color/darkbrown"
         android:textSize="30dp"
-        android:fontFamily="@font/canelablacktrial"
-        android:textColor="#430000"
-        />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
-
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="94dp"
         android:background="@drawable/rectangle_search"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,16 +41,16 @@
 
         tools:ignore="MissingConstraints" >
 
-        <ImageView
+        <!--<ImageView
             android:layout_marginTop="18dp"
             android:layout_marginLeft="40dp"
             android:id="@+id/imageView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ph_magnifying_glass" />
+            app:srcCompat="@drawable/ph_magnifying_glass" />-->
     </RelativeLayout>
 
-    <EditText
+    <!--<EditText
         android:layout_width="355dp"
         android:layout_height="36dp"
         android:background="@drawable/edittext_search"
@@ -59,7 +58,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="150dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />-->
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_booked_room"
+        android:layout_width="355dp"
+        android:layout_height="36dp"
+        android:background="@drawable/edittext_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="150dp"
+        app:iconifiedByDefault="false"
+        app:searchIcon="@drawable/ph_magnifying_glass"/>
+
+
+    <!--<androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Filter"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:background="@drawable/edittext_search"
+        app:layout_constraintTop_toTopOf="@+id/layout"
+        app:layout_constraintRight_toRightOf="@+id/layout"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="30dp"
+        android:text="Filter"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:textColor="#FFF0CB"
+        android:fontFamily="@font/librefranklinmedium"/>-->
+
+    <Spinner
+        android:id="@+id/sp_Filter"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:background="@drawable/edittext_search"
+        app:layout_constraintTop_toTopOf="@+id/layout"
+        app:layout_constraintRight_toRightOf="@+id/layout"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="30dp"
+        android:spinnerMode="dropdown" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Booked"
@@ -118,6 +157,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-143dp"
         tools:listitem="@layout/room_item_view" />
+
+
     <!--<TextView
         android:id="@+id/tvRoom110"
         android:layout_width="wrap_content"

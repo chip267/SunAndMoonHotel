@@ -6,14 +6,13 @@ public class Conditions {
     public String state;
     public String name;
     public String date;
+    public String statusUpdate;
+    public String nameUpdate;
+    public String dateUpdate;
+    public String imageURL;
     public int avail;
     public Conditions() {
-        /*this.reportID = "c000";
-        this.roomNo = "900";
-        this.state = "Dirty";
-        this.name = "Tui";
-        this.date = "11:11 26/08/2003";
-        this.avail = 1;*/
+
     }
 
     public Conditions(String reportID, String roomNo, String state, String name,
@@ -25,12 +24,58 @@ public class Conditions {
         this.date = date;
         this.avail = avail;
     }
+    public Conditions(String reportID, String roomNo, String state, String name,
+                      String date, String imageURL, String statusUpdate, String nameUpdate,
+                      String dateUpdate, int avail) {
+        this.reportID = reportID;
+        this.roomNo = roomNo;
+        this.state = state;
+        this.name = name;
+        this.date = date;
+        this.imageURL = imageURL;
+        this.statusUpdate = statusUpdate;
+        this.nameUpdate = nameUpdate;
+        this.dateUpdate = dateUpdate;
+        this.avail = avail;
+    }
     public String getReportID() {
         return reportID;
     }
 
     public void setReportID(String reportID) {
         this.reportID = reportID;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getStatusUpdate() {
+        return statusUpdate;
+    }
+
+    public void setStatusUpdate(String statusUpdate) {
+        this.statusUpdate = statusUpdate;
+    }
+
+    public String getNameUpdate() {
+        return nameUpdate;
+    }
+
+    public void setNameUpdate(String nameUpdate) {
+        this.nameUpdate = nameUpdate;
+    }
+
+    public String getDateUpdate() {
+        return dateUpdate;
+    }
+
+    public void setDateUpdate(String dateUpdate) {
+        this.dateUpdate = dateUpdate;
     }
 
     public String getRoomNo() {

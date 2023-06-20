@@ -9,8 +9,11 @@ public class Booking {
     public String bookingType;
     public String rid;
     public int total;
+    public int surcharge;
+    public int totalBill;
     public String status;
     public String gid;
+
     public Booking(){
         this.bookingID = "";
         this.checkinDate = "";
@@ -22,6 +25,8 @@ public class Booking {
         this.total = 0;
         this.status = "";
         this.gid="";
+        this.surcharge=0;
+        this.totalBill=0;
     }
     public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
                     String bookingType, String rid, int total, String status, String gid){
@@ -36,7 +41,21 @@ public class Booking {
         this.total=total;
         this.status=status;
     }
-
+    public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
+                    String bookingType, String rid, int total, String status, String gid, int surcharge, int totalBill){
+        this.bookingID = bookingID;
+        this.rid = rid;
+        this.gid = gid;
+        this.checkinDate = checkinDate;
+        this.checkoutDate = checkoutDate;
+        this.checkinHour = checkinHour;
+        this.checkoutHour = checkoutHour;
+        this.bookingType=bookingType;
+        this.total=total;
+        this.status=status;
+        this.surcharge=surcharge;
+        this.totalBill=totalBill;
+    }
     public String getCheckinDate() {
         return checkinDate;
     }
@@ -60,6 +79,15 @@ public class Booking {
         return gid;
     }
     public int getTotal() { return total; }
+
+    public int getSurcharge() {
+        return surcharge;
+    }
+
+    public int getTotalBill() {
+        return totalBill;
+    }
+
     public String getBookingID() {
         return bookingID;
     }
@@ -104,6 +132,15 @@ public class Booking {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public void setSurcharge(int surcharge) {
+        this.surcharge = surcharge;
+    }
+
+    public void setTotalBill(int totalBill) {
+        this.totalBill = totalBill;
+    }
+
     public void setGid(String gid) {
         this.gid = gid;
     }

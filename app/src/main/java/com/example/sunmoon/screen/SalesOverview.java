@@ -107,7 +107,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     calendar.setTime(date);
                     int bookingMonth = calendar.get(Calendar.MONTH);
 
-                    int sales = snapshot.child("total").getValue(Integer.class);
+                    int sales = snapshot.child("totalBill").getValue(Integer.class);
 
                     if (bookingMonth == currentMonth) {
                         totalSalesCurrentMonth += sales;
@@ -157,11 +157,11 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     String checkoutDate = snapshot.child("checkoutDate").getValue(String.class);
                     Date date = convertStringToDate(checkoutDate);
                     if (date.after(startOfWeek) && date.before(endOfWeek)) {
-                        int sales = snapshot.child("total").getValue(Integer.class);
+                        int sales = snapshot.child("totalBill").getValue(Integer.class);
                         totalSalesCurrentWeek += sales;
                     }
                     if (date.after(startOfLastWeek) && date.before(endOfLastWeek)) {
-                        int sales = snapshot.child("total").getValue(Integer.class);
+                        int sales = snapshot.child("totalBill").getValue(Integer.class);
                         totalSalesLastWeek += sales;
                     }
                 }
@@ -200,7 +200,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String checkoutDate = snapshot.child("checkoutDate").getValue(String.class);
                     if (checkoutDate.equals(today)) {
-                        int totalSales = snapshot.child("total").getValue(Integer.class);
+                        int totalSales = snapshot.child("totalBill").getValue(Integer.class);
                         totalSalesToday += totalSales;
                     }
                 }
@@ -253,7 +253,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     if (date.before(startOfWeek) || date.after(endOfWeek)) {
                         continue;
                     }
-                    int totalSales = snapshot.child("total").getValue(Integer.class);
+                    int totalSales = snapshot.child("totalBill").getValue(Integer.class);
                     if (salesByDate.containsKey(checkoutDate)) {
                         int currentTotal = salesByDate.get(checkoutDate);
                         salesByDate.put(checkoutDate, currentTotal + totalSales);
@@ -306,7 +306,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     if (date.before(startOfWeek) || date.after(endOfWeek)) {
                         continue;
                     }
-                    int revenue = snapshot.child("total").getValue(Integer.class);
+                    int revenue = snapshot.child("totalBill").getValue(Integer.class);
                     totalSalesOfWeek += revenue;
                 }
                 DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
@@ -340,7 +340,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     int totalRevenue = 0;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String checkoutDate = snapshot.child("checkoutDate").getValue(String.class);
-                        int revenue = snapshot.child("total").getValue(Integer.class);
+                        int revenue = snapshot.child("totalBill").getValue(Integer.class);
                         if (checkoutDate.equals(formattedDate)) {
                             totalRevenue += revenue;
                         }
@@ -376,7 +376,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     int bookingYear = calendar.get(Calendar.YEAR);
                     int bookingMonth = calendar.get(Calendar.MONTH);
                     if (currentYear == bookingYear && currentMonth == bookingMonth) {
-                        int sales = snapshot.child("total").getValue(Integer.class);
+                        int sales = snapshot.child("totalBill").getValue(Integer.class);
                         totalRevenueOfMonth += sales;
                     }
                 }
@@ -408,7 +408,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                 Date endOfYear = calendar.getTime();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String checkoutDate = snapshot.child("checkoutDate").getValue(String.class);
-                    int totalSales = snapshot.child("total").getValue(Integer.class);
+                    int totalSales = snapshot.child("totalBill").getValue(Integer.class);
                     Date date = convertStringToDate(checkoutDate);
                     calendar.setTime(date);
                     int month = calendar.get(Calendar.MONTH);
@@ -453,7 +453,7 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                     if (date.before(startOfYear) || date.after(endOfYear)) {
                         continue;
                     }
-                    int revenue = snapshot.child("total").getValue(Integer.class);
+                    int revenue = snapshot.child("totalBill").getValue(Integer.class);
                     totalSalesOfYear += revenue; // Add sales to the total sales for the year
                 }
                 DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());

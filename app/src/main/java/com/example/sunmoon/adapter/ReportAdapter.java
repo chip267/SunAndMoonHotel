@@ -25,14 +25,12 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     public void setData(List<Booking> bookings) {
         this.bookings = bookings;
     }
-
     @NonNull
     @Override
     public ReportAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sales_report_item_view, parent, false);
         return new ReportAdapter.ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.ViewHolder holder, int position) {
         Booking booking = bookings.get(position);
@@ -56,19 +54,21 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             }
         });
         holder.tvrooom.setText(booking.getRid());
-        String total= Double.toString(booking.getTotal());
-        holder.tvrooomcharge.setText(total);
-        holder.tvsurcharge.setText("0");
+        String roomcharge= Integer.toString(booking.getTotal());
+        String surcharge= Integer.toString(booking.getSurcharge());
+        String total= Integer.toString(booking.getTotalBill());
+        holder.tvrooomcharge.setText(roomcharge);
+        holder.tvsurcharge.setText(surcharge);
         holder.tvtotal.setText(total);
+        holder.checkin.setText(booking.getCheckinHour()+"   "+booking.getCheckinDate());
     }
-
     @Override
     public int getItemCount() {
         return bookings.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvID, tvtime, tvcustomer, tvrooom, tvrooomcharge, tvsurcharge, tvtotal;
+        TextView tvID, tvtime, tvcustomer, tvrooom, tvrooomcharge, tvsurcharge, tvtotal, checkin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +79,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             tvrooomcharge = itemView.findViewById(R.id.tv_rooomcharge1);
             tvsurcharge = itemView.findViewById(R.id.tv_surcharge1);
             tvtotal = itemView.findViewById(R.id.tv_total1);
+            checkin = itemView.findViewById(R.id.tv_checkin1);
         }
     }
 }

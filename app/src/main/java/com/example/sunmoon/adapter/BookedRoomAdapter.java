@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ import java.util.List;
 public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.ViewHolder>{
     private List<Booking> bookedRoom = new ArrayList<>();
     public interface OnButtonClickListener {
-        void onCheckOutButtonClick(String bookedId, String roomID);
+        void onCheckOutButtonClick(String bookedId, String roomID, int surchargeValue);
     }
 
     private BookedRoomAdapter.OnButtonClickListener onButtonClickListener;
@@ -44,15 +45,20 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     public void setOnButtonClickListener(BookedRoomAdapter.OnButtonClickListener listener) {
         this.onButtonClickListener = listener;
     }
-    public void setData(List<Booking> bookedRoom) {
+    /*public void setData(List<Booking> bookedRoom) {
         this.bookedRoom = bookedRoom;
-    }
-    /*private Context room_Context;
+    }*/
+    private Context room_Context;
 
     public BookedRoomAdapter(List _bookedRoom, Context room_Context) {
         this.bookedRoom = _bookedRoom;
         this.room_Context = room_Context;
-    }*/
+    }
+
+    public void setFilteredItem(List item){
+        this.bookedRoom = item;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -100,7 +106,13 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                 if (onButtonClickListener != null) {
                     String bookedID = booked_room.getBookingID();
                     String roomID = booked_room.getRid();
-                    onButtonClickListener.onCheckOutButtonClick(bookedID, roomID);
+                    String surchargeValueString = holder.surcharge.getText().toString().trim();
+                    int surchargeValue = 0;
+                    if (!surchargeValueString.isEmpty()) {
+                        surchargeValue = Integer.parseInt(surchargeValueString);
+                    }
+                    int totalBill = booked_room.getTotal() + surchargeValue;
+                    onButtonClickListener.onCheckOutButtonClick(bookedID, roomID, surchargeValue);
                 }
             }
         });
@@ -120,6 +132,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         public TextView guestPhone;
 
         public Booking room;
+        public EditText surcharge;
 
         public AppCompatButton btnCheckOut;
 
@@ -130,6 +143,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
             roomID = itemView.findViewById(R.id.tvRoom110);
             guestName = itemView.findViewById(R.id.tvName1);
             guestPhone = itemView.findViewById(R.id.tvPhone1);
+            surcharge = itemView.findViewById(R.id.box_surcharge);
             btnCheckOut = itemView.findViewById(R.id.btn_Checkout);
         }
     }
