@@ -205,6 +205,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
         dialog1.setContentView(R.layout.checkroom_update_popup);
         dialog1.show();
         updateStatus = dialog1.findViewById(R.id.box_updatestatus);
+        updateStatus.setSingleLine(false);
         updateName = dialog1.findViewById(R.id.box_by);
         updateImage = dialog1.findViewById(R.id.uploadhere);
         cancelUpdate = dialog1.findViewById(R.id.btn_cancelupdate);
