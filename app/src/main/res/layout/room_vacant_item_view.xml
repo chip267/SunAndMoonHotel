@@ -12,6 +12,7 @@
         android:layout_width="143dp"
         android:layout_height="123dp"
         android:layout_gravity="center"
+        android:layout_marginStart="5dp"
         app:srcCompat="@drawable/deluxe_ava" />
 
     <LinearLayout
