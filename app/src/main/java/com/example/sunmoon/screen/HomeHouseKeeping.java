@@ -248,11 +248,17 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
             startActivity(intent);
             finish();
         };
+        if (id == R.id.nav_settings) {
+            Intent intent = new Intent(getApplicationContext(), Setting.class);
+            startActivity(intent);
+            finish();
+        };
         if (id == R.id.nav_Logout) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
         };
+
         return true;
     }
 }
