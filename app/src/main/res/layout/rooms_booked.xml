@@ -17,18 +17,17 @@
         app:srcCompat="@drawable/back_button" />
 
     <TextView
-        android:id="@+id/tvAllRooms"
-        android:layout_width="wrap_content"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="82dp"
         android:layout_marginTop="62dp"
-        android:layout_marginRight="220dp"
-        android:text="Booked"
+        android:fontFamily="@font/canelaboldtrial"
+        android:text="Booked "
+        android:textColor="@color/darkbrown"
         android:textSize="30dp"
-        android:fontFamily="@font/canelablacktrial"
-        android:textColor="#430000"
-        />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/layout"
