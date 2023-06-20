@@ -35,6 +35,10 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
     public void setData(List<Room> rooms) {
         this.rooms = rooms;
     }
+    public void setFilteredItem(List item){
+        this.rooms = item;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

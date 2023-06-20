@@ -1,5 +1,7 @@
 package com.example.sunmoon.models;
 
+import java.util.Comparator;
+
 public class Room {
     public String roomID;
     public String roomType;
@@ -49,7 +51,6 @@ public class Room {
     }
     public Room()
     {
-
     }
 
     public Room(String roomID, String roomType, double pricebyHour, double pricebyDay, int rAvail) {
@@ -59,4 +60,19 @@ public class Room {
         this.pricebyDay = pricebyDay;
         this.rAvail = rAvail;
     }
+
+    public static Comparator<Room> AscendingPriceComparator = new Comparator<Room>() {
+        @Override
+        public int compare(Room r1, Room r2) {
+            return (int)(r1.getPricebyDay() - r2.getPricebyDay());
+        }
+    };
+
+    public static Comparator<Room> DescendingPriceComparator = new Comparator<Room>() {
+        @Override
+        public int compare(Room r1, Room r2) {
+            return (int)(r2.getPricebyDay() - r1.getPricebyDay());
+        }
+    };
+
 }
