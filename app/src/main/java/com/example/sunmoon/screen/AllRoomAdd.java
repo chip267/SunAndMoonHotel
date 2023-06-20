@@ -2,6 +2,8 @@ package com.example.sunmoon.screen;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -54,6 +56,7 @@ public class AllRoomAdd extends AppCompatActivity {
                 String roomID = room.getRoomID();
                 Dialog dialog1 = new Dialog(AllRoomAdd.this);
                 dialog1.setContentView(R.layout.edit_room_popup);
+                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog1.show();
                 AppCompatButton cancelButton = dialog1.findViewById(R.id.btn_cancelroomedit);
                 cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +114,7 @@ public class AllRoomAdd extends AppCompatActivity {
                 String roomID = room.getRoomID();
                 Dialog dialog1 = new Dialog(AllRoomAdd.this);
                 dialog1.setContentView(R.layout.edit_room_popup);
+                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog1.show();
                 AppCompatButton cancelButton = dialog1.findViewById(R.id.btn_cancelroomedit);
                 cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +184,7 @@ public class AllRoomAdd extends AppCompatActivity {
             public void onClick(View v) {
                 dialog = new Dialog(AllRoomAdd.this);
                 dialog.setContentView(R.layout.addrooms_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
                 AppCompatButton cancelButton = dialog.findViewById(R.id.btn_cancelroomadd);
                 cancelButton.setOnClickListener(new View.OnClickListener() {
