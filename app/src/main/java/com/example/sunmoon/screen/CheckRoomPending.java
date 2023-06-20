@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -70,6 +72,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                 // Create a dialog
                 dialog = new Dialog(CheckRoomPending.this);
                 dialog.setContentView(R.layout.checkroom_adding_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
                 ImageButton closeButton = dialog.findViewById(R.id.imageButtonClose);
