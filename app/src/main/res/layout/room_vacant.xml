@@ -29,7 +29,7 @@
             android:layout_marginStart="82dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/canelaboldtrial"
-            android:text="All Rooms "
+            android:text="Vacant "
             android:textColor="@color/darkbrown"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"

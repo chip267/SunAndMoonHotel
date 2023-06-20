@@ -71,9 +71,9 @@ public class BookingForm extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Home.class);
+                Intent intent = new Intent(getApplicationContext(),AllRoom.class);
                 startActivity(intent);
-                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         Idcard.addTextChangedListener(new TextWatcher() {
