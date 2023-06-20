@@ -73,22 +73,6 @@
         app:iconifiedByDefault="false"
         app:searchIcon="@drawable/ph_magnifying_glass"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_SortBy"
-        android:layout_width="78dp"
-        android:layout_height="33dp"
-        android:background="@drawable/edittext_search"
-        app:layout_constraintTop_toTopOf="@+id/layout"
-        app:layout_constraintRight_toRightOf="@+id/layout"
-        android:layout_marginTop="52dp"
-        android:layout_marginRight="125dp"
-        android:text="Sort by"
-        android:textAllCaps="false"
-        android:textSize="15dp"
-        android:textColor="#FFF0CB"
-        android:fontFamily="@font/librefranklinmedium"
-        tools:ignore="MissingConstraints"
-        />
 
     <!--<androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Filter"
