@@ -1,6 +1,7 @@
 package com.example.sunmoon.screen;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -20,7 +21,11 @@ import android.widget.Toast;
 import com.example.sunmoon.MainActivity;
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
+import com.example.sunmoon.models.Conditions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,8 +50,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private  Booking booking;
     private TextView tv_checkin;
     private TextView tv_checkout;
-    public int checkinNo;
-    public int checkoutNo;
+    public int checkinNo = 0;
+    public int checkoutNo = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +176,67 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         String dateA = day + setday + " " + setmonth;
         TextView tv_date = findViewById(R.id.tv3);
         tv_date.setText(dateA);
+        /*
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference checkinRef = database.getReference("Booking");
+        DateFormat dateFormatCI = new SimpleDateFormat("dd-MM-yyyy");
+        // get current date time with Date()
+        Date dateCI = new Date();
+        String dateCI1 = "";
+        checkinRef.orderByChild("checkinDate").equalTo(dateCI1).toString();
+        checkinRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    for (DataSnapshot Snapshot : snapshot.getChildren()) {
+                        if (Snapshot.child("checkinDate").getValue().equals(dateCI.toString())) {
+
+                            checkinNo = checkinNo + 1;
+                        }
+                    }
+                }
+                else {
+                    Toast.makeText(Home.this, "Not exist!!",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DateFormat dateFormatCI = new SimpleDateFormat("dd-MM-yyyy");
+        // get current date time with Date()
+        Date dateCI = new Date();
+
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference checkinRef = rootRef.child("Booking");
+        checkinRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DataSnapshot userSnapshot : task.getResult().getChildren()) {
+                        List<String> checkinD = new ArrayList<>();
+                        List<String> checoutD = new ArrayList<>();
+                        for (DataSnapshot placeSnapshot : userSnapshot.getChildren()) {
+                            checkinD.add(placeSnapshot.child("checkinDate").getValue(String.class));
+                            checoutD.add(placeSnapshot.child("checkoutDate").getValue(String.class));
+                        }
+                        checkinNo = checkinD.size();
+                        checkoutNo = checoutD.size();
+                    }
+                }
+
+            }
+
+
+        });
+
+
+
         tv_checkin = findViewById(R.id.tvTextAppearBooking);
         tv_checkin.setText(String.valueOf(checkinNo));
         tv_checkout = findViewById(R.id.tvTextAppearForecast);
