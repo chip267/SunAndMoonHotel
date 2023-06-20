@@ -28,8 +28,10 @@ import com.example.sunmoon.adapter.RoomTypeAdapter;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,6 +62,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     Spinner filter;
     RoomTypeAdapter roomTypeAdapter;
     ArrayList <String> roomTypeList;
+    List<Room> rooms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +120,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         bookedRoomRecyclerView.setAdapter(roomAdapter);
         bookedRoomRecyclerView.setLayoutManager(linearLayoutManager);
         roomAdapter.setOnButtonClickListener(this);
+
         FirebaseDatabase.getInstance().getReference("Booking").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
@@ -144,6 +148,29 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
 
             }
         });
+
+        rooms = new ArrayList<Room>();
+
+        FirebaseDatabase.getInstance().getReference("Room").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
+                if (roomDataSnapshot.exists()) {
+                    for (DataSnapshot roomSnapshot : roomDataSnapshot.getChildren()){
+                        Room roomItem = roomSnapshot.getValue(Room.class);
+                        roomItem.setRoomID(roomSnapshot.getKey());
+
+                        rooms.add(roomItem);
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle any errors that occur during the query
+            }
+        });
+
+
         btnBack = findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -350,43 +377,44 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             }
         });
     }
-    private List<Booking> filterList;
+
+    private String roomType;
     private void filteredList (String searchText, String option){
-        filterList = new ArrayList<>();
-        List<Booking> roomListFilter = new ArrayList<>(bookedRooms);
+        List<Booking> filterList  = new ArrayList<>();
+
         for (Booking item : bookedRooms){
             if (item.getRid().toLowerCase().contains(searchText.toLowerCase())){
-
-                /*if (option.equalsIgnoreCase("104")){
+                if (option.equalsIgnoreCase("All")){
                     filterList.add(item);
-                }*/
-                filterList.add(item);
 
-                /*FirebaseDatabase.getInstance().getReference("Room").child(item.getRid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-                            String type = snapshot.child("roomType").getValue(String.class);
-                            System.out.println(type);
-
-                            if (option.equalsIgnoreCase(type)){
-                                isFilterd[0] = true;
-                            }
+                }
+                else{
+                    for (Room r : rooms){
+                        if (option.equalsIgnoreCase(r.getRoomType()) && item.getRid().equalsIgnoreCase(r.getRoomID())){
+                            filterList.add(item);
                         }
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });*/
-                /*if (isFilterd[0]){
-                    filterList.add(item);
-                }*/
+                }
             }
         }
         if (searchText.isEmpty()){
-            filterList = bookedRooms;
+            if (option.equalsIgnoreCase("All")){
+                filterList = bookedRooms;
+            }
+            else {
+                filterList.clear();
+                for (Booking item : bookedRooms){
+                    if (item.getRid().toLowerCase().contains(searchText.toLowerCase())){
+                        for (Room r : rooms){
+                            if (option.equalsIgnoreCase(r.getRoomType()) && item.getRid().equalsIgnoreCase(r.getRoomID())){
+                                filterList.add(item);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //searchRoom.clearFocus();
         }
         else if (filterList.isEmpty() && !searchText.isEmpty()){
             filterList.clear();
@@ -398,6 +426,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         filterOption = filter.getSelectedItem().toString();
+        searchRoom.clearFocus();
         filteredList(textsrc, filterOption);
     }
 

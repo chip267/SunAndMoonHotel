@@ -8,6 +8,7 @@
     </string-array>
 
     <string-array name="roomtype">
+        <item>All</item>
         <item>Standard</item>
         <item>Deluxe</item>
     </string-array>
