@@ -83,6 +83,10 @@ public class BookingForm extends AppCompatActivity {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
                 gid = Idcard.getText().toString();
                 rid = Room.getText().toString();
                 DatabaseReference guestRef = FirebaseDatabase.getInstance().getReference("Guest").child(gid);
@@ -94,23 +98,26 @@ public class BookingForm extends AppCompatActivity {
                             String nameG = guestDataSnapshot.child("gName").getValue(String.class);
                             String phoneG = guestDataSnapshot.child("gPhone").getValue(String.class);
                             String genderG = guestDataSnapshot.child("gender").getValue(String.class);
-                            DOB.setText(dobG);
-                            Name.setText(nameG);
-                            Phone.setText(phoneG);
-                            if (genderG.equals("Male")) {
-                                radioButtonMale.setChecked(true);
-                            } else if (genderG.equals("Female")) {
-                                radioButtonFemale.setChecked(true);
+                            DOB.setText(dobG != null ? dobG : "");
+                            Name.setText(nameG != null ? nameG : "");
+                            Phone.setText(phoneG != null ? phoneG : "");
+                            if (genderG != null) {
+                                if (genderG.equals("Male")) {
+                                    radioButtonMale.setChecked(true);
+                                } else if (genderG.equals("Female")) {
+                                    radioButtonFemale.setChecked(true);
+                                }
                             }
+                        }
+                        else
+                        {
+                            resetDisplay();
                         }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
             }
         });
         Confirm = findViewById(R.id.btn_confirm);
@@ -284,5 +291,12 @@ public class BookingForm extends AppCompatActivity {
                     Gender = "Male";
                 break;
         }
+    }
+    private void resetDisplay() {
+        DOB.setText("");
+        Name.setText("");
+        Phone.setText("");
+        radioButtonMale.setChecked(false);
+        radioButtonFemale.setChecked(false);
     }
 }
