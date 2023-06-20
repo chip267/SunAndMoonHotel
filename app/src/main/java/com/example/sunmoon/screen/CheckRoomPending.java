@@ -235,9 +235,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                     Toast.makeText(CheckRoomPending.this, "Enter Name",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                /**/
                 if (selectedImageUri != null) {
-                    // Upload the selected image to Firebase Storage
                     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
                     StorageReference imageRef = storageRef.child("images/" + UUID.randomUUID().toString());
                     UploadTask uploadTask = imageRef.putFile(selectedImageUri);
@@ -252,14 +250,12 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-                                                    // Image URL saved successfully
                                                     Toast.makeText(CheckRoomPending.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    // Failed to save image URL
                                                     Toast.makeText(CheckRoomPending.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
                                             });
@@ -268,11 +264,9 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                         }
                     });
                 } else {
-                    // No image selected
                     Toast.makeText(CheckRoomPending.this, "Please select an image", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                /**/
                 String updateStatus2 = updateStatus.getText().toString();
                 String updateName2 = updateName.getText().toString();
                 String updateDate = new SimpleDateFormat("HH:mm    dd/MM/yyyy", Locale.getDefault()).format(new Date());
@@ -336,10 +330,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
         Date currentDate = new Date();
 
         try {
-            // Parse the condition's date
             Date conditionDate = sdf.parse(date);
-
-            // Get the start and end dates of the current week
             Calendar calendar = Calendar.getInstance();
             calendar.setFirstDayOfWeek(Calendar.MONDAY);
             calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);

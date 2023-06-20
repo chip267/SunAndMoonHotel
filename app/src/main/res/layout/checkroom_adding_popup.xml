@@ -5,10 +5,8 @@
     android:layout_height="310dp"
     android:background="@drawable/popup_bg"
     android:orientation="vertical"
-    android:layout_margin="10dp"
     android:paddingLeft="20dp"
     android:paddingTop="10dp">
->
 
         <ImageButton
             android:id="@+id/imageButtonClose"
@@ -110,5 +108,5 @@
             android:textColor="@color/lightpink"
             android:textSize="15dp" />
 
-        >
+
 </LinearLayout>
