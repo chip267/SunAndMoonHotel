@@ -14,7 +14,7 @@
         android:fontFamily="@font/librefranklinbold"
         android:textSize="25dp"
         android:textColor="@color/darkbrown"
-        android:text="Room 102"
+        android:text="Room 112"
         android:layout_gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
