@@ -123,7 +123,7 @@
 
         <Spinner
             android:id="@+id/sp_Sort"
-            android:layout_width="150dp"
+            android:layout_width="149dp"
             android:layout_height="33dp"
             android:background="@drawable/edittext_search"
             android:layout_toLeftOf="@+id/sp_Filter"
