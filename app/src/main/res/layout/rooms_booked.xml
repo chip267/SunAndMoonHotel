@@ -91,7 +91,7 @@
 
     <Spinner
         android:id="@+id/sp_Filter"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="33dp"
         android:background="@drawable/edittext_search"
         app:layout_constraintTop_toTopOf="@+id/layout"
