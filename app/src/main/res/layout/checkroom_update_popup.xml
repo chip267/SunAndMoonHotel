@@ -7,106 +7,116 @@
     android:background="@color/lightpink"
     android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tv_updatetitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/librefranklinbold"
-        android:textColor="@color/darkbrown"
-        android:textSize="28dp"
-        android:text="Update" />
 
-    <TextView
-        android:id="@+id/tv_updatestatus"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="20dp"
-        android:text="Update Status" />
-    <EditText
-        android:id="@+id/box_updatestatus"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_height="95dp"
-        android:textColor="@color/darkbrown"
-        android:inputType="text"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:id="@+id/tv_by"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="20dp"
-        android:text="By" />
-    <EditText
-        android:id="@+id/box_by"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_height="45dp"
-        android:inputType="text"
-        android:textColor="@color/darkbrown"
-        android:background="@drawable/edittext_checkinout" />
-    <TextView
-        android:id="@+id/tv_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/librefranklinmedium"
-        android:textColor="@color/darkbrown"
-        android:textSize="20dp"
-        android:text="Images" />
+        android:layout_height="match_parent">
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="125dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="15dp"
-        >
-
-        <ImageView
-            android:id="@+id/uploadhere"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/upload_ima" />
-    </androidx.cardview.widget.CardView>
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/tv_updatetitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/librefranklinbold"
+                android:textColor="@color/darkbrown"
+                android:textSize="28dp"
+                android:text="Update" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_updatestatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="20dp"
+                android:text="Update Status" />
+            <EditText
+                android:id="@+id/box_updatestatus"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="95dp"
+                android:textColor="@color/darkbrown"
+                android:inputType="text"
+                android:background="@drawable/edittext_checkinout" />
+            <TextView
+                android:id="@+id/tv_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="20dp"
+                android:text="By" />
+            <EditText
+                android:id="@+id/box_by"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="45dp"
+                android:inputType="text"
+                android:textColor="@color/darkbrown"
+                android:background="@drawable/edittext_checkinout" />
+            <TextView
+                android:id="@+id/tv_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/librefranklinmedium"
+                android:textColor="@color/darkbrown"
+                android:textSize="20dp"
+                android:text="Images" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_confirmupdate"
-            android:layout_width="100dp"
-            android:layout_height="32dp"
-            android:background="@drawable/rectangle_search"
-            android:fontFamily="@font/librefranklinmedium"
-            android:text="Confirm"
-            android:textAllCaps="false"
-            android:textColor="@color/lightpink"
-            android:textSize="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="125dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/uploadhere"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/upload_ima" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_confirmupdate"
+                    android:layout_width="100dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/rectangle_search"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Confirm"
+                    android:textAllCaps="false"
+                    android:textColor="@color/lightpink"
+                    android:textSize="15dp" />
 
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancelupdate"
-            android:layout_width="100dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/frame_979"
-            android:fontFamily="@font/librefranklinmedium"
-            android:text="Cancel"
-            android:textAllCaps="false"
-            android:textColor="@color/darkbrown"
-            android:textSize="15dp" />
-    </LinearLayout>
-
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_cancelupdate"
+                    android:layout_width="100dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/frame_979"
+                    android:fontFamily="@font/librefranklinmedium"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/darkbrown"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
