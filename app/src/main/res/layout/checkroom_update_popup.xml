@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="315dp"
     android:layout_height="565dp"
+    android:background="@color/lightpink"
     android:padding="20dp">
 
     <TextView
@@ -30,6 +31,8 @@
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
         android:layout_height="95dp"
+        android:textColor="@color/darkbrown"
+        android:inputType="text"
         android:background="@drawable/edittext_checkinout" />
     <TextView
         android:id="@+id/tv_by"
@@ -45,6 +48,8 @@
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
         android:layout_height="45dp"
+        android:inputType="text"
+        android:textColor="@color/darkbrown"
         android:background="@drawable/edittext_checkinout" />
     <TextView
         android:id="@+id/tv_image"
@@ -78,7 +83,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_confirm"
+            android:id="@+id/btn_confirmupdate"
             android:layout_width="100dp"
             android:layout_height="32dp"
             android:background="@drawable/rectangle_search"
@@ -91,7 +96,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancelroomadd"
+            android:id="@+id/btn_cancelupdate"
             android:layout_width="100dp"
             android:layout_height="32dp"
             android:layout_marginLeft="30dp"
