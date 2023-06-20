@@ -117,32 +117,6 @@
         android:paddingLeft="25dp">
 
         <TextView
-            android:id="@+id/tv_checkin"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textSize="15dp"
-            android:fontFamily="@font/librefranklinregular"
-            android:textColor="@color/lightbrown"
-            android:text="Check in" />
-        <TextView
-            android:id="@+id/tv_checkin1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:textSize="15dp"
-            android:fontFamily="@font/librefranklinregular"
-            android:textColor="@color/lightbrown"
-            android:text="8:00 AM   26/05/2023" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingLeft="25dp">
-
-        <TextView
             android:id="@+id/tv_roomcharge"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
