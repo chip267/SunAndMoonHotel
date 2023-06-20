@@ -52,7 +52,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/plastic_bg"
+            android:background="@drawable/plastic_bg_1"
 
             android:layout_marginTop="108dp"
             tools:ignore="MissingConstraints"

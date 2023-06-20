@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="335dp"
+    android:layout_height="434dp"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:gravity="center"
+    android:background="@drawable/bg_vacant_room">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/librefranklinmedium"
+        android:text="Change passcode"
+        android:textColor="@color/lightbrown"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_passcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Enter your passcode : "
+            android:textSize="20dp"
+            android:textColor="@color/lightbrown"/>
+
+        <EditText
+            android:id="@+id/edit_passcode"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:shadowColor="@color/darkbrown"
+            android:inputType="numberPassword"
+            android:background="@drawable/edittext_search" />
+        <TextView
+            android:id="@+id/tv_newpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Enter new passcode : "
+            android:textSize="20dp"
+            android:textColor="@color/lightbrown"/>
+
+        <EditText
+            android:id="@+id/edit_newpass"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="35dp"
+            android:shadowColor="@color/darkbrown"
+            android:inputType="numberPassword"
+            android:background="@drawable/edittext_search" />
+        <TextView
+            android:id="@+id/tv_confirmpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:text="Confirm new passcode : "
+            android:textSize="20dp"
+            android:textColor="@color/lightbrown"/>
+
+        <EditText
+            android:id="@+id/edit_confirmpass"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:inputType="numberPassword"
+            android:shadowColor="@color/darkbrown"
+            android:background="@drawable/edittext_search" />
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_doneroomadd"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:background="@drawable/rectangle_search"
+        android:fontFamily="@font/librefranklinmedium"
+        android:text="Done"
+        android:layout_marginTop="35dp"
+        android:textAllCaps="false"
+        android:textColor="@color/lightpink"
+        android:textSize="15dp" />
+
+</LinearLayout>
