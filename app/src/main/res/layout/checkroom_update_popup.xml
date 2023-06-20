@@ -72,16 +72,16 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="125dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:cardCornerRadius="15dp"
-                >
+                app:cardCornerRadius="15dp">
 
                 <ImageView
                     android:id="@+id/uploadhere"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/upload_ima" />
             </androidx.cardview.widget.CardView>
 
