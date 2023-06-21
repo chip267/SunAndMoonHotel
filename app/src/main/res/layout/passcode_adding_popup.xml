@@ -2,7 +2,7 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="315dp"
-    android:layout_height="310dp"
+    android:layout_height="250dp"
     android:background="@drawable/popup_bg"
     android:orientation="vertical"
     android:layout_margin="10dp"
@@ -10,12 +10,21 @@
     android:paddingTop="10dp">
     >
 
+    <ImageButton
+        android:id="@+id/imageButtonClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/cancel_button"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="20dp">
+        android:paddingTop="30dp">
 
         <TextView
             android:id="@+id/tv_passcode"
