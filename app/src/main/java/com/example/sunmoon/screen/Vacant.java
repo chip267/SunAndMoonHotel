@@ -169,7 +169,7 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
         List<Room> filterList  = new ArrayList<>();
 
         for (Room item : listroom){
-            if (item.getRoomID().toLowerCase().contains(searchText.toLowerCase())){
+            if (Double.toString(item.getPricebyDay()).toLowerCase().contains(searchText.toLowerCase())){
                 if (option.equalsIgnoreCase("All")){
                     filterList.add(item);
                 }
@@ -187,7 +187,7 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
             else {
                 filterList.clear();
                 for (Room item : listroom){
-                    if (item.getRoomID().toLowerCase().contains(searchText.toLowerCase())){
+                    if (Double.toString(item.getPricebyDay()).toLowerCase().contains(searchText.toLowerCase())){
                         if (option.equalsIgnoreCase(item.getRoomType())){
                             filterList.add(item);
                         }
