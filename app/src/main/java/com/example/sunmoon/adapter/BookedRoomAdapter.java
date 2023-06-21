@@ -106,7 +106,7 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                 if (onButtonClickListener != null) {
                     String bookedID = booked_room.getBookingID();
                     String roomID = booked_room.getRid();
-                    String surchargeValueString = holder.surcharge.getText().toString().trim();
+                    String surchargeValueString = holder.surcharge.getText().toString();
                     int surchargeValue = 0;
                     if (!surchargeValueString.isEmpty()) {
                         surchargeValue = Integer.parseInt(surchargeValueString);

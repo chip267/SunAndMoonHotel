@@ -55,7 +55,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     private TextView checkin,checkout,roomnum,type,roomcharge,surcharge,totalX,bookingID,phone,name, TIME;
     private String checkinA, checkinB, checkinC, checkoutA, checkoutB, checkoutC, roomnumA,
             gID, typeA, roomchargeA, surchargeA,totalA,bookingIDA,phoneA,nameA;
-    private int totalB, totalBill;
+    public int total = 1, totalBill = 1;
     AppCompatButton btnNavAllRoom, btnNavVacant;
     SearchView searchRoom;
     private String textsrc="", filterOption;
@@ -63,6 +63,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
     RoomTypeAdapter roomTypeAdapter;
     ArrayList <String> roomTypeList;
     List<Room> rooms;
+    DatabaseReference bookingRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,7 +200,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         name = dialog.findViewById(R.id.tv_nameCus);
         phone = dialog.findViewById(R.id.tv_phonenocus);
         TIME = dialog.findViewById(R.id.tv_details);
-        DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference("Booking").child(bookedId);
+        bookingRef = FirebaseDatabase.getInstance().getReference("Booking").child(bookedId);
         bookingRef.child("checkoutDate").setValue(dateCO);
         bookingRef.child("checkoutHour").setValue(timeCO);
         bookingRef.child("surcharge").setValue(surchargeValue);
@@ -207,9 +208,6 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             @Override
             public void onDataChange(@NonNull DataSnapshot bookingDataSnapshot) {
                 if (bookingDataSnapshot.exists()) {
-                    totalB = bookingDataSnapshot.child("total").getValue(Integer.class);
-                    totalBill = totalB + surchargeValue;
-                    bookingRef.child("totalBill").setValue(totalBill);
                     String checkinDate = bookingDataSnapshot.child("checkinDate").getValue(String.class);
                     String checkinHour = bookingDataSnapshot.child("checkinHour").getValue(String.class);
                     String bookType = bookingDataSnapshot.child("bookingType").getValue(String.class);
@@ -228,8 +226,12 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                                     if (roomDataSnapshot.exists()) {
                                         for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
                                             int pricePerHour = snapshot.child("pricebyHour").getValue(Integer.class);
-                                            int total = differenceHours * pricePerHour;
-                                            FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                            total = differenceHours * pricePerHour;
+                                            roomchargeA = String.valueOf(total);
+                                            bookingRef.child("total").setValue(total);
+                                            totalBill = total + surchargeValue;
+                                            totalA = String.valueOf(totalBill);
+                                            bookingRef.child("totalBill").setValue(totalBill);
                                         }
                                     }
                                 }
@@ -256,8 +258,12 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                                     if (roomDataSnapshot.exists()) {
                                         for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
                                             int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
-                                            int total = (int) (differenceDays * pricePerDay);
-                                            FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                            total = (int) (differenceDays * pricePerDay);
+                                            roomchargeA = String.valueOf(total);
+                                            bookingRef.child("total").setValue(total);
+                                            totalBill = total + surchargeValue;
+                                            totalA = String.valueOf(totalBill);
+                                            bookingRef.child("totalBill").setValue(totalBill);
                                         }
                                     }
                                 }
@@ -281,8 +287,12 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                                 if (roomDataSnapshot.exists()) {
                                     for (DataSnapshot snapshot : roomDataSnapshot.getChildren()) {
                                         int pricePerDay = snapshot.child("pricebyDay").getValue(Integer.class);
-                                        int total = (int) (differenceDays * pricePerDay);
-                                        FirebaseDatabase.getInstance().getReference("Booking").child(bookedId).child("total").setValue(total);
+                                        total = (int) (differenceDays * pricePerDay);
+                                        roomchargeA = String.valueOf(total);
+                                        bookingRef.child("total").setValue(total);
+                                        totalBill = total + surchargeValue;
+                                        totalA = String.valueOf(totalBill);
+                                        bookingRef.child("totalBill").setValue(totalBill);
                                     }
                                 }
                             }
@@ -299,9 +309,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     checkoutB = bookingDataSnapshot.child("checkoutDate").getValue(String.class);
                     checkoutC = checkoutA + "   " + checkoutB;
                     roomnumA = bookingDataSnapshot.child("rid").getValue(String.class);
-                    roomchargeA = String.valueOf(bookingDataSnapshot.child("total").getValue(Integer.class));
                     surchargeA = String.valueOf(bookingDataSnapshot.child("surcharge").getValue(Integer.class));
-                    totalA = String.valueOf(totalBill);
                     bookingIDA = bookingDataSnapshot.child("bookingID").getValue(String.class);
                     typeA = bookingDataSnapshot.child("bookingType").getValue(String.class);
                     gID = bookingDataSnapshot.child("gid").getValue(String.class);
@@ -317,20 +325,21 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                             } else {
                                 // Handle the case where the guest data does not exist
                             }
+                            checkin.setText(checkinC);
+                            checkout.setText(checkoutC);
+                            roomnum.setText(roomnumA);
+                            type.setText(typeA);
+                            roomcharge.setText(roomchargeA);
+                            surcharge.setText(surchargeA);
+                            totalX.setText(totalA);
+                            bookingID.setText(bookingIDA);
+                            dialog.show();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             // Handle any errors that occur during the query
                         }
                     });
-                    checkin.setText(checkinC);
-                    checkout.setText(checkoutC);
-                    roomnum.setText(roomnumA);
-                    type.setText(typeA);
-                    roomcharge.setText(roomchargeA);
-                    surcharge.setText(surchargeA);
-                    totalX.setText(totalA);
-                    bookingID.setText(bookingIDA);
                 }
             }
             @Override
@@ -338,7 +347,6 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                 // Handle any errors that occur during the query
             }
         });
-        dialog.show();
         AppCompatButton cancelButton = dialog.findViewById(R.id.btn_cancelbill);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
