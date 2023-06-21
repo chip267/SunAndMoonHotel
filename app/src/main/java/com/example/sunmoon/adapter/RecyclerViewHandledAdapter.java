@@ -3,6 +3,8 @@ package com.example.sunmoon.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +73,7 @@ public class RecyclerViewHandledAdapter extends RecyclerView.Adapter<RecyclerVie
             public void onClick(View v) {
                 Dialog dialog = new Dialog(holder.itemView.getContext());
                 dialog.setContentView(R.layout.chechroom_done_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
                 AppCompatButton close = dialog.findViewById(R.id.btn_close);
                 close.setOnClickListener(new View.OnClickListener() {

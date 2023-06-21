@@ -41,6 +41,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:inputType="textPassword"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext_checkinout" />
 
     </LinearLayout>

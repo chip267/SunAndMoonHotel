@@ -14,18 +14,18 @@ public class Employee {
     public int empAvail;
 
     public Employee(String empID, String empIDCard, String empFirstName, String empLastName,
-                    String empPhone, String empPosition, String empGender, String empBirthday,
-                    String empMail, String empAddress, int empAvail) {
+                    String empPhone, String empGender, String empBirthday,
+                    String empMail, String empAddress, String empPosition, int empAvail) {
         this.empID = empID;
         this.empIDCard = empIDCard;
         this.empFirstName = empFirstName;
         this.empLastName = empLastName;
         this.empPhone = empPhone;
-        this.empPosition = empPosition;
         this.empGender = empGender;
         this.empBirthday = empBirthday;
         this.empMail = empMail;
         this.empAddress = empAddress;
+        this.empPosition = empPosition;
         this.empAvail = empAvail;
     }
     public Employee(){

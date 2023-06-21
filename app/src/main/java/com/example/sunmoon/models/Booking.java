@@ -13,6 +13,7 @@ public class Booking {
     public int totalBill;
     public String status;
     public String gid;
+    public String details;
 
     public Booking(){
         this.bookingID = "";
@@ -27,22 +28,10 @@ public class Booking {
         this.gid="";
         this.surcharge=0;
         this.totalBill=0;
+        this.details="";
     }
     public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
-                    String bookingType, String rid, int total, String status, String gid){
-        this.bookingID = bookingID;
-        this.rid = rid;
-        this.gid = gid;
-        this.checkinDate = checkinDate;
-        this.checkoutDate = checkoutDate;
-        this.checkinHour = checkinHour;
-        this.checkoutHour = checkoutHour;
-        this.bookingType=bookingType;
-        this.total=total;
-        this.status=status;
-    }
-    public Booking (String bookingID, String checkinDate, String checkoutDate, String checkinHour, String checkoutHour,
-                    String bookingType, String rid, int total, String status, String gid, int surcharge, int totalBill){
+                    String bookingType, String rid, int total, String status, String gid, int surcharge, int totalBill, String details){
         this.bookingID = bookingID;
         this.rid = rid;
         this.gid = gid;
@@ -55,6 +44,7 @@ public class Booking {
         this.status=status;
         this.surcharge=surcharge;
         this.totalBill=totalBill;
+        this.details=details;
     }
     public String getCheckinDate() {
         return checkinDate;
@@ -79,6 +69,14 @@ public class Booking {
         return gid;
     }
     public int getTotal() { return total; }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
     public int getSurcharge() {
         return surcharge;

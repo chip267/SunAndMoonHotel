@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -189,6 +191,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         String dateCO = dateFormat.format(new Date());
         dialog = new Dialog(Booked.this);
         dialog.setContentView(R.layout.booking_bill);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         checkin = dialog.findViewById(R.id.tv_checkintime);
         checkout = dialog.findViewById(R.id.tv_checkouttime);
         roomnum = dialog.findViewById(R.id.tv_roomnum);
@@ -219,7 +222,9 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                             float differenceHoursFloat = (float) differenceMillis / (60 * 60 * 1000);
                             int differenceHours = (int) Math.ceil(differenceHoursFloat);
                             String timeBill = String.valueOf(differenceHours);
-                            TIME.setText("("+timeBill+" hour)");
+                            String details = "("+timeBill+" hour)";
+                            bookingRef.child("details").setValue(details);
+                            TIME.setText(details);
                             FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
@@ -251,7 +256,9 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                             long differenceMillis = checkout.getTime() - checkin.getTime();
                             long differenceDays = TimeUnit.MILLISECONDS.toDays(differenceMillis);
                             String timeBill = String.valueOf(differenceDays);
-                            TIME.setText("("+timeBill+" day)");
+                            String details = "("+timeBill+" day)";
+                            bookingRef.child("details").setValue(details);
+                            TIME.setText(details);
                             FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
@@ -280,7 +287,9 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                         long differenceDays = 1;
-                        TIME.setText("(1 day)");
+                        String details = "(1 day)";
+                        bookingRef.child("details").setValue(details);
+                        TIME.setText(details);
                         FirebaseDatabase.getInstance().getReference("Room").orderByChild("roomID").equalTo(roomID).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
