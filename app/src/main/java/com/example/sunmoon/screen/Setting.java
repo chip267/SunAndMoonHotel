@@ -26,6 +26,8 @@ public class Setting extends AppCompatActivity {
     private TextView btnChangePasscode;
     private String getPasscode = "";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,7 @@ public class Setting extends AppCompatActivity {
                 EditText editTextConfirmPassCode = changePasscodeDialog.findViewById(R.id.edit_confirmpass);
 
                 AppCompatButton btnDone = changePasscodeDialog.findViewById(R.id.btn_donechangepass);
+                AppCompatButton btnCancel = changePasscodeDialog.findViewById(R.id.btn_cancel);
                 String usr = UserSingleton.getInstance().getUserName();
                 Query checkUserDatabase = FirebaseDatabase.getInstance().getReference("Account").orderByChild("aUsername").equalTo(usr);
                 checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,6 +64,12 @@ public class Setting extends AppCompatActivity {
                     }
                 });
 
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changePasscodeDialog.dismiss();
+                    }
+                });
                 btnDone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
