@@ -119,10 +119,8 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                 String percentageDifferenceString;
                 if (totalSalesPreviousMonth == 0 || totalSalesCurrentMonth == 0) {
                     percentageDifferenceString = "0%";
-                } else if (totalSalesPreviousMonth == 0) {
-                    percentageDifference = totalSalesCurrentMonth > 0 ? Float.POSITIVE_INFINITY : 0;
-                    percentageDifferenceString = String.format("%.1f%%", percentageDifference);
-                } else {
+                }
+                else {
                     percentageDifference = ((float) totalSalesCurrentMonth / totalSalesPreviousMonth) * 100 - 100;
                     if (percentageDifference > 0) {
                         percentageDifferenceString = String.format("+%.1f%%", percentageDifference);
@@ -172,10 +170,8 @@ public class SalesOverview extends AppCompatActivity implements AdapterView.OnIt
                 String percentageDifferenceString;
                 if (totalSalesLastWeek == 0 || totalSalesCurrentWeek == 0) {
                     percentageDifferenceString = "0%";
-                } else if (totalSalesLastWeek == 0) {
-                    percentageDifference = totalSalesCurrentWeek > 0 ? Float.POSITIVE_INFINITY : 0;
-                    percentageDifferenceString = String.format("%.1f%%", percentageDifference);
-                } else {
+                }
+                else {
                     percentageDifference = ((float) totalSalesCurrentWeek / totalSalesLastWeek) * 100 - 100;
                     if (percentageDifference > 0) {
                         percentageDifferenceString = String.format("+%.1f%%", percentageDifference);
