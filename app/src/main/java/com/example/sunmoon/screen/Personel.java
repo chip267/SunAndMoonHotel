@@ -2,6 +2,8 @@ package com.example.sunmoon.screen;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -74,6 +76,7 @@ public class Personel extends AppCompatActivity {
             public void onClick(View v) {
                 passcodeDialog = new Dialog(Personel.this);
                 passcodeDialog.setContentView(R.layout.passcode_adding_popup);
+                passcodeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 passcodeDialog.show();
                 buttonclose = passcodeDialog.findViewById(R.id.imageButtonClose);
                 buttonclose.setOnClickListener(new View.OnClickListener() {
