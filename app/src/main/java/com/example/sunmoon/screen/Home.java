@@ -112,7 +112,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BookingForm.class);
+                Intent intent = new Intent(getApplicationContext(), CheckRoomPending.class);
                 startActivity(intent);
                 finish();
 
