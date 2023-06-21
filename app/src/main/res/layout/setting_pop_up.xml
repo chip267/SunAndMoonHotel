@@ -41,6 +41,7 @@
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
             android:textColor="@color/lightbrown"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext_search" />
         <TextView
             android:id="@+id/tv_newpass"
@@ -60,6 +61,7 @@
             android:textColor="@color/lightbrown"
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext_search" />
         <TextView
             android:id="@+id/tv_confirmpass"
@@ -77,6 +79,7 @@
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:inputType="numberPassword"
+            android:paddingLeft="10dp"
             android:shadowColor="@color/darkbrown"
             android:textColor="@color/lightbrown"
             android:background="@drawable/edittext_search" />
