@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -58,6 +60,8 @@ public class AllRoom extends AppCompatActivity {
             public void onClick(View v) {
                 passcodeDialog = new Dialog(AllRoom.this);
                 passcodeDialog.setContentView(R.layout.passcode_adding_popup);
+                passcodeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
                 passcodeDialog.show();
                 buttonclose = passcodeDialog.findViewById(R.id.imageButtonClose);
                 buttonclose.setOnClickListener(new View.OnClickListener() {
