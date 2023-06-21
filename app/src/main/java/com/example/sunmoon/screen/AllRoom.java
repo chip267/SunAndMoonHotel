@@ -61,7 +61,6 @@ public class AllRoom extends AppCompatActivity {
                 passcodeDialog = new Dialog(AllRoom.this);
                 passcodeDialog.setContentView(R.layout.passcode_adding_popup);
                 passcodeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
                 passcodeDialog.show();
                 buttonclose = passcodeDialog.findViewById(R.id.imageButtonClose);
                 buttonclose.setOnClickListener(new View.OnClickListener() {
