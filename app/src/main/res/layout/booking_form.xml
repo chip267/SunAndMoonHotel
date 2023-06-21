@@ -149,6 +149,25 @@
 
 
         </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_idcard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="Identification Card"
+            android:textColor="@color/darkbrown"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/box_idcard"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#430000"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edittext_checkinout" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -281,25 +300,7 @@
             android:paddingLeft="10dp"
             android:textColor="#430000"
             android:background="@drawable/edittext_checkinout" />
-        <TextView
-            android:id="@+id/tv_idcard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/librefranklinmedium"
-            android:text="Identification Card"
-            android:textColor="@color/darkbrown"
-            android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/box_idcard"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#430000"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_checkinout" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm"
