@@ -45,17 +45,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/librefranklinbold"
-            android:textSize="17dp"
+            android:textSize="15dp"
             android:textColor="@color/darkbrown"
-            android:text="200.000 per night" />
+            android:text="200.000 VND/day" />
         <TextView
             android:id="@+id/tv_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/librefranklinregular"
-            android:textSize="12dp"
+            android:fontFamily="@font/librefranklinbold"
+            android:textSize="13dp"
             android:textColor="@color/darkbrown"
-            android:text="Includes taxes and charges" />
+            android:text="60.000 VND/hour" />
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="120dp"
             android:layout_height="30dp"
