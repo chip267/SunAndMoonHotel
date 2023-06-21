@@ -118,6 +118,7 @@
             android:background="@drawable/edittext_search"
             android:layout_alignRight="@+id/search_vacant"
             android:layout_marginTop="52dp"
+            android:paddingLeft="1dp"
             android:spinnerMode="dropdown"
             />
 
@@ -129,6 +130,7 @@
             android:layout_toLeftOf="@+id/sp_Filter"
             android:layout_marginRight="10dp"
             android:layout_marginTop="52dp"
+            android:paddingLeft="1dp"
             android:spinnerMode="dropdown"
             />
 
