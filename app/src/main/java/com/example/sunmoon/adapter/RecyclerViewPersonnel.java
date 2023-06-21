@@ -49,7 +49,7 @@ public class RecyclerViewPersonnel extends RecyclerView.Adapter<RecyclerViewPers
             public void onClick(View v) {
                 Context context = v.getContext();
                 String employeeId = employee.getEmpIDCard();
-                String empName = String.format("%s%s", employee.getEmpLastName(), employee.getEmpFirstName());
+                String empName = employee.getEmpLastName() + " " + employee.getEmpFirstName();
                 String empPhone = employee.getEmpPhone();
                 String empPosition = employee.getEmpPosition();
                 String empBirthday = employee.getEmpBirthday();
