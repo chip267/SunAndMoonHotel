@@ -61,8 +61,14 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setGroupingSeparator('.');
         DecimalFormat decimalFormat = new DecimalFormat("#,###", symbols);
-        String moneyString = decimalFormat.format(money) + " VND";
+        String moneyString = decimalFormat.format(money) + " VND/day";
         holder.tvMoney.setText(moneyString);
+        double moneyA = room.getPricebyHour();
+        DecimalFormatSymbols symbolsA = new DecimalFormatSymbols(Locale.getDefault());
+        symbols.setGroupingSeparator('.');
+        DecimalFormat decimalFormatA = new DecimalFormat("#,###", symbols);
+        String moneyStringA = decimalFormatA.format(moneyA) + " VND/hour";
+        holder.tvMoneyA.setText(moneyStringA);
         holder.tvRoomNum.setText("Room "+room.getRoomID());
         holder.btnBooknow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +88,7 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvKind;
         TextView tvMoney;
+        TextView tvMoneyA;
         TextView tvRoomNum;
         AppCompatButton btnBooknow;
         ImageView imagePhong;
@@ -93,6 +100,7 @@ public class VacantAdapter extends RecyclerView.Adapter<VacantAdapter.ViewHolder
             tvRoomNum = itemView.findViewById(R.id.tv_roomVacant);
             btnBooknow = itemView.findViewById(R.id.btn_booknow);
             imagePhong = itemView.findViewById(R.id.imageViewPhong);
+            tvMoneyA = itemView.findViewById(R.id.tv_note);
         }
     }
 }

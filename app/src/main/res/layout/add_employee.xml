@@ -45,6 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
+                android:inputType="text"
+                android:textColor="@color/darkbrown"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
                 android:layout_marginTop="10dp"
@@ -62,7 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
-
+                android:textColor="@color/darkbrown"
+                android:inputType="text"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
                 android:layout_marginTop="10dp"
@@ -80,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
-
+                android:textColor="@color/darkbrown"
+                android:inputType="number"
                 android:background="@drawable/edittext_checkinout" />
 
             <LinearLayout
@@ -109,12 +113,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:paddingLeft="10dp"
-
+                        android:textColor="@color/darkbrown"
                         android:hint="dd/mm/yyyy"
                         android:alpha="0.5"
                         android:textSize="14dp"
                         android:fontFamily="@font/librefranklinmedium"
-
+                        android:inputType="date"
                         android:background="@drawable/edittext_checkinout" />
 
                 </LinearLayout>
@@ -141,7 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:paddingLeft="10dp"
-
+                        android:textColor="@color/darkbrown"
+                        android:inputType="text"
                         android:alpha="0.5"
                         android:hint="Female or Male"
                         android:fontFamily="@font/librefranklinmedium"
@@ -172,6 +177,8 @@
                     android:hint="123 456 789"
                     android:fontFamily="@font/librefranklinmedium"
                     android:textSize="14dp"
+                    android:textColor="@color/darkbrown"
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:background="@drawable/edittext_checkinout" />
 
@@ -192,7 +199,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
-
+                android:textColor="@color/darkbrown"
+                android:inputType="text"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
                 android:layout_marginTop="10dp"
@@ -211,6 +219,8 @@
                 android:layout_height="35dp"
                 android:hint="abc@xyz.com"
                 android:alpha="0.5"
+                android:textColor="@color/darkbrown"
+                android:inputType="textEmailAddress"
                 android:fontFamily="@font/librefranklinmedium"
                 android:textSize="14dp"
                 android:paddingLeft="10dp"
@@ -235,6 +245,8 @@
                 android:fontFamily="@font/librefranklinmedium"
                 android:textSize="14dp"
                 android:paddingLeft="10dp"
+                android:textColor="@color/darkbrown"
+                android:inputType="text"
                 android:background="@drawable/edittext_checkinout" />
 
             <LinearLayout

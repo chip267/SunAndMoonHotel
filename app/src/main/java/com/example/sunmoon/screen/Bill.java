@@ -62,7 +62,7 @@ public class Bill extends AppCompatActivity implements Serializable {
         String broomNum = i.getStringExtra("RoomNum");
         String btypeBook = i.getStringExtra("Type");
         String broomCharge = i.getStringExtra("RoomCharge");
-        String bdetails = i.getStringExtra("Details");
+        //String bdetails = i.getStringExtra("Details");
         String bsurCharge = i.getStringExtra("Surcharge");
         String btotal = i.getStringExtra("Total");
         String bbookID = i.getStringExtra("BookID");
@@ -73,7 +73,7 @@ public class Bill extends AppCompatActivity implements Serializable {
         tvRoomNum.setText(broomNum);
         tvType.setText(btypeBook);
         tvRoomCharge.setText(broomCharge);
-        tvDetails.setText(bdetails);
+        tvDetails.setText("+");
         tvSurcharge.setText(bsurCharge);
         tvTotal.setText(btotal);
         tvBookID.setText(bbookID);
