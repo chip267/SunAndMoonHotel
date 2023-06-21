@@ -7,8 +7,7 @@
     android:paddingTop="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:gravity="center"
-    android:background="@drawable/bg_vacant_room">
+    android:gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +40,7 @@
             android:layout_marginTop="10dp"
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
+            android:textColor="@color/lightbrown"
             android:background="@drawable/edittext_search" />
         <TextView
             android:id="@+id/tv_newpass"
@@ -57,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="35dp"
+            android:textColor="@color/lightbrown"
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
             android:background="@drawable/edittext_search" />
@@ -77,10 +78,11 @@
             android:layout_marginTop="10dp"
             android:inputType="numberPassword"
             android:shadowColor="@color/darkbrown"
+            android:textColor="@color/lightbrown"
             android:background="@drawable/edittext_search" />
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_doneroomadd"
+        android:id="@+id/btn_donechangepass"
         android:layout_width="100dp"
         android:layout_height="38dp"
         android:background="@drawable/rectangle_search"
