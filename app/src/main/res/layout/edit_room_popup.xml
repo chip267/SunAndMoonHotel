@@ -93,6 +93,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:textColor="@color/darkbrown"
             android:background="@drawable/edittext_checkinout" />
     </LinearLayout>
     <LinearLayout
@@ -113,6 +116,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:textColor="@color/darkbrown"
             android:background="@drawable/edittext_checkinout" />
     </LinearLayout>
     <LinearLayout

@@ -39,6 +39,7 @@
                 android:layout_marginEnd="20dp"
                 android:inputType="number"
                 android:textColor="@color/darkbrown"
+                android:paddingLeft="10dp"
                 android:background="@drawable/edittext_checkinout" />
 
         </LinearLayout>
@@ -64,6 +65,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:inputType="text"
+                android:paddingLeft="10dp"
                 android:textColor="@color/darkbrown"
                 android:background="@drawable/edittext_checkinout" />
 
@@ -91,6 +93,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:inputType="text"
+                android:paddingLeft="10dp"
                 android:textColor="@color/darkbrown"
                 android:background="@drawable/edittext_checkinout" />
         </LinearLayout>

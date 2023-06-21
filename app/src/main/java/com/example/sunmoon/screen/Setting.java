@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,21 @@ public class Setting extends AppCompatActivity {
     private Dialog changePasscodeDialog;
     private TextView btnChangePasscode;
     private String getPasscode = "";
+    ImageView imageViewBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
-
+        imageViewBack = findViewById(R.id.imageView14);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Setting.this, Home.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
         btnChangePasscode = findViewById(R.id.change_passcode);
         btnChangePasscode.setOnClickListener(new View.OnClickListener() {
             @Override
