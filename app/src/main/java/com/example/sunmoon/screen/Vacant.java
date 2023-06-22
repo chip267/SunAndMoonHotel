@@ -200,10 +200,10 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
         else if (filterList.isEmpty() && !searchText.isEmpty()){
             filterList.clear();
         }
-        if (_sortOption.equalsIgnoreCase("Ascending price")){
+        if (_sortOption.equalsIgnoreCase("Ascending")){
             Collections.sort(filterList, Room.AscendingPriceComparator);
         }
-        else if (_sortOption.equalsIgnoreCase("Descending price")){
+        else if (_sortOption.equalsIgnoreCase("Descending")){
             Collections.sort(filterList, Room.DescendingPriceComparator);
         }
 
