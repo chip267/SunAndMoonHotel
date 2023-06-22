@@ -102,6 +102,7 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <RadioGroup
+                            android:id="@+id/radiogroupType"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
@@ -251,6 +252,7 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <RadioGroup
+                            android:id="@+id/GenderRadio"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
