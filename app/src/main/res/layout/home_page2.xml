@@ -10,20 +10,6 @@
     tools:context=".MainActivity">
 
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#430000"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/header"
-            app:itemTextAppearance="@style/NewFontStyle"
-            app:itemTextColor="#FFF0CB"
-            app:itemVerticalPadding="25dp"
-            app:menu="@menu/main_menu">
-
-        </com.google.android.material.navigation.NavigationView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -268,5 +254,19 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#430000"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header"
+        app:itemTextAppearance="@style/NewFontStyle"
+        app:itemTextColor="#FFF0CB"
+        app:itemVerticalPadding="25dp"
+        app:menu="@menu/main_menu">
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
