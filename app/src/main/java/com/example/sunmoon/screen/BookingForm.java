@@ -144,7 +144,8 @@ public class BookingForm extends AppCompatActivity {
                                     String status = "Check in";
                                     int surcharge=0;
                                     int totalBill=0;
-                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill);
+                                    String details = "";
+                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill,details);
                                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                                     databaseRef.child(bookingId).setValue(booking);
                                     FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);
@@ -170,7 +171,8 @@ public class BookingForm extends AppCompatActivity {
                                     String status = "Check in";
                                     int surcharge=0;
                                     int totalBill=0;
-                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill);
+                                    String details = "";
+                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill, details);
                                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                                     databaseRef.child(bookingId).setValue(booking);
                                     FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);

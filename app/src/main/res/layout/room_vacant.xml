@@ -118,17 +118,19 @@
             android:background="@drawable/edittext_search"
             android:layout_alignRight="@+id/search_vacant"
             android:layout_marginTop="52dp"
+            android:paddingLeft="2dp"
             android:spinnerMode="dropdown"
             />
 
         <Spinner
             android:id="@+id/sp_Sort"
-            android:layout_width="160dp"
+            android:layout_width="130dp"
             android:layout_height="33dp"
             android:background="@drawable/edittext_search"
             android:layout_toLeftOf="@+id/sp_Filter"
             android:layout_marginRight="14dp"
             android:layout_marginTop="52dp"
+            android:paddingLeft="4dp"
             android:spinnerMode="dropdown"
             />
 
