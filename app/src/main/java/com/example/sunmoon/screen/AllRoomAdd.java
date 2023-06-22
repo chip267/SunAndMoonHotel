@@ -226,13 +226,30 @@ public class AllRoomAdd extends AppCompatActivity {
                 doneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String hourEditTextA, dayEditTextA;
+                        hourEditTextA = hourEditText.getText().toString().trim();
+                        dayEditTextA = dayEditText.getText().toString().trim();
+                        if (TextUtils.isEmpty(hourEditTextA)){
+                            Toast.makeText(AllRoomAdd.this, "Enter Price Hour",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (TextUtils.isEmpty(dayEditTextA)){
+                            Toast.makeText(AllRoomAdd.this, "Enter Price Day",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        RadioGroup radioType = dialog.findViewById(R.id.radiogroupType);
+                        int checkedRadioButtonId = radioType.getCheckedRadioButtonId();
+                        if (checkedRadioButtonId == -1) {
+                            Toast.makeText(AllRoomAdd.this, "Select a room type", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         String hourPrice = hourEditText.getText().toString();
                         Double hour = Double.valueOf(hourPrice);
                         String dayPrice = dayEditText.getText().toString();
                         Double day = Double.valueOf(dayPrice);
                         RadioGroup radioGroup = dialog.findViewById(R.id.radiogroupType);
-                        int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
-                        if (checkedRadioButtonId == R.id.radioButtonStandard) {
+                        int checkedRadioButtonIdA = radioGroup.getCheckedRadioButtonId();
+                        if (checkedRadioButtonIdA == R.id.radioButtonStandard) {
                             roomType = "Standard";
                         } else if (checkedRadioButtonId == R.id.radioButtonDeluxe) {
                             roomType = "Deluxe";
