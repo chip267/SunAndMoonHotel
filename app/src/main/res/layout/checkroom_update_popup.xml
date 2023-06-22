@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="315dp"
     android:layout_height="565dp"
-    android:background="@color/lightpink"
+    android:background="@drawable/bg_vacant_room"
     android:padding="20dp">
 
 
@@ -42,6 +42,7 @@
                 android:layout_height="95dp"
                 android:textColor="@color/darkbrown"
                 android:inputType="text"
+                android:paddingLeft="5dp"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
                 android:id="@+id/tv_by"
@@ -58,6 +59,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="45dp"
                 android:inputType="text"
+                android:paddingLeft="10dp"
                 android:textColor="@color/darkbrown"
                 android:background="@drawable/edittext_checkinout" />
             <TextView

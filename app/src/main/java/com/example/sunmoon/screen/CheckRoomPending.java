@@ -206,6 +206,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
     public void onDoneButtonClick(String reportId) {
         dialog1 = new Dialog(CheckRoomPending.this);
         dialog1.setContentView(R.layout.checkroom_update_popup);
+        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog1.show();
         updateStatus = dialog1.findViewById(R.id.box_updatestatus);
         updateStatus.setSingleLine(false);

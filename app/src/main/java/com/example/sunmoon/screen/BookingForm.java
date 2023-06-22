@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.sunmoon.R;
@@ -38,6 +40,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BookingForm extends AppCompatActivity {
     public EditText Room, Name, DOB, Phone, Idcard;
+    public RadioGroup radioGroupA, radioGroupB;
     public RadioButton radioButtonMale, radioButtonFemale;
     public Button Confirm;
     public String TypeOfBooking ="";
@@ -64,6 +67,8 @@ public class BookingForm extends AppCompatActivity {
         radioButtonFemale = findViewById(R.id.radioButtonFemale);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Booking");
+        radioGroupA = findViewById(R.id.radiogroupType);
+        radioGroupB = findViewById(R.id.GenderRadio);
         Intent i = getIntent();
         String roomID = i.getStringExtra("roomID");
         Room.setText(roomID);
@@ -124,6 +129,42 @@ public class BookingForm extends AppCompatActivity {
         Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String roomB, idB, nameB, dobB, phoneB;
+                roomB = Room.getText().toString().trim();
+                idB = Idcard.getText().toString().trim();
+                nameB = Name.getText().toString().trim();
+                dobB = DOB.getText().toString().trim();
+                phoneB = Phone.getText().toString().trim();
+                int checkedRadioButtonIdA = radioGroupA.getCheckedRadioButtonId();
+                if (checkedRadioButtonIdA == -1) {
+                    Toast.makeText(BookingForm.this, "Select a room type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(roomB)){
+                    Toast.makeText(BookingForm.this, "Enter Room",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(idB)){
+                    Toast.makeText(BookingForm.this, "Enter ID Card",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(nameB)){
+                    Toast.makeText(BookingForm.this, "Enter Name",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(dobB)){
+                    Toast.makeText(BookingForm.this, "Enter DOB",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(phoneB)){
+                    Toast.makeText(BookingForm.this, "Enter Phone",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int checkedRadioButtonIdB = radioGroupB.getCheckedRadioButtonId();
+                if (checkedRadioButtonIdB == -1) {
+                    Toast.makeText(BookingForm.this, "Select a gender", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 typeofbooking = TypeOfBooking;
                 DatabaseReference guestRef = FirebaseDatabase.getInstance().getReference().child("Guest");
                 Query query = guestRef.orderByChild("gIDCard").equalTo(gid);
@@ -144,7 +185,8 @@ public class BookingForm extends AppCompatActivity {
                                     String status = "Check in";
                                     int surcharge=0;
                                     int totalBill=0;
-                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill);
+                                    String details = "";
+                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill,details);
                                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                                     databaseRef.child(bookingId).setValue(booking);
                                     FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);
@@ -170,7 +212,8 @@ public class BookingForm extends AppCompatActivity {
                                     String status = "Check in";
                                     int surcharge=0;
                                     int totalBill=0;
-                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill);
+                                    String details = "";
+                                    Booking booking = new Booking(bookingId,checkinDate,checkoutDate,checkinHour,checkoutHour, typeofbooking, rid,total,status,gid,surcharge,totalBill, details);
                                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Booking");
                                     databaseRef.child(bookingId).setValue(booking);
                                     FirebaseDatabase.getInstance().getReference("Room").child(rid).child("rAvail").setValue(1);

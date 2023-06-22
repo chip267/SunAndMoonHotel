@@ -10,16 +10,6 @@
         android:layout_height="132dp"
        >
 
-        <ImageView
-            android:id="@+id/imageViewBackhome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="48dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_button" />
-
         <TextView
             android:layout_width="155dp"
             android:layout_height="wrap_content"

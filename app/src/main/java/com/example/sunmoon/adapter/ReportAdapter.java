@@ -1,5 +1,7 @@
 package com.example.sunmoon.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Conditions;
+import com.example.sunmoon.screen.Bill;
+import com.example.sunmoon.screen.PersonelDetails;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder> {
     private List<Booking> bookings = new ArrayList<>();
@@ -54,13 +61,82 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             }
         });
         holder.tvrooom.setText(booking.getRid());
-        String roomcharge= Integer.toString(booking.getTotal());
-        String surcharge= Integer.toString(booking.getSurcharge());
-        String total= Integer.toString(booking.getTotalBill());
-        holder.tvrooomcharge.setText(roomcharge);
-        holder.tvsurcharge.setText(surcharge);
-        holder.tvtotal.setText(total);
         holder.checkin.setText(booking.getCheckinHour()+"   "+booking.getCheckinDate());
+        int roomC = booking.getTotal();
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+        symbols.setGroupingSeparator('.');
+        DecimalFormat decimalFormat = new DecimalFormat("#,###", symbols);
+        String roomCharge = decimalFormat.format(roomC);
+        int surC = booking.getSurcharge();
+        DecimalFormatSymbols symbolsA = new DecimalFormatSymbols(Locale.getDefault());
+        symbolsA.setGroupingSeparator('.');
+        DecimalFormat decimalFormatA = new DecimalFormat("#,###", symbolsA);
+        String surCharge = decimalFormatA.format(surC);
+        int totalC = booking.getTotalBill();
+        DecimalFormatSymbols symbolsB = new DecimalFormatSymbols(Locale.getDefault());
+        symbolsB.setGroupingSeparator('.');
+        DecimalFormat decimalFormatB = new DecimalFormat("#,###", symbolsB);
+        String total = decimalFormatB.format(totalC);
+        holder.tvrooomcharge.setText(roomCharge);
+        holder.tvsurcharge.setText(surCharge);
+        holder.tvtotal.setText(total);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                String checkIn = booking.getCheckinHour()+"   "+booking.getCheckinDate();
+                String checkOut = booking.getCheckoutHour()+"   "+booking.getCheckoutDate();
+                String roomNum = booking.getRid();
+                String typeBook = booking.getBookingType();
+                int roomC = booking.getTotal();
+                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+                symbols.setGroupingSeparator('.');
+                DecimalFormat decimalFormat = new DecimalFormat("#,###", symbols);
+                String roomCharge = decimalFormat.format(roomC);
+                int surC = booking.getSurcharge();
+                DecimalFormatSymbols symbolsA = new DecimalFormatSymbols(Locale.getDefault());
+                symbolsA.setGroupingSeparator('.');
+                DecimalFormat decimalFormatA = new DecimalFormat("#,###", symbolsA);
+                String surCharge = decimalFormatA.format(surC);
+                int totalC = booking.getTotalBill();
+                DecimalFormatSymbols symbolsB = new DecimalFormatSymbols(Locale.getDefault());
+                symbolsB.setGroupingSeparator('.');
+                DecimalFormat decimalFormatB = new DecimalFormat("#,###", symbolsB);
+                String total = decimalFormatB.format(totalC);
+                String bookID = booking.getBookingID();
+                String gidCard = booking.getGid();
+                String details = booking.getDetails();
+                DatabaseReference guestRef = FirebaseDatabase.getInstance().getReference("Guest");
+                guestRef.orderByChild("gIDCard").equalTo(gidCard).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot guestDataSnapshot) {
+                        if (guestDataSnapshot.exists()) {
+                            for (DataSnapshot guestSnapshot : guestDataSnapshot.getChildren()) {
+                                String nameCus = guestSnapshot.child("gName").getValue(String.class);
+                                String phoneCus = guestSnapshot.child("gPhone").getValue(String.class);
+                                Intent intent = new Intent(context, Bill.class);
+                                intent.putExtra("CheckIn", checkIn);
+                                intent.putExtra("CheckOut", checkOut);
+                                intent.putExtra("RoomNum", roomNum);
+                                intent.putExtra("Type", typeBook);
+                                intent.putExtra("RoomCharge", roomCharge);
+                                intent.putExtra("Details", details);
+                                intent.putExtra("Surcharge", surCharge);
+                                intent.putExtra("Total", total);
+                                intent.putExtra("BookID", bookID);
+                                intent.putExtra("NameCus", nameCus);
+                                intent.putExtra("PhoneCus", phoneCus);
+                                context.startActivity(intent);
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle any errors that occur during the query
+                    }
+                });
+            }
+        });
     }
     @Override
     public int getItemCount() {

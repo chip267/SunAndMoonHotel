@@ -7,13 +7,12 @@
     android:paddingTop="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:gravity="center"
-    android:background="@drawable/bg_vacant_room">
+    android:gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/librefranklinmedium"
+        android:fontFamily="@font/librefranklinblack"
         android:text="Change passcode"
         android:textColor="@color/lightbrown"
         android:textStyle="bold"
@@ -41,6 +40,8 @@
             android:layout_marginTop="10dp"
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
+            android:textColor="@color/lightbrown"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext_search" />
         <TextView
             android:id="@+id/tv_newpass"
@@ -57,8 +58,10 @@
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="35dp"
+            android:textColor="@color/lightbrown"
             android:shadowColor="@color/darkbrown"
             android:inputType="numberPassword"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext_search" />
         <TextView
             android:id="@+id/tv_confirmpass"
@@ -76,19 +79,43 @@
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:inputType="numberPassword"
+            android:paddingLeft="10dp"
             android:shadowColor="@color/darkbrown"
+            android:textColor="@color/lightbrown"
             android:background="@drawable/edittext_search" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content" >
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_doneroomadd"
+        android:id="@+id/btn_donechangepass"
         android:layout_width="100dp"
         android:layout_height="38dp"
         android:background="@drawable/rectangle_search"
         android:fontFamily="@font/librefranklinmedium"
         android:text="Done"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:textAllCaps="false"
         android:textColor="@color/lightpink"
         android:textSize="15dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:background="@drawable/rectangle_search"
+        android:fontFamily="@font/librefranklinmedium"
+        android:text="Cancel"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/lightpink"
+        android:textSize="15dp" />
+
+</LinearLayout>
 
 </LinearLayout>

@@ -97,32 +97,20 @@ public class SalesReport extends AppCompatActivity {
         Date currentDate = new Date();
 
         try {
-            // Parse the input date
             Date inputDate = sdfDateOnly.parse(date);
-
-            // Get the start and end dates of the current month
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.DAY_OF_MONTH, 1);
-            Date startOfMonth = calendar.getTime();
-            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-            Date endOfMonth = calendar.getTime();
-
-            // Truncate time portion for comparison
-            String inputDateOnly = sdfDateOnly.format(inputDate);
-            String currentDateTimeOnly = sdfDateOnly.format(currentDate);
-            startOfMonth = sdfDateOnly.parse(sdfDateOnly.format(startOfMonth));
-            endOfMonth = sdfDateOnly.parse(sdfDateOnly.format(endOfMonth));
-
-            // Check if the input date falls within the current month and not in the future
-            return inputDateOnly != null &&
-                    inputDateOnly.equals(sdfDateOnly.format(startOfMonth)) ||
-                    inputDateOnly.equals(sdfDateOnly.format(endOfMonth)) ||
-                    (inputDateOnly.compareTo(sdfDateOnly.format(startOfMonth)) >= 0 &&
-                            inputDateOnly.compareTo(sdfDateOnly.format(endOfMonth)) <= 0) &&
-                            currentDateTimeOnly.compareTo(inputDateOnly) >= 0;
+            Calendar inputCalendar = Calendar.getInstance();
+            inputCalendar.setTime(inputDate);
+            int inputMonth = inputCalendar.get(Calendar.MONTH);
+            int inputYear = inputCalendar.get(Calendar.YEAR);
+            Calendar currentCalendar = Calendar.getInstance();
+            currentCalendar.setTime(currentDate);
+            int currentMonth = currentCalendar.get(Calendar.MONTH);
+            int currentYear = currentCalendar.get(Calendar.YEAR);
+            return inputMonth == currentMonth && inputYear == currentYear;
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
         }
     }
+
 }

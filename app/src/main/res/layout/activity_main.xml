@@ -63,6 +63,7 @@
         android:drawableLeft="@drawable/vector__3_"
         android:drawablePadding="8dp"
         android:hint="ID number"
+        android:inputType="text"
         android:textColorHint="#99430000"
         android:ellipsize="start"
         android:textColor="#99430000"

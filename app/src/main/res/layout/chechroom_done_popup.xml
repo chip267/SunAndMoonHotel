@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="332dp"
     android:layout_height="600dp"
-    android:background="@color/lightpink"
+    android:background="@drawable/bg_vacant_room"
     android:padding="20dp">
 
 

@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,8 @@ public class AllRoom extends AppCompatActivity {
     private CustomAdapter adapter;
     private Dialog passcodeDialog;
     private String passCode;
+
+    private ImageButton buttonclose;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +60,15 @@ public class AllRoom extends AppCompatActivity {
             public void onClick(View v) {
                 passcodeDialog = new Dialog(AllRoom.this);
                 passcodeDialog.setContentView(R.layout.passcode_adding_popup);
+                passcodeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 passcodeDialog.show();
+                buttonclose = passcodeDialog.findViewById(R.id.imageButtonClose);
+                buttonclose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        passcodeDialog.dismiss();
+                    }
+                });
                 AppCompatButton doneCodeBtn = passcodeDialog.findViewById(R.id.btn_Done);
                 TextView inputPassCode = passcodeDialog.findViewById(R.id.box_room);
                 doneCodeBtn.setOnClickListener(new View.OnClickListener() {
