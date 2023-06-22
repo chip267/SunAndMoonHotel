@@ -15,8 +15,8 @@
 
     <string-array name="roomsort">
         <item>Default</item>
-        <item>Ascending Price</item>
-        <item>Descending Price</item>
+        <item>Ascending</item>
+        <item>Descending</item>
     </string-array>
 
     <string name="open" translatable="false">Open</string>
