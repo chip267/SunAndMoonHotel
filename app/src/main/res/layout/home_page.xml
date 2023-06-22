@@ -347,7 +347,7 @@
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/vector" />
+            app:srcCompat="@drawable/octicon_checklist_24" />
 
         <ImageView
             app:layout_constraintTop_toTopOf="@+id/boxRooms"
