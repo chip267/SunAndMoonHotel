@@ -97,7 +97,7 @@
         app:layout_constraintRight_toRightOf="@+id/layout"
         android:layout_marginTop="52dp"
         android:layout_marginRight="30dp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="2dp"
         android:spinnerMode="dropdown" />
 
 
