@@ -45,6 +45,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:inputType="text"
                 android:paddingLeft="10dp"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
@@ -63,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
-
+                android:inputType="text"
                 android:background="@drawable/edittext_checkinout" />
             <TextView
                 android:layout_marginTop="10dp"
@@ -81,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:paddingLeft="10dp"
-
+                android:inputType="text"
                 android:background="@drawable/edittext_checkinout" />
 
             <LinearLayout
@@ -110,7 +111,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:paddingLeft="10dp"
-
+                        android:inputType="date"
                         android:hint="dd/mm/yyyy"
                         android:alpha="0.5"
                         android:textSize="14dp"
