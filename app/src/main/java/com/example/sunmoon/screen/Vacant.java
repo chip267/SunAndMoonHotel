@@ -175,6 +175,7 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
                 }
                 else{
                     if (option.equalsIgnoreCase(item.getRoomType())){
+                        System.out.println(option);
                         filterList.add(item);
                     }
                 }
@@ -187,10 +188,8 @@ public class Vacant extends AppCompatActivity implements VacantAdapter.OnButtonC
             else {
                 filterList.clear();
                 for (Room item : listroom){
-                    if (Integer.toString((int)item.getPricebyDay()).equalsIgnoreCase(searchText) || Integer.toString((int)item.getPricebyHour()).equalsIgnoreCase(searchText)){
-                        if (option.equalsIgnoreCase(item.getRoomType())){
-                            filterList.add(item);
-                        }
+                    if (option.equalsIgnoreCase(item.getRoomType())){
+                        filterList.add(item);
                     }
                 }
             }
