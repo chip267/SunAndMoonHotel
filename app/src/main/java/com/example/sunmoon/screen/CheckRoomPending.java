@@ -167,9 +167,7 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Conditions condition = snapshot.getValue(Conditions.class);
                         if (condition != null && condition.getAvail() == 1) {
-                            if (isDateInCurrentWeekday(condition.getDate())) {
                                 filteredConditions.add(condition);
-                            }
                         }
                     }
                     adapter.setData(filteredConditions);
@@ -328,34 +326,6 @@ public class CheckRoomPending extends AppCompatActivity implements RecyclerViewA
     interface ReportIdCallback {
         void onReportIdGenerated(String reportId);
         void onReportIdGenerationFailed(String errorMessage);
-    }
-    private boolean isDateInCurrentWeekday(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
-        SimpleDateFormat sdfDateOnly = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        Date currentDate = new Date();
-
-        try {
-            Date conditionDate = sdf.parse(date);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setFirstDayOfWeek(Calendar.MONDAY);
-            calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            Date startOfWeek = calendar.getTime();
-            calendar.add(Calendar.DAY_OF_WEEK, 6);
-            Date endOfWeek = calendar.getTime();
-            String conditionDateOnly = sdfDateOnly.format(conditionDate);
-            String currentDateTimeOnly = sdfDateOnly.format(currentDate);
-            startOfWeek = sdfDateOnly.parse(sdfDateOnly.format(startOfWeek));
-            endOfWeek = sdfDateOnly.parse(sdfDateOnly.format(endOfWeek));
-            return conditionDateOnly != null &&
-                    conditionDateOnly.equals(sdfDateOnly.format(startOfWeek)) ||
-                    conditionDateOnly.equals(sdfDateOnly.format(endOfWeek)) ||
-                    (conditionDateOnly.compareTo(sdfDateOnly.format(startOfWeek)) > 0 &&
-                            conditionDateOnly.compareTo(sdfDateOnly.format(endOfWeek)) < 0) &&
-                            currentDateTimeOnly.compareTo(conditionDateOnly) >= 0;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

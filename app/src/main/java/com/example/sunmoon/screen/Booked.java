@@ -372,7 +372,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
                     @Override
                     public void onDataChange(@NonNull DataSnapshot roomDataSnapshot) {
                         if (roomDataSnapshot.exists()) {
-                            FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(0);
+                            FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(2);
                             for (int i = 0; i < bookedRooms.size(); i++){
                                 if(bookedRooms.get(i).getBookingID() == bookedId){
                                     bookedRooms.remove(i);

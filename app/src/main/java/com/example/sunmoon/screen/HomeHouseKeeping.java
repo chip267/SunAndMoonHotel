@@ -73,9 +73,7 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Conditions condition = snapshot.getValue(Conditions.class);
                         if (condition != null && condition.getAvail() == 1) {
-                            if (isDateToday(condition.getDate())) {
                                 filteredConditions.add(condition);
-                            }
                         }
                     }
                         adapter.setData(filteredConditions);
@@ -207,21 +205,6 @@ public class HomeHouseKeeping extends AppCompatActivity implements NavigationVie
     private String convertDateToString(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         return format.format(date);
-    }
-    private boolean isDateToday(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
-        SimpleDateFormat sdfDateOnly = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        Date currentDate = new Date();
-
-        try {
-            Date conditionDate = sdf.parse(date);
-            String conditionDateOnly = sdfDateOnly.format(conditionDate);
-            String currentDateTimeOnly = sdfDateOnly.format(currentDate);
-            return conditionDateOnly.equals(currentDateTimeOnly);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     @Override
