@@ -22,7 +22,7 @@
         android:layout_marginStart="82dp"
         android:layout_marginTop="62dp"
         android:fontFamily="@font/canelaboldtrial"
-        android:text="Booked "
+        android:text="Occupied "
         android:textColor="@color/darkbrown"
         android:textSize="30dp"
 
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="105dp"
-        android:text="Booked"
+        android:text="Occupied"
         android:textAllCaps="false"
         android:textSize="15dp"
         android:textColor="#FFF0CB"

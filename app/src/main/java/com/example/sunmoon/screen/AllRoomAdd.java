@@ -54,6 +54,13 @@ public class AllRoomAdd extends AppCompatActivity {
             @Override
             public void onVacantItemClick(Room room) {
                 String roomID = room.getRoomID();
+                Double hourD = room.getPricebyHour();
+                Double dayD = room.getPricebyDay();
+                int hourI = hourD.intValue();
+                int dayI = dayD.intValue();
+                String hourS = Integer.toString(hourI);
+                String dayS = Integer.toString(dayI);
+                String type = room.getRoomType();
                 Dialog dialog1 = new Dialog(AllRoomAdd.this);
                 dialog1.setContentView(R.layout.edit_room_popup);
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -69,7 +76,16 @@ public class AllRoomAdd extends AppCompatActivity {
                 EditText hourEdit = dialog1.findViewById(R.id.box_houredit);
                 EditText dayEdit = dialog1.findViewById(R.id.box_dayedit);
                 RadioGroup radioGroup = dialog1.findViewById(R.id.radiogroupEdit);
+                RadioButton radioButtonStandard = dialog1.findViewById(R.id.radioButtonStandardEdit);
+                RadioButton radioButtonDeluxe = dialog1.findViewById(R.id.radioButtonDeluxeEdit);
                 roomNum.setText("Room " + roomID);
+                hourEdit.setText(hourS != null ? hourS : "");
+                dayEdit.setText(dayS != null ? dayS : "");
+                if (type.equals("Standard")) {
+                    radioButtonStandard.setChecked(true);
+                } else if (type.equals("Deluxe")) {
+                    radioButtonDeluxe.setChecked(true);
+                }
                 AppCompatButton doneButton = dialog1.findViewById(R.id.btn_doneroomedit);
                 doneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -112,6 +128,13 @@ public class AllRoomAdd extends AppCompatActivity {
             @Override
             public void onBookedItemClick(Room room) {
                 String roomID = room.getRoomID();
+                Double hourD = room.getPricebyHour();
+                Double dayD = room.getPricebyDay();
+                int hourI = hourD.intValue();
+                int dayI = dayD.intValue();
+                String hourS = Integer.toString(hourI);
+                String dayS = Integer.toString(dayI);
+                String type = room.getRoomType();
                 Dialog dialog1 = new Dialog(AllRoomAdd.this);
                 dialog1.setContentView(R.layout.edit_room_popup);
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -127,7 +150,16 @@ public class AllRoomAdd extends AppCompatActivity {
                 EditText hourEdit = dialog1.findViewById(R.id.box_houredit);
                 EditText dayEdit = dialog1.findViewById(R.id.box_dayedit);
                 RadioGroup radioGroup = dialog1.findViewById(R.id.radiogroupEdit);
+                RadioButton radioButtonStandard = dialog1.findViewById(R.id.radioButtonStandardEdit);
+                RadioButton radioButtonDeluxe = dialog1.findViewById(R.id.radioButtonDeluxeEdit);
                 roomNum.setText("Room " + roomID);
+                hourEdit.setText(hourS != null ? hourS : "");
+                dayEdit.setText(dayS != null ? dayS : "");
+                if (type.equals("Standard")) {
+                    radioButtonStandard.setChecked(true);
+                } else if (type.equals("Deluxe")) {
+                    radioButtonDeluxe.setChecked(true);
+                }
                 AppCompatButton doneButton = dialog1.findViewById(R.id.btn_doneroomedit);
                 doneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
