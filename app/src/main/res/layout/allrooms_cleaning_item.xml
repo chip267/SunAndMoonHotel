@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="1dp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:background="@drawable/bg_vacant_room"
+        android:paddingTop="30dp"
+        android:layout_margin="5dp"
+        >
+
+        <TextView
+            android:id="@+id/numVacant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/canelablacktrial"
+            android:text="101"
+            android:textColor="@color/darkbrown"
+            android:textSize="30dp" />
+    </LinearLayout>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="2dp"
+    android:background="@drawable/badges_bg"
+    android:textColor="@color/darkbrown"
+    android:fontFamily="@font/librefranklinmedium"
+    android:text="Cleaning"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:textAlignment="center"
+    android:layout_marginBottom="40dp"
+    android:layout_marginStart="20dp"
+    />
+</FrameLayout>
