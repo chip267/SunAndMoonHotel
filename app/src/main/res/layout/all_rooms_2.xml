@@ -56,7 +56,7 @@
                 android:layout_height="24dp"
                 android:background="@drawable/frame_979"
                 android:fontFamily="@font/librefranklinmedium"
-                android:text="Booked"
+                android:text="Occupied"
                 android:textAllCaps="false"
                 android:textColor="@color/darkbrown"
                 android:textSize="15dp" />

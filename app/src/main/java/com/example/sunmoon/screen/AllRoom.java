@@ -154,6 +154,33 @@ public class AllRoom extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
+            @Override
+            public void onWippingItemClick(Room room) {
+                String roomID = room.getRoomID();
+                Dialog dialog;
+                dialog = new Dialog(AllRoom.this);
+                dialog.setContentView(R.layout.allrooms_cleaning_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                AppCompatButton cancelCleaning;
+                cancelCleaning = dialog.findViewById(R.id.btn_cancelclean);
+                cancelCleaning.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                AppCompatButton confirmCleaning;
+                confirmCleaning = dialog.findViewById(R.id.btn_confirmclean);
+                confirmCleaning.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference("Room").child(roomID).child("rAvail").setValue(0);
+                        dialog.dismiss();
+                    }
+                });
+            }
+
         });
         adapter.fetchData();
     }

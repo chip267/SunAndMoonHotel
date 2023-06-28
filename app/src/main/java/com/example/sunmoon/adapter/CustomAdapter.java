@@ -25,6 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private static final int VIEW_TYPE_VACANT = 1;
     private static final int VIEW_TYPE_BOOKED = 2;
+    private static final int VIEW_TYPE_WIPPING = 3;
     private DatabaseReference databaseReference;
     private List<Room> dataList;
     private Context context;
@@ -33,6 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public interface OnItemClickListener {
         void onVacantItemClick(Room room);
         void onBookedItemClick(Room room);
+        void onWippingItemClick(Room room);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -57,6 +59,9 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             case VIEW_TYPE_BOOKED:
                 view = inflater.inflate(R.layout.allrooms_booked_item, parent, false);
                 return new BookedViewHolder(view);
+            case VIEW_TYPE_WIPPING:
+                view = inflater.inflate(R.layout.allrooms_cleaning_item, parent, false);
+                return new WippingViewHolder(view);
             default:
                 throw new IllegalArgumentException("Invalid view type: " + viewType);
         }
@@ -88,6 +93,17 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 }
             });
+        } else if (holder instanceof WippingViewHolder) {
+            WippingViewHolder wippingViewHolder = (WippingViewHolder) holder;
+            wippingViewHolder.tvroomWID.setText(room.getRoomID());
+            wippingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onWippingItemClick(room);
+                    }
+                }
+            });
         }
     }
 
@@ -98,7 +114,10 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return VIEW_TYPE_VACANT;
         } else if (room.isrAvail() == 1) {
             return VIEW_TYPE_BOOKED;
-        } else {
+        } else if (room.isrAvail() == 2) {
+            return VIEW_TYPE_WIPPING;
+        }
+        else {
             throw new IllegalArgumentException("Invalid item at position: " + position);
         }
     }
@@ -122,6 +141,14 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public BookedViewHolder(@NonNull View itemView) {
             super(itemView);
             tvroomBID = itemView.findViewById(R.id.numBooked);
+        }
+    }
+    public static class WippingViewHolder extends RecyclerView.ViewHolder {
+        TextView tvroomWID;
+
+        public WippingViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvroomWID = itemView.findViewById(R.id.numWipping);
         }
     }
     public void fetchData() {

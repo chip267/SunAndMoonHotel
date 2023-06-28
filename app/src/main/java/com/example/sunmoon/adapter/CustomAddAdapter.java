@@ -94,7 +94,7 @@ public class CustomAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemViewType(int position) {
         Room room = dataList.get(position);
-        if (room.isrAvail() == 0) {
+        if (room.isrAvail() == 0 || room.isrAvail() == 2) {
             return VIEW_TYPE_VACANT;
         } else if (room.isrAvail() == 1) {
             return VIEW_TYPE_BOOKED;
