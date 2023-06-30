@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
     android:layout_marginTop="45dp"
     android:layout_marginBottom="10dp">
 
@@ -81,7 +82,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPhoneno1" />
 
+
+
     <LinearLayout
+        android:id="@+id/surchargeframe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -98,32 +102,56 @@
             android:textSize="18dp"
             android:textColor="@color/darkbrown"/>
 
-        <EditText
-            android:id="@+id/box_surcharge"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginStart="48dp"
-            android:inputType="number"
-            android:textColor="@color/darkbrown"
-            android:paddingLeft="2dp"
-            android:background="@drawable/edittext_checkinout" />
-
+        <TextView
+            android:id="@+id/tv_totalsurcharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="50.000"
+            android:textColor="@color/yellow"
+            android:textSize="18dp"/>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ListSurcharge"
+        app:layout_constraintTop_toTopOf="@id/surchargeframe"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        tools:listitem="@layout/room_subitem_view"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_Checkout"
-        android:layout_width="138dp"
-        android:layout_height="30dp"
-        android:background="@drawable/rectangle_search"
-        android:fontFamily="@font/librefranklinregular"
-        android:text="Checkout"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="18dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="160dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="122dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ListSurcharge"
+        android:layout_marginTop="20dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_Checkout"
+            android:layout_width="148dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rectangle_search"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="Checkout"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_AddSurcharge"
+            android:layout_width="148dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rectangle_search"
+            android:fontFamily="@font/librefranklinregular"
+            android:text="Add Surcharge"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
