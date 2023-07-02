@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="260dp"
     android:layout_height="200dp"
-    android:background="@drawable/frame_979"
+    android:background="@drawable/bg_vacant_room"
     android:orientation="vertical"
     android:padding="15dp">
     <TextView
@@ -25,7 +25,8 @@
         android:hint="Details"
         android:alpha="0.5"
         android:fontFamily="@font/librefranklinregular"
-        android:paddingLeft="10dp" />
+        android:textColor="@color/lightbrown"
+        android:paddingLeft="10dp"/>
     <EditText
         android:id="@+id/box_cost"
         android:layout_width="226dp"
@@ -35,6 +36,7 @@
         android:textColorHint="@color/lightbrown"
         android:hint="Cost"
         android:alpha="0.5"
+        android:textColor="@color/lightbrown"
         android:fontFamily="@font/librefranklinregular"
         android:paddingLeft="10dp"/>
     <LinearLayout
