@@ -106,7 +106,7 @@
             android:id="@+id/tv_totalsurcharge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="100dp"
             android:fontFamily="@font/librefranklinmedium"
             android:text="50.000"
             android:textColor="@color/yellow"
