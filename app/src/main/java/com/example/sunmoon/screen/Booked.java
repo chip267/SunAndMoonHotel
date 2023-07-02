@@ -27,9 +27,11 @@ import com.example.sunmoon.adapter.GuestAdapter;
 
 import com.example.sunmoon.adapter.RecyclerViewAdapter;
 import com.example.sunmoon.adapter.RoomTypeAdapter;
+import com.example.sunmoon.adapter.SurchargeAdapter;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Guest;
 import com.example.sunmoon.models.Room;
+import com.example.sunmoon.models.Surcharge;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,7 +52,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnButtonClickListener, AdapterView.OnItemSelectedListener {
     List<Booking> bookedRooms;
-    RecyclerView bookedRoomRecyclerView;
+    RecyclerView bookedRoomRecyclerView, listSurChargeRecyclerView;
     BookedRoomAdapter roomAdapter;
     ImageView btnBack;
     private Dialog dialog;
@@ -184,7 +186,7 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
             }
         });
     }
-    public void onCheckOutButtonClick(String bookedId, String roomID, int surchargeValue) {
+    public void onCheckOutButtonClick(String bookedId, String roomID, int surchargeValue, List<Surcharge> surcharges) {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
         String timeCO = timeFormat.format(new Date());
@@ -203,6 +205,14 @@ public class Booked extends AppCompatActivity implements BookedRoomAdapter.OnBut
         name = dialog.findViewById(R.id.tv_nameCus);
         phone = dialog.findViewById(R.id.tv_phonenocus);
         TIME = dialog.findViewById(R.id.tv_details);
+        listSurChargeRecyclerView = dialog.findViewById(R.id.ListSurcharge);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.VERTICAL, false);
+        listSurChargeRecyclerView.setLayoutManager(layoutManager);
+        listSurChargeRecyclerView.setHasFixedSize(true);
+        SurchargeAdapter surchargeAdapter = new SurchargeAdapter(surcharges,dialog.getContext());
+        listSurChargeRecyclerView.setAdapter(surchargeAdapter);
+
         bookingRef = FirebaseDatabase.getInstance().getReference("Booking").child(bookedId);
         bookingRef.child("checkoutDate").setValue(dateCO);
         bookingRef.child("checkoutHour").setValue(timeCO);

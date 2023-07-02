@@ -40,7 +40,7 @@ import java.util.List;
 public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.ViewHolder>{
     private List<Booking> bookedRoom = new ArrayList<>();
     public interface OnButtonClickListener {
-        void onCheckOutButtonClick(String bookedId, String roomID, int surchargeValue);
+        void onCheckOutButtonClick(String bookedId, String roomID, int surchargeValue, List<Surcharge> surcharges);
     }
 
     private BookedRoomAdapter.OnButtonClickListener onButtonClickListener;
@@ -100,6 +100,14 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         holder.roomID.setText("Room " + booked_room.getRid());
         holder.room = booked_room;
 
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(room_Context, LinearLayoutManager.VERTICAL, false);
+        holder.surchargeRV.setLayoutManager(layoutManager);
+        holder.surchargeRV.setHasFixedSize(true);
+
+        List<Surcharge> arrayList = new ArrayList<>();
+        SurchargeAdapter surchargeAdapter = new SurchargeAdapter(arrayList,holder.surchargeRV.getContext());
+        holder.surchargeRV.setAdapter(surchargeAdapter);
+
         holder.btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,18 +120,12 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
                         surchargeValue = Integer.parseInt(surchargeValueString);
                     }
                     int totalBill = booked_room.getTotal() + surchargeValue;
-                    onButtonClickListener.onCheckOutButtonClick(bookedID, roomID, surchargeValue);
+                    onButtonClickListener.onCheckOutButtonClick(bookedID, roomID, surchargeValue, arrayList);
                 }
             }
         });
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(room_Context, LinearLayoutManager.VERTICAL, false);
-        holder.surchargeRV.setLayoutManager(layoutManager);
-        holder.surchargeRV.setHasFixedSize(true);
 
-        List<Surcharge> arrayList = new ArrayList<>();
-        SurchargeAdapter surchargeAdapter = new SurchargeAdapter(arrayList,holder.surchargeRV.getContext());
-        holder.surchargeRV.setAdapter(surchargeAdapter);
 
         //final int[] totalSurcharge = {0};
         //holder.surcharge.setText("0");
