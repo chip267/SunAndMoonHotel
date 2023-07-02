@@ -1,5 +1,6 @@
 package com.example.sunmoon.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sunmoon.MainActivity;
@@ -20,6 +22,7 @@ import com.example.sunmoon.R;
 import com.example.sunmoon.models.Booking;
 import com.example.sunmoon.models.Conditions;
 import com.example.sunmoon.models.Guest;
+import com.example.sunmoon.models.Surcharge;
 import com.example.sunmoon.screen.Booked;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,9 +48,6 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
     public void setOnButtonClickListener(BookedRoomAdapter.OnButtonClickListener listener) {
         this.onButtonClickListener = listener;
     }
-    /*public void setData(List<Booking> bookedRoom) {
-        this.bookedRoom = bookedRoom;
-    }*/
     private Context room_Context;
 
     public BookedRoomAdapter(List _bookedRoom, Context room_Context) {
@@ -117,6 +117,50 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
             }
         });
 
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(room_Context, LinearLayoutManager.VERTICAL, false);
+        holder.surchargeRV.setLayoutManager(layoutManager);
+        holder.surchargeRV.setHasFixedSize(true);
+
+        List<Surcharge> arrayList = new ArrayList<>();
+        SurchargeAdapter surchargeAdapter = new SurchargeAdapter(arrayList,holder.surchargeRV.getContext());
+        holder.surchargeRV.setAdapter(surchargeAdapter);
+
+        //final int[] totalSurcharge = {0};
+        //holder.surcharge.setText("0");
+        holder.btnAddSurcharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog surchargeDialog = new Dialog(room_Context);
+                surchargeDialog.setContentView(R.layout.add_surcharge_popup);
+                surchargeDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame_979);
+                surchargeDialog.show();
+
+                EditText tvDetail = surchargeDialog.findViewById(R.id.box_details);
+                EditText tvCost = surchargeDialog.findViewById(R.id.box_cost);
+                AppCompatButton btnConfirm = surchargeDialog.findViewById(R.id.btn_confirmsur);
+                AppCompatButton btnCancel = surchargeDialog.findViewById(R.id.btn_cancelsur);
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        surchargeDialog.dismiss();
+                    }
+                });
+
+                btnConfirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        arrayList.add(new Surcharge( tvDetail.getText().toString(),tvCost.getText().toString()));
+                        int totalSurcharge = Integer.parseInt(holder.surcharge.getText().toString()) + Integer.parseInt(tvCost.getText().toString());
+                        holder.surcharge.setText(String.valueOf(totalSurcharge));
+                        surchargeDialog.dismiss();
+                        surchargeAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+
+
     }
 
     @Override
@@ -132,9 +176,11 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
         public TextView guestPhone;
 
         public Booking room;
-        public EditText surcharge;
+        public TextView surcharge;
 
-        public AppCompatButton btnCheckOut;
+        public RecyclerView surchargeRV;
+
+        public AppCompatButton btnCheckOut, btnAddSurcharge;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -143,8 +189,10 @@ public class BookedRoomAdapter extends RecyclerView.Adapter<BookedRoomAdapter.Vi
             roomID = itemView.findViewById(R.id.tvRoom110);
             guestName = itemView.findViewById(R.id.tvName1);
             guestPhone = itemView.findViewById(R.id.tvPhone1);
-            surcharge = itemView.findViewById(R.id.box_surcharge);
+            surcharge = itemView.findViewById(R.id.tv_totalsurcharge);
             btnCheckOut = itemView.findViewById(R.id.btn_Checkout);
+            btnAddSurcharge = itemView.findViewById(R.id.btn_AddSurcharge);
+            surchargeRV = itemView.findViewById(R.id.ListSurcharge);
         }
     }
 }
