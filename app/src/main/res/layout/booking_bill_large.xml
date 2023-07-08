@@ -383,6 +383,18 @@
                 android:textColor="@color/lightbrown"
                 android:textSize="15dp" />
         </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_exportBill"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rectangle_search"
+            android:fontFamily="@font/librefranklinmedium"
+            android:text="Export Bill"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="140dp"
+            android:textAllCaps="false"
+            android:textColor="@color/lightpink"
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>
