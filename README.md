@@ -58,7 +58,9 @@ Bạn muốn mở khách sạn nhưng chưa biết phải sử dụng ứng dụ
   * Vai trò: Database Design, Backend Developer
 * [Bùi Thế Liêm](https://github.com/theliemdayyy)
   * Vai trò: Frontend Developer, Backend Developer
-
+* [Trần Lê Yến Linh ](https://github.com/Tlyl1111)
+  * Vai trò: Frontend Developer, Backend Developer
+    
 <!-- NGƯỜI HƯỚNG DẪN -->
 <div id="Nguoihuongdan"></div>
 
