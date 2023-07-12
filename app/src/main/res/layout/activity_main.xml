@@ -62,7 +62,7 @@
         android:background="@drawable/customeredit"
         android:drawableLeft="@drawable/vector__3_"
         android:drawablePadding="8dp"
-        android:hint="ID number"
+        android:hint="User"
         android:inputType="text"
         android:textColorHint="#99430000"
         android:ellipsize="start"
