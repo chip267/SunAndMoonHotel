@@ -188,13 +188,26 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     if ("Check in".equals(status)) {
                         checkinNo++;
                     }
-                    else if("checkout".equals(status)) {
+                }
+                String cinNo = String.valueOf(checkinNo);
+                tv_checkin.setText(cinNo);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("Firebase", "Error querying bookings: " + databaseError.getMessage());
+            }
+        });
+        Query query1 = bookingRef.orderByChild("checkoutDate").equalTo(today);
+        query1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot bookingSnapshot : dataSnapshot.getChildren()) {
+                    String status = bookingSnapshot.child("status").getValue(String.class);
+                    if("checkout".equals(status)) {
                         checkoutNo++;
                     }
                 }
-                String cinNo = String.valueOf(checkinNo);
                 String coutNo = String.valueOf(checkoutNo);
-                tv_checkin.setText(cinNo);
                 tv_checkout.setText(coutNo);
             }
             @Override
