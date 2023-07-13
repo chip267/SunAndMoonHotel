@@ -65,7 +65,7 @@ Bạn muốn mở khách sạn nhưng chưa biết phải sử dụng ứng dụ
 <div id="Nguoihuongdan"></div>
 
 ## V. Người hướng dẫn
-* Giảng viên: Nguyễn Thị Thanh Trúc
+* Giảng viên: Nguyễn Tấn Toàn
 
 ---
 
